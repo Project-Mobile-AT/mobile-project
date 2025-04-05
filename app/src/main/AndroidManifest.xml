@@ -13,14 +13,21 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
-            android:exported="false">
+            android:name=".TelaRF2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaRF1Activity"
+            android:exported="true"> <!-- TRUE é quando a activity pode ser chamada por fora do app (Ex: Pelo ssistema) -->
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".TelaRF1_1Activity"
+            android:exported="false" />
     </application>
 
 </manifest>
