@@ -13,6 +13,102 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".TelaRF19_2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaRF19_1Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaRF19Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaRF18_1Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaRF18Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaRF17_7Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaRF17_5Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaRF17_6Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaRF17_3Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaRF17_2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaRF17_1Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaRF17Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaRF16_6Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaRF16_5Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaRF16_4Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaRF16_3Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaRF16_2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaRF16_1Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaRF16Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaRF14_2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaRf15Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaRF14_1Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaRF14Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaRF13_2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaRF13_1Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaRF13Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaRF12_1Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaRF12Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaRF11Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaRF10Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaRF9Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaRF8_5Activity"
+            android:exported="false" />
+        <activity
             android:name=".TelaRF8_4Activity"
             android:exported="false" />
         <activity
