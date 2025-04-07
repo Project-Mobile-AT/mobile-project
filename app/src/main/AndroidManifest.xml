@@ -13,6 +13,12 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".TelaRF5Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaRF4Activity"
+            android:exported="false" />
+        <activity
             android:name=".TelaRF3Activity"
             android:exported="false" />
         <activity
