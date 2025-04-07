@@ -13,6 +13,25 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".TelaRF8_1Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaRF8Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaRF7_1Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaRF7Activity"
+            android:exported="false"
+            android:theme="@style/Theme.MyApplication" />
+        <activity
+            android:name=".TelaRF6Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaRF5_1Activity"
+            android:exported="false" />
+        <activity
             android:name=".TelaRF5Activity"
             android:exported="false" />
         <activity
