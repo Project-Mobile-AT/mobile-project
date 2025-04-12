@@ -11,38 +11,17 @@
     tools:context=".TelaRF2_1Activity">
 
     <!-- Título -->
-    <TextView
-        android:id="@+id/tv_titulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Vamos completar seu perfil!"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:textColor="#000000"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="48dp" />
 
     <!-- Subtítulo -->
-    <TextView
-        android:id="@+id/tv_subtitulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Isso nos ajudará a conhecer você melhor."
-        android:textSize="14sp"
-        android:textColor="#666666"
-        app:layout_constraintTop_toBottomOf="@id/tv_titulo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp" />
 
     <!-- Campo: Data de nascimento -->
+
+    <!-- Campo: Peso -->
     <EditText
         android:id="@+id/et_data_nascimento"
         android:layout_width="275dp"
         android:layout_height="59dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/bt_input"
         android:drawableStart="@drawable/ic_calendar"
         android:hint="Data de Nascimento"
@@ -51,10 +30,70 @@
         android:paddingEnd="16dp"
         android:textColorHint="#999999"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_subtitulo" />
 
-    <!-- Campo: Peso -->
+    <Button
+        android:id="@+id/btn_entrar"
+        android:layout_width="156dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bt_button_entrar"
+        android:text="Entrar"
+        android:textAllCaps="true"
+        android:textColor="#8225DB"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_altura" />
+
+    <EditText
+        android:id="@+id/et_altura"
+        android:layout_width="274dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/bt_input"
+        android:drawableStart="@drawable/ic_altura"
+        android:hint="Altura"
+        android:inputType="numberDecimal"
+        android:paddingStart="16dp"
+        android:paddingEnd="56dp"
+        android:textColorHint="#999999"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.539"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_peso" />
+
+    <TextView
+        android:id="@+id/tv_subtitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Isso nos ajudará a conhecer você melhor."
+        android:textColor="#666666"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_titulo" />
+
+    <!-- Botão KG ao lado do campo peso -->
+
+    <TextView
+        android:id="@+id/tv_titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="148dp"
+        android:text="Vamos completar seu perfil!"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/et_peso"
         android:layout_width="278dp"
@@ -68,10 +107,10 @@
         android:paddingEnd="56dp"
         android:textColorHint="#999999"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_data_nascimento" />
 
-    <!-- Botão KG ao lado do campo peso -->
     <TextView
         android:id="@+id/label_kg"
         android:layout_width="40dp"
@@ -87,21 +126,6 @@
         app:layout_constraintTop_toTopOf="@id/et_peso" />
 
     <!-- Campo: Altura -->
-    <EditText
-        android:id="@+id/et_altura"
-        android:layout_width="274dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/bt_input"
-        android:drawableStart="@drawable/ic_altura"
-        android:hint="Altura"
-        android:inputType="numberDecimal"
-        android:paddingStart="16dp"
-        android:paddingEnd="56dp"
-        android:textColorHint="#999999"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_peso" />
 
     <!-- Botão CM ao lado do campo altura -->
     <TextView
@@ -119,17 +143,5 @@
         app:layout_constraintTop_toTopOf="@id/et_altura" />
 
     <!-- Botão Entrar -->
-    <Button
-        android:id="@+id/btn_entrar"
-        android:layout_width="208dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/bt_button_entrar"
-        android:text="Entrar"
-        android:textAllCaps="true"
-        android:textColor="#8225DB"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_altura" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
