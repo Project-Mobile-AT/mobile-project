@@ -13,6 +13,9 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".TelaRF3_1Activity"
+            android:exported="false" />
+        <activity
             android:name=".TelaEntradaActivity"
             android:exported="false" />
         <activity
