@@ -42,4 +42,10 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="abrir_menu_de_navega_o">Abrir menu de navegação</string>
+    <string name="ajuda_ou_informa_es">Ajuda ou informações</string>
+    <string name="ficha_de_treino">Ficha de Treino</string>
+    <string name="clique_aqui_para_organizar_consultas_personalizadas">Clique aqui para organizar consultas personalizadas</string>
+    <string name="treino_a">Treino A</string>
+    <string name="treino_b">Treino B</string>
 </resources>
