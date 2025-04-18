@@ -5,6 +5,16 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string name="descricao_botao_ajuda">Ajuda</string>
+    <string name="menu_button_description">Abrir menu</string>
+    <string name="menu">Abrir menu</string>
+    <string name="ajuda">Ajuda</string>
+    <string name="avatar">Icon User</string>
+    <string name="avaliacao">Icon Avaliacao</string>
+    <string name="historico">Icon Historico</string>
+    <string name="icone_fogo">Icon Fogo</string>
+    <string name="mes_anterior">Seta Esquerda</string>
+    <string name="proximo_mes">Seta Direita</string>
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris

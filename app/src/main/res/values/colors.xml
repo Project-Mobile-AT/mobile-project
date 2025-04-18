@@ -11,5 +11,6 @@
     <color name="background_light">#F7F8FD</color>
     <color name="light_blue">#ADD8E6</color>
     <color name="bottom_nav_color">#FF6200EE</color>
+    <color name="background_red">#FF0000</color>
 
 </resources>
