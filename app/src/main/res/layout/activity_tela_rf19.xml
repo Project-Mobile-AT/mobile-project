@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F9F9F9">
@@ -36,12 +37,6 @@
             android:textStyle="bold"
             android:gravity="center" />
 
-        <ImageView
-            android:id="@+id/helpIcon"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:src="@drawable/ic_help"
-            android:layout_marginStart="8dp" />
     </LinearLayout>
 
     <!-- BOTÃO ADICIONAR -->
@@ -248,4 +243,12 @@
             android:text="Início"
             android:textSize="12sp" />
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/helpIcon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/ic_help"
+        tools:layout_editor_absoluteX="363dp"
+        tools:layout_editor_absoluteY="70dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
