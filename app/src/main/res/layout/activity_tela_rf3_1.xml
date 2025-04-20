@@ -25,27 +25,27 @@
             android:weightSum="3">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_menu"
-                android:layout_weight="1" />
+                android:layout_width="30dp"
+                android:layout_height="35dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_chat" />
 
             <TextView
-                android:layout_width="10dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Dados Pessoais"
+                android:textColor="@color/text_gray"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/text_gray" />
+                android:textStyle="bold" />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_profile"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="end"
                 android:layout_weight="1"
-                android:layout_gravity="end" />
+                android:src="@drawable/ic_profile" />
         </LinearLayout>
 
         <!-- Avatar e Nome -->
