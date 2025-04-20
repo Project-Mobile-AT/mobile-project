@@ -25,10 +25,11 @@
             android:weightSum="3">
 
             <ImageView
+                android:id="@+id/id_menu"
                 android:layout_width="30dp"
                 android:layout_height="35dp"
                 android:layout_weight="1"
-                android:src="@drawable/ic_chat" />
+                android:src="@drawable/ic_menu" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -198,4 +199,19 @@
         android:background="@android:color/white"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_nav_menu" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_chat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="72dp"
+        android:src="@drawable/ic_chat"
+        app:tint="#FFFFFF"
+        app:backgroundTint="#2196F3"
+        android:contentDescription="Abrir chat com suporte"/>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+

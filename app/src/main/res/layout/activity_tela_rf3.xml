@@ -44,7 +44,7 @@
                 android:id="@+id/imageView"
                 android:layout_width="39dp"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_chat" />
+                app:srcCompat="@drawable/ic_menu" />
         </RelativeLayout>
 
         <!-- Perfil -->
@@ -277,4 +277,31 @@
         android:background="@android:color/white"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_nav_menu" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_chat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="72dp"
+        android:src="@drawable/ic_chat"
+        app:tint="#FFFFFF"
+        app:backgroundTint="#2196F3"
+        android:contentDescription="Abrir chat com suporte"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_acessibilidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|bottom"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="72dp"
+        android:src="@drawable/ic_accessibility"
+        app:tint="#FFFFFF"
+        app:backgroundTint="#4CAF50"
+        android:contentDescription="Ativar acessibilidade" />
+
+
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
