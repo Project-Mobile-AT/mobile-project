@@ -297,7 +297,7 @@
         android:layout_gravity="start|bottom"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="72dp"
-        android:src="@drawable/ic_accessibility"
+        android:src="@drawable/ic_help"
         app:tint="#FFFFFF"
         app:backgroundTint="#4CAF50"
         android:contentDescription="Ativar acessibilidade" />

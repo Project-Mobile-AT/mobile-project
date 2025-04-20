@@ -7,6 +7,7 @@
     android:background="#FFFFFF">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -33,16 +34,16 @@
                     android:src="@drawable/ic_menu" />
 
                 <ImageButton
-                    android:id="@+id/helpButton"
+                    android:id="@+id/button_perfil"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:layout_centerVertical="true"
                     android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
                     android:layout_marginEnd="16dp"
                     android:background="@null"
+                    android:contentDescription="@string/perfil"
                     android:padding="12dp"
-                    android:src="@drawable/ic_help"
-                    android:contentDescription="@string/ajuda_ou_informa_es" />
+                    android:src="@drawable/ic_profile" />
 
             </RelativeLayout>
 
@@ -431,5 +432,25 @@
         app:tint="#FFFFFF"
         app:backgroundTint="#2196F3"
         android:contentDescription="Abrir chat com suporte"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Treino"
+        app:layout_anchor="@+id/appBarLayout2"
+        app:layout_anchorGravity="center" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_acessibilidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|bottom"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="72dp"
+        android:src="@drawable/ic_help"
+        app:tint="#FFFFFF"
+        app:backgroundTint="#4CAF50"
+        android:contentDescription="Ativar acessibilidade" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
