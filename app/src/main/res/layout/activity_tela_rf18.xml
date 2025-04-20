@@ -33,7 +33,7 @@
         <ImageView
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:src="@drawable/ic_hand" />
+            android:src="@drawable/ic_help" />
     </LinearLayout>
 
     <!-- Campo de busca -->
@@ -45,7 +45,7 @@
         android:drawableStart="@drawable/ic_search"
         android:drawableEnd="@drawable/ic_clear"
         android:padding="12dp"
-        android:background="@drawable/rounded_edittext"
+        android:background="@drawable/edit_text_background"
         android:textColor="#000000"
         android:textColorHint="#888888"
         app:layout_constraintTop_toBottomOf="@id/topBar"
@@ -80,15 +80,15 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/rounded_edittext"
+                android:background="@drawable/edit_text_background"
                 android:layout_marginBottom="12dp"
                 android:padding="12dp">
 
                 <ImageView
                     android:layout_width="32dp"
                     android:layout_height="32dp"
-                    android:src="@drawable/ic_user"
-                    android:tint="#A47CC3" />
+                    android:src="@drawable/ic_avatar"
+                    app:tint="@color/black" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -103,9 +103,9 @@
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:src="@drawable/ic_edit"
-                    android:background="@drawable/rounded_edit_icon"
+                    android:background="@drawable/bg_card_alert"
                     android:padding="6dp"
-                    android:tint="#A47CC3" />
+                    app:tint="@color/black" />
             </LinearLayout>
 
             <!-- Repetir programaticamente para outros alunos -->
@@ -128,7 +128,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/ic_home"
-            android:tint="#000000" />
+            app:tint="#000000" />
 
         <TextView
             android:layout_width="wrap_content"

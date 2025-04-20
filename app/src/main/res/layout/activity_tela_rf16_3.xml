@@ -59,13 +59,13 @@
             android:layout_height="wrap_content"
             android:text="Dia da Semana"
             android:textSize="16sp"
-            android:textColor="#777777" />
+            android:textColor="#000000" />
 
         <EditText
             android:id="@+id/edit_day_of_week"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/edittext_background"
+            android:background="@drawable/edit_text_background"
             android:padding="12dp"
             android:layout_marginTop="8dp"
             android:hint="_ _ / _ _ / _ _ _ _"
@@ -76,14 +76,14 @@
             android:layout_height="wrap_content"
             android:text="Horário"
             android:textSize="16sp"
-            android:textColor="#777777"
+            android:textColor="#000000"
             android:layout_marginTop="16dp" />
 
         <EditText
             android:id="@+id/edit_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/edittext_background"
+            android:background="@drawable/edit_text_background"
             android:padding="12dp"
             android:layout_marginTop="8dp"
             android:hint="Value"
@@ -94,14 +94,14 @@
             android:layout_height="wrap_content"
             android:text="Quantidade de Vagas"
             android:textSize="16sp"
-            android:textColor="#777777"
+            android:textColor="#000000"
             android:layout_marginTop="16dp" />
 
         <EditText
             android:id="@+id/edit_vacancy_count"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/edittext_background"
+            android:background="@drawable/edit_text_background"
             android:padding="12dp"
             android:layout_marginTop="8dp"
             android:hint="Value"

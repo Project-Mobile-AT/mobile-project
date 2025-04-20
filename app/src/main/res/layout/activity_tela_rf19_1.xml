@@ -93,7 +93,7 @@
         android:layout_height="48dp"
         android:text="Salvar"
         android:textColor="#FFFFFF"
-        android:backgroundTint="#6B4EA0"
+        android:backgroundTint="#01A007"
         android:layout_marginTop="16dp"
         app:layout_constraintTop_toBottomOf="@id/infoEditText"
         app:layout_constraintEnd_toEndOf="parent"

@@ -75,7 +75,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:src="@drawable/ic_edit"
-                    android:background="@drawable/bg_card_rounded"
+                    android:background="@drawable/bg_card_alert"
                     android:contentDescription="Editar" />
             </LinearLayout>
 
@@ -116,7 +116,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:src="@drawable/ic_edit"
-                    android:background="@drawable/bg_card_rounded"
+                    android:background="@drawable/bg_card_alert"
                     android:contentDescription="Editar" />
             </LinearLayout>
             <!-- Card 2 e Card 3 podem ser cópias do Card 1 alterando o texto -->

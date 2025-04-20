@@ -62,14 +62,14 @@
 
     <Button
         android:id="@+id/btnEnviarEmail"
-        android:layout_width="202dp"
-        android:layout_height="47dp"
+        android:layout_width="237dp"
+        android:layout_height="44dp"
         android:layout_marginTop="40dp"
-        android:backgroundTint="#9C4DFF"
+        android:backgroundTint="#C3C3C3"
         android:drawableLeft="@drawable/ic_send"
         android:drawablePadding="10dp"
         android:text="Enviar email de acesso"
-        android:textColor="@android:color/white"
+        android:textColor="@color/black"
         app:cornerRadius="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
