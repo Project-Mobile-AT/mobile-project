@@ -8,26 +8,10 @@
 
     <!-- AppBar com título e menu -->
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
-            android:title="Aulas"
-            android:titleTextColor="@color/black">
-
-            <ImageButton
-                android:id="@+id/menuButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="start|center_vertical"
-                android:src="@drawable/ic_menu"
-                android:background="@null"
-                android:contentDescription="Menu"/>
-        </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
     <!-- Conteúdo rolável: -->
@@ -48,16 +32,17 @@
             android:padding="16dp">
 
             <!-- Subtítulo -->
+
+            <!-- Calendário mock -->
             <TextView
                 android:id="@+id/tvSubtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
                 android:text="Escolha uma data e participe das nossas aulas"
-                android:textSize="16sp"
                 android:textColor="@color/text_gray"
-                android:layout_marginBottom="12dp"/>
+                android:textSize="16sp" />
 
-            <!-- Calendário mock -->
             <LinearLayout
                 android:id="@+id/calendarContainer"
                 android:layout_width="match_parent"
@@ -288,5 +273,38 @@
         app:itemIconTint="@color/bottom_nav_color"
         app:itemTextColor="@color/bottom_nav_color"
         app:menu="@menu/bottom_nav_menu"/>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:title="Aulas"
+        android:titleTextColor="@color/black"
+        app:layout_anchor="@+id/appBarLayout"
+        app:layout_anchorGravity="center">
+
+        <ImageButton
+            android:id="@+id/menuButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="start|center_vertical"
+            android:background="@null"
+            android:contentDescription="Menu"
+            android:src="@drawable/ic_menu" />
+
+        <ImageButton
+            android:id="@+id/button_perfil"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp"
+            android:background="@null"
+            android:contentDescription="@string/perfil"
+            android:padding="12dp"
+            android:src="@drawable/ic_profile" />
+
+    </androidx.appcompat.widget.Toolbar>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
