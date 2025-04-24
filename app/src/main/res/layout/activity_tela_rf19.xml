@@ -24,7 +24,7 @@
             android:id="@+id/infoIcon"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:src="@drawable/ic_info"
+            android:src="@drawable/ic_setae"
             android:layout_marginEnd="8dp" />
 
         <TextView
