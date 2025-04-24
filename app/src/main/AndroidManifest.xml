@@ -157,9 +157,7 @@
         <activity
             android:name=".TelaRF2Activity"
             android:exported="false" />
-        <activity
-            android:name=".TelaRF2Activity"
-            android:exported="false" />
+
         <activity
             android:name=".TelaRF1Activity"
             android:exported="true"> <!-- TRUE é quando a activity pode ser chamada por fora do app (Ex: Pelo ssistema) -->
