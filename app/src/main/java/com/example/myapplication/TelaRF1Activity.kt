@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.fragments.BottomNavFragment
 
 class TelaRF1Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +31,8 @@ class TelaRF1Activity : AppCompatActivity() {
             val intent = Intent(this, TelaRF2Activity::class.java)
             startActivity(intent)
         }
+
+
     }
 
 }

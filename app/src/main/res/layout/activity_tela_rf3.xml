@@ -269,15 +269,6 @@
     </LinearLayout>
 </ScrollView>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:layout_gravity="bottom"
-        android:background="@android:color/white"
-        app:labelVisibilityMode="labeled"
-        app:menu="@menu/bottom_nav_menu" />
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_chat"
         android:layout_width="wrap_content"
@@ -301,6 +292,12 @@
         app:tint="#FFFFFF"
         app:backgroundTint="#4CAF50"
         android:contentDescription="Ativar acessibilidade" />
+
+    <FrameLayout
+        android:id="@+id/container_bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"/>
 
 
 
