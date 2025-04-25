@@ -15,7 +15,9 @@ class TelaRF1Activity : AppCompatActivity() {
 
         val btn_login = findViewById<Button>(R.id.btn_login)
         val recuperarSenha = findViewById<TextView>(R.id.tv_esqueceu_senha)
+        recuperarSenha.paint.isUnderlineText = true // Essa parte não é necessária foi apenas um teste
         val criarConta = findViewById<TextView>(R.id.tv_registre_se)
+        criarConta.paint.isUnderlineText = true // Essa parte não é necessária foi apenas um teste
 
         btn_login.setOnClickListener {
             val intent = Intent(this, TelaRF3Activity::class.java)
