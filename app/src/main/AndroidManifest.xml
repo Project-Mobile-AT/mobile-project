@@ -145,9 +145,7 @@
         <activity
             android:name=".TelaRF5Activity"
             android:exported="false" />
-        <activity
-            android:name=".TelaRF4Activity"
-            android:exported="false" />
+
         <activity
             android:name=".TelaRF3Activity"
             android:exported="false" />
@@ -156,6 +154,10 @@
             android:exported="false" />
         <activity
             android:name=".TelaRF2Activity"
+            android:exported="false" />
+
+        <activity
+            android:name=".TelaRF1_1Activity"
             android:exported="false" />
 
         <activity
@@ -168,9 +170,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".TelaRF1_1Activity"
-            android:exported="false" />
+
     </application>
 
 </manifest>
