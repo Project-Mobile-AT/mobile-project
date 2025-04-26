@@ -34,11 +34,11 @@
                 android:layout_centerInParent="true"/>
 
             <ImageView
-                android:id="@+id/ic_p"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_profile"
-                android:layout_alignParentEnd="true"/>
+                android:id="@+id/ic_per"
+                android:layout_width="42dp"
+                android:layout_height="43dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_profile" />
 
             <ImageView
                 android:id="@+id/imageView"
