@@ -12,10 +12,13 @@ import androidx.core.view.WindowInsetsCompat
 class TelaRF5Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //enableEdgeToEdge()
+        enableEdgeToEdge()
         setContentView(R.layout.activity_tela_rf5)
 
+
         val perfil = findViewById<ImageView>(R.id.ic_per)
+
+
         val btn_consulta = findViewById<Button>(R.id.btn_consulta)
 
         btn_consulta.setOnClickListener {
