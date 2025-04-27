@@ -1,41 +1,44 @@
 package com.example.myapplication.fragments
 
-import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.fragment.app.Fragment
-import com.example.myapplication.R
+import com.example.myapplication.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class BottomNavFragment : Fragment() {
+
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_bottom_nav, container, false)
-        val bottomNavigation = view.findViewById<BottomNavigationView>(R.id.bottom_navigation)
 
-        bottomNavigation.setOnItemSelectedListener {
-            when (it.itemId) {
+        val bottomNavigationView = view.findViewById<BottomNavigationView>(R.id.bottom_navigation)
+
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
                 R.id.nav_home -> {
-                    Toast.makeText(requireContext(), "Início", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(requireContext(), TelaRF3Activity::class.java)
+                    startActivity(intent)
                     true
                 }
                 R.id.nav_workout -> {
-                    Toast.makeText(requireContext(), "Treino", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(requireContext(), TelaRF5Activity::class.java)
+                    startActivity(intent)
                     true
                 }
                 R.id.nav_classes -> {
-                    Toast.makeText(requireContext(), "Aulas", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(requireContext(), TelaRF6Activity::class.java)
+                    startActivity(intent)
                     true
                 }
                 R.id.nav_health -> {
-                    Toast.makeText(requireContext(), "Saúde", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(requireContext(), TelaRF7Activity::class.java)
+                    startActivity(intent)
                     true
                 }
                 else -> false
@@ -45,6 +48,3 @@ class BottomNavFragment : Fragment() {
         return view
     }
 }
-
-
-
