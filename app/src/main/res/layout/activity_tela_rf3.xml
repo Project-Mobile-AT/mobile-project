@@ -42,8 +42,8 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="39dp"
-                android:layout_height="wrap_content"
+                android:layout_width="57dp"
+                android:layout_height="41dp"
                 app:srcCompat="@drawable/ic_menu" />
         </RelativeLayout>
 

@@ -3,6 +3,8 @@ package com.example.myapplication
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.PopupMenu
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -15,11 +17,36 @@ class TelaRF3Activity : AppCompatActivity() {
         setContentView(R.layout.activity_tela_rf3)
 
         val perfil = findViewById<ImageView>(R.id.ic_per)
+        val menuButton = findViewById<ImageView>(R.id.imageView)
 
         perfil.setOnClickListener {
             val intent = Intent(this, TelaRF3_1Activity::class.java)
             startActivity(intent)
         }
+
+        //Inserir menu hamburguer
+        menuButton.setOnClickListener { view ->
+            val popup = PopupMenu(this, view)
+            popup.menuInflater.inflate(R.menu.menu_popup, popup.menu)
+
+            popup.setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.menu_informativos -> {
+                        Toast.makeText(this, "Abrindo Informativos", Toast.LENGTH_SHORT).show()
+                        true
+                    }
+                    R.id.menu_sair -> {
+                        Toast.makeText(this, "Saindo...", Toast.LENGTH_SHORT).show()
+                        finish()
+                        true
+                    }
+                    else -> false
+                }
+            }
+
+            popup.show()
+        }
+
 
         supportFragmentManager.beginTransaction()
             .replace(R.id.container_bottom_nav, BottomNavFragment())
