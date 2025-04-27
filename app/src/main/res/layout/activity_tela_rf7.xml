@@ -67,6 +67,7 @@
         android:fillViewport="true">
 
         <LinearLayout
+            android:id="@+id/main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -153,14 +154,15 @@
                             android:layout_marginBottom="16dp"/>
 
                         <Button
+                            android:id="@+id/btn_dieta"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Visualizar Dieta"
-                            android:textAllCaps="false"
-                            android:textColor="#000000"
+                            android:background="@drawable/button_outlined_green"
                             android:drawableStart="@android:drawable/ic_menu_view"
                             android:drawablePadding="8dp"
-                            android:background="@drawable/button_outlined_green"/>
+                            android:text="Visualizar Dieta"
+                            android:textAllCaps="false"
+                            android:textColor="#000000" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
