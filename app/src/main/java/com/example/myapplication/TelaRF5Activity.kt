@@ -16,8 +16,7 @@ class TelaRF5Activity : AppCompatActivity() {
         setContentView(R.layout.activity_tela_rf5)
 
 
-        val perfil = findViewById<ImageView>(R.id.ic_per)
-
+        val perfil = findViewById<ImageView>(R.id.button_perfil)
 
         val btn_consulta = findViewById<Button>(R.id.btn_consulta)
 
