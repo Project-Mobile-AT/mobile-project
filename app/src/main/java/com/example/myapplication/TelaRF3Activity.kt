@@ -8,6 +8,7 @@ import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.fragments.BottomNavFragment
+import com.example.myapplication.fragments.ChatbotPopupFragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class TelaRF3Activity : AppCompatActivity() {
@@ -40,10 +41,12 @@ class TelaRF3Activity : AppCompatActivity() {
             val intent = Intent(this, TelaRF5Activity::class.java)
             startActivity(intent)
         }
+
         fabChat.setOnClickListener {
-            val intent = Intent(this, TelaRF9Activity::class.java)
-            startActivity(intent)
+            val chatbotPopup = ChatbotPopupFragment()
+            chatbotPopup.show(supportFragmentManager, "ChatbotPopup")
         }
+
         fabAcessibilidade.setOnClickListener {
             val intent = Intent(this, TelaRF9Activity::class.java)
             startActivity(intent)

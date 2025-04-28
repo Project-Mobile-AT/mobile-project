@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    card_view:cardCornerRadius="16dp"
+    card_view:cardElevation="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:background="@android:color/white"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tv_chatbot_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Olá! Como posso te ajudar?"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Mensagem recebida do chatbot -->
+        <TextView
+            android:id="@+id/tv_chatbot_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Oi! Eu sou o assistente virtual. Em que posso te ajudar hoje?"
+            android:textSize="16sp"
+            android:background="#F0F0F0"
+            android:padding="12dp"
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@android:color/darker_gray"
+            android:backgroundTintMode="src_in"
+            android:elevation="2dp"
+            android:layout_gravity="start"
+            android:textColor="@android:color/black"/>
+
+        <!-- Campo para digitar mensagem -->
+        <EditText
+            android:id="@+id/et_user_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Digite sua mensagem..."
+            android:padding="12dp"
+            android:background="@drawable/chatbot_input_background"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/darker_gray"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Botão de enviar -->
+        <Button
+            android:id="@+id/btn_send_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enviar"
+            android:backgroundTint="@color/purple_500"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="8dp"/>
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
