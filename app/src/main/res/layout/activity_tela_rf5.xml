@@ -412,16 +412,6 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <!-- Navigation Bottom Bar -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        app:menu="@menu/bottom_nav_menu"
-        app:labelVisibilityMode="labeled"
-        android:background="#FFFFFF"/>
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_chat"
         android:layout_width="wrap_content"
@@ -436,8 +426,8 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="91dp"
+        android:layout_height="43dp"
         android:text="Treino"
         app:layout_anchor="@+id/appBarLayout2"
         app:layout_anchorGravity="center" />
@@ -453,5 +443,11 @@
         app:tint="#FFFFFF"
         app:backgroundTint="#4CAF50"
         android:contentDescription="Ativar acessibilidade" />
+
+    <FrameLayout
+        android:id="@+id/container_bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
