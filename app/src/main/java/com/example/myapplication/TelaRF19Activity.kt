@@ -34,7 +34,7 @@ class TelaRF19Activity : AppCompatActivity() {
         }
 
         editInform.setOnClickListener {
-            val intent = Intent(this, TelaRF19_2Activity::class.java)
+            val intent = Intent(this, TelaRF19_1Activity::class.java)
             startActivity(intent)
         }
 

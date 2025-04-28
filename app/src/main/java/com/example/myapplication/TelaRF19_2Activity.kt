@@ -20,12 +20,17 @@ class TelaRF19_2Activity : AppCompatActivity() {
 
         val inicio = findViewById<ImageView>(R.id.homeIcon)
 
-        val fabChat = findViewById<FloatingActionButton>(R.id.fab_chat)
-
         val voltar = findViewById<ImageView>(R.id.btVoltar)
+
+        val fabChat = findViewById<FloatingActionButton>(R.id.fab_chat)
 
         inicio.setOnClickListener {
             val intent = Intent(this, TelaRF11Activity::class.java)
+            startActivity(intent)
+        }
+
+        voltar.setOnClickListener {
+            val intent = Intent(this, TelaRF19Activity::class.java)
             startActivity(intent)
         }
 
@@ -34,9 +39,5 @@ class TelaRF19_2Activity : AppCompatActivity() {
             chatbotPopup.show(supportFragmentManager, "ChatbotPopup")
         }
 
-        voltar.setOnClickListener {
-            val intent = Intent(this, TelaRF19Activity::class.java)
-            startActivity(intent)
-        }
     }
 }

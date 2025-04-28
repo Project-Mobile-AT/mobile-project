@@ -22,8 +22,9 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:id="@+id/btVoltar"
+            android:layout_width="51dp"
+            android:layout_height="47dp"
             android:src="@drawable/ic_setae" />
 
         <TextView
@@ -37,10 +38,6 @@
             android:textSize="18sp"
             android:gravity="center" />
 
-        <ImageView
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:src="@drawable/ic_hand" />
     </LinearLayout>
 
     <!-- Label -->
@@ -117,5 +114,31 @@
             android:textSize="12sp"
             android:textColor="#000000" />
     </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_acessibilidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|bottom"
+        android:contentDescription="Ativar acessibilidade"
+        android:src="@drawable/ic_help"
+        app:backgroundTint="#4CAF50"
+        app:tint="#FFFFFF"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="348dp"
+        tools:layout_editor_absoluteY="605dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_chat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:contentDescription="Abrir chat com suporte"
+        android:src="@drawable/ic_chat"
+        app:backgroundTint="#2196F3"
+        app:tint="#FFFFFF"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="605dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
