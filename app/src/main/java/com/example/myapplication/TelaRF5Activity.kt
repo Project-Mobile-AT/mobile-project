@@ -18,7 +18,7 @@ class TelaRF5Activity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_tela_rf5)
 
-        val menuButton = findViewById<ImageView>(R.id.imageView)
+        val menuButton = findViewById<ImageView>(R.id.menuButton)
 
         val perfil = findViewById<ImageView>(R.id.button_perfil)
 
