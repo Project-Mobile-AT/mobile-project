@@ -176,13 +176,14 @@
                         android:layout_marginBottom="8dp"/>
 
                     <Button
+                        android:id="@+id/btn_personal"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
+                        android:background="@drawable/button_outlined_green"
                         android:text="Verificar disponibilidade »"
                         android:textAllCaps="false"
                         android:textColor="#333333"
-                        android:textSize="12sp"
-                        android:background="@drawable/button_outlined_green"/>
+                        android:textSize="12sp" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
