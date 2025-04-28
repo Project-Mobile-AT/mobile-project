@@ -25,7 +25,7 @@ class TelaRF8_3Activity : AppCompatActivity() {
         }
 
         btnReservas.setOnClickListener {
-            val intent = Intent(this, TelaRF8_4Activity::class.java)
+            val intent = Intent(this, TelaRF8_5Activity::class.java)
             startActivity(intent)
         }
 
