@@ -6,34 +6,74 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <!-- AppBar com título e menu -->
+    <!-- AppBar com Toolbar -->
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:title=""
+            app:contentInsetStart="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp">
+
+                <!-- Ícone menu hambúrguer -->
+                <ImageView
+                    android:id="@+id/ivMenu"
+                    android:layout_width="43dp"
+                    android:layout_height="43dp"
+                    android:contentDescription="Menu"
+                    android:src="@drawable/ic_menu" />
+
+                <!-- Espaço para centralizar o título -->
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Aulas"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:gravity="center" />
+
+                <!-- Ícone perfil -->
+                <ImageView
+                    android:id="@+id/ivProfile"
+                    android:layout_width="48dp"
+                    android:layout_height="47dp"
+                    android:contentDescription="Perfil"
+                    android:src="@drawable/ic_profile" />
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- Conteúdo rolável: -->
-    <!-- • clipToPadding=false deixa rolar dentro do padding
-         • marginBottom empurra o fim do scroll acima do BottomNav  -->
+    <!-- Conteúdo rolável -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:clipToPadding="false"
-        android:paddingBottom="16dp"
+        android:padding="16dp"
         android:layout_marginBottom="64dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:orientation="vertical">
 
             <!-- Subtítulo -->
-
-            <!-- Calendário mock -->
             <TextView
                 android:id="@+id/tvSubtitle"
                 android:layout_width="wrap_content"
@@ -43,6 +83,7 @@
                 android:textColor="@color/text_gray"
                 android:textSize="16sp" />
 
+            <!-- Container do calendário -->
             <LinearLayout
                 android:id="@+id/calendarContainer"
                 android:layout_width="match_parent"
@@ -55,27 +96,27 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Select date"
+                    android:text="Selecione uma data"
                     android:textColor="@color/text_gray"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/tvSelectedDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Mon, Aug 17"
+                    android:text="Seg, 17 Ago"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:layout_marginTop="4dp"
-                    android:layout_marginBottom="12dp"/>
+                    android:layout_marginBottom="12dp" />
 
                 <CalendarView
                     android:id="@+id/calendarView"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
-            <!-- Label de agendamentos -->
+            <!-- Label Agendamentos -->
             <TextView
                 android:id="@+id/tvDisponiveis"
                 android:layout_width="wrap_content"
@@ -84,7 +125,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:layout_marginBottom="12dp"/>
+                android:layout_marginBottom="12dp" />
 
             <!-- Card Yoga -->
             <LinearLayout
@@ -101,7 +142,7 @@
                     android:text="Yoga"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -109,7 +150,7 @@
                     android:text="Horário: 8:00 - 9:00"
                     android:textSize="14sp"
                     android:textColor="@color/text_gray"
-                    android:layout_marginTop="4dp"/>
+                    android:layout_marginTop="4dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -117,7 +158,7 @@
                     android:text="Instrutor: Emma Stone"
                     android:textSize="14sp"
                     android:textColor="@color/text_gray"
-                    android:layout_marginTop="2dp"/>
+                    android:layout_marginTop="2dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -128,16 +169,16 @@
                     android:background="@drawable/rounded_green"
                     android:padding="4dp"
                     android:layout_marginTop="8dp"
-                    android:layout_gravity="end"/>
+                    android:layout_gravity="end" />
 
                 <Button
                     android:id="@+id/btnCheckInYoga"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:text="Fazer Check‑in"
+                    android:text="Fazer Check-in"
                     android:textColor="@color/white"
                     android:background="@drawable/rounded_dark"
-                    android:layout_marginTop="8dp"/>
+                    android:layout_marginTop="8dp" />
             </LinearLayout>
 
             <!-- Card Funcional -->
@@ -155,7 +196,7 @@
                     android:text="Funcional"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -163,7 +204,7 @@
                     android:text="Horário: 10:00 - 11:00"
                     android:textSize="14sp"
                     android:textColor="@color/text_gray"
-                    android:layout_marginTop="4dp"/>
+                    android:layout_marginTop="4dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -171,7 +212,7 @@
                     android:text="Instrutor: John Doe"
                     android:textSize="14sp"
                     android:textColor="@color/text_gray"
-                    android:layout_marginTop="2dp"/>
+                    android:layout_marginTop="2dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -182,129 +223,51 @@
                     android:background="@drawable/rounded_green"
                     android:padding="4dp"
                     android:layout_marginTop="8dp"
-                    android:layout_gravity="end"/>
+                    android:layout_gravity="end" />
 
                 <Button
                     android:id="@+id/btnCheckInFuncional"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:text="Fazer Check‑in"
+                    android:text="Fazer Check-in"
                     android:textColor="@color/white"
                     android:background="@drawable/rounded_dark"
-                    android:layout_marginTop="8dp"/>
+                    android:layout_marginTop="8dp" />
             </LinearLayout>
 
-            <!-- Card Pilates -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/rounded_light"
-                android:padding="16dp"
-                android:layout_marginBottom="12dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Pilates"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Horário: 13:00 - 14:00"
-                    android:textSize="14sp"
-                    android:textColor="@color/text_gray"
-                    android:layout_marginTop="4dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Instrutor: Jane Smith"
-                    android:textSize="14sp"
-                    android:textColor="@color/text_gray"
-                    android:layout_marginTop="2dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Status: Disponível"
-                    android:textSize="12sp"
-                    android:textColor="@color/text_gray"
-                    android:background="@drawable/rounded_green"
-                    android:padding="4dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_gravity="end"/>
-
-                <Button
-                    android:id="@+id/btnCheckInPilates"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:text="Fazer Check‑in"
-                    android:textColor="@color/white"
-                    android:background="@drawable/rounded_dark"
-                    android:layout_marginTop="8dp"/>
-            </LinearLayout>
+            <!-- Adicione outros cards conforme necessário -->
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <!-- FAB de chat -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_chat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_chat"
-        app:tint="@color/white"
-        app:backgroundTint="@color/primary_purple"
-        app:layout_anchor="@id/bottom_navigation"
-        app:layout_anchorGravity="top|end"
-        android:contentDescription="Abrir chat"/>
+        android:layout_gravity="end|bottom"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="72dp"
+        android:src="@drawable/ic_chat"
+        app:tint="#FFFFFF"
+        app:backgroundTint="#2196F3"
+        android:contentDescription="Abrir chat com suporte"/>
 
-    <!-- Bottom Navigation -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_acessibilidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|bottom"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="72dp"
+        android:src="@drawable/ic_help"
+        app:tint="#FFFFFF"
+        app:backgroundTint="#4CAF50"
+        android:contentDescription="Ativar acessibilidade" />
+
+    <FrameLayout
+        android:id="@+id/container_bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="@color/white"
-        app:itemIconTint="@color/bottom_nav_color"
-        app:itemTextColor="@color/bottom_nav_color"
-        app:menu="@menu/bottom_nav_menu"/>
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/white"
-        android:title="Aulas"
-        android:titleTextColor="@color/black"
-        app:layout_anchor="@+id/appBarLayout"
-        app:layout_anchorGravity="center">
-
-        <ImageButton
-            android:id="@+id/menuButton"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="start|center_vertical"
-            android:background="@null"
-            android:contentDescription="Menu"
-            android:src="@drawable/ic_menu" />
-
-        <ImageButton
-            android:id="@+id/button_perfil"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="16dp"
-            android:background="@null"
-            android:contentDescription="@string/perfil"
-            android:padding="12dp"
-            android:src="@drawable/ic_profile" />
-
-    </androidx.appcompat.widget.Toolbar>
+        android:layout_gravity="bottom"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
