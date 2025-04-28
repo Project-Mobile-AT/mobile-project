@@ -14,7 +14,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.myapplication.fragments.BottomNavFragment
 
 class TelaRF6Activity : AppCompatActivity() {
-    @SuppressLint("MissingInflatedId")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

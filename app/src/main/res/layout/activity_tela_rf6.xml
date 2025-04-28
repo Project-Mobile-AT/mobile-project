@@ -32,8 +32,8 @@
                 <!-- Ícone menu hambúrguer -->
                 <ImageView
                     android:id="@+id/ivMenu"
-                    android:layout_width="43dp"
-                    android:layout_height="43dp"
+                    android:layout_width="52dp"
+                    android:layout_height="64dp"
                     android:contentDescription="Menu"
                     android:src="@drawable/ic_menu" />
 
@@ -51,8 +51,8 @@
                 <!-- Ícone perfil -->
                 <ImageView
                     android:id="@+id/ivProfile"
-                    android:layout_width="48dp"
-                    android:layout_height="47dp"
+                    android:layout_width="63dp"
+                    android:layout_height="54dp"
                     android:contentDescription="Perfil"
                     android:src="@drawable/ic_profile" />
             </LinearLayout>
