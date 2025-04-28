@@ -7,7 +7,7 @@
       </SelectionState>
       <SelectionState runConfigName="TelaRF1Activity">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2025-04-26T19:15:27.291343985Z">
+        <DropdownSelection timestamp="2025-04-27T21:01:37.498699603Z">
           <Target type="DEFAULT_BOOT">
             <handle>
               <DeviceId pluginId="PhysicalDevice" identifier="serial=ZF523NFMND" />
@@ -16,9 +16,15 @@
         </DropdownSelection>
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="TelaRF5Activity">
+      <SelectionState runConfigName="TelaRF8Activity (2)">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2025-04-27T02:59:44.419648290Z">
+      </SelectionState>
+      <SelectionState runConfigName="TelaRF8Activity (3)">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="TelaRF8Activity (4)">
+        <option name="selectionMode" value="DROPDOWN" />
+        <DropdownSelection timestamp="2025-04-27T21:39:24.292596930Z">
           <Target type="DEFAULT_BOOT">
             <handle>
               <DeviceId pluginId="PhysicalDevice" identifier="serial=ZF523NFMND" />
@@ -27,11 +33,16 @@
         </DropdownSelection>
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="TelaRF5_1Activity">
+      <SelectionState runConfigName="TelaRF8Activity (5)">
         <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="TelaRF7Activity">
-        <option name="selectionMode" value="DROPDOWN" />
+        <DropdownSelection timestamp="2025-04-27T21:41:33.305605004Z">
+          <Target type="DEFAULT_BOOT">
+            <handle>
+              <DeviceId pluginId="PhysicalDevice" identifier="serial=ZF523NFMND" />
+            </handle>
+          </Target>
+        </DropdownSelection>
+        <DialogSelection />
       </SelectionState>
     </selectionStates>
   </component>
