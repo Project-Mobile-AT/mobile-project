@@ -25,8 +25,8 @@
 
                 <ImageButton
                     android:id="@+id/menuButton"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
+                    android:layout_width="66dp"
+                    android:layout_height="match_parent"
                     android:layout_alignParentStart="true"
                     android:layout_marginStart="0dp"
                     android:background="@null"
@@ -35,8 +35,8 @@
 
                 <ImageButton
                     android:id="@+id/button_perfil"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
+                    android:layout_width="71dp"
+                    android:layout_height="56dp"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="16dp"

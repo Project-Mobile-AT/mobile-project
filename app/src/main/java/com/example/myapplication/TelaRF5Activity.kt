@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.myapplication.fragments.BottomNavFragment
 
 class TelaRF5Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,5 +30,9 @@ class TelaRF5Activity : AppCompatActivity() {
             val intent = Intent(this, TelaRF3_1Activity::class.java)
             startActivity(intent)
         }
+
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.container_bottom_nav, BottomNavFragment())
+            .commit()
     }
 }
