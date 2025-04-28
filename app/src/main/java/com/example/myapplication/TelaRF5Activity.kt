@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.myapplication.fragments.BottomNavFragment
+import com.example.myapplication.fragments.ChatbotPopupFragment
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class TelaRF5Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +26,8 @@ class TelaRF5Activity : AppCompatActivity() {
 
         val btn_consulta = findViewById<Button>(R.id.btn_consulta)
 
+        val fabChat = findViewById<FloatingActionButton>(R.id.fab_chat)
+
         btn_consulta.setOnClickListener {
             val intent = Intent(this, TelaRF5_1Activity::class.java)
             startActivity(intent)
@@ -32,6 +36,11 @@ class TelaRF5Activity : AppCompatActivity() {
         perfil.setOnClickListener {
             val intent = Intent(this, TelaRF8Activity::class.java)
             startActivity(intent)
+        }
+
+        fabChat.setOnClickListener {
+            val chatbotPopup = ChatbotPopupFragment()
+            chatbotPopup.show(supportFragmentManager, "ChatbotPopup")
         }
 
 
