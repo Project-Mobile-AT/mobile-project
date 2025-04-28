@@ -14,7 +14,7 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="40dp"
             android:background="#FFFFFF"
             app:title="Treino">
 
@@ -23,31 +23,18 @@
                 android:layout_height="match_parent">
 
 
-                <ImageButton
-                    android:id="@+id/menuButton"
-                    android:layout_width="66dp"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="0dp"
-                    android:background="@null"
-                    android:contentDescription="@string/abrir_menu_de_navega_o"
-                    android:src="@drawable/ic_menu" />
-
-                <ImageButton
-                    android:id="@+id/button_perfil"
-                    android:layout_width="71dp"
-                    android:layout_height="56dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="16dp"
-                    android:background="@null"
-                    android:contentDescription="@string/perfil"
-                    android:padding="12dp"
-                    android:src="@drawable/ic_profile" />
-
             </RelativeLayout>
 
         </androidx.appcompat.widget.Toolbar>
+
+        <ImageButton
+            android:id="@+id/menuButton"
+            android:layout_width="96dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="0dp"
+            android:background="@null"
+            android:contentDescription="@string/abrir_menu_de_navega_o"
+            android:src="@drawable/ic_menu" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -430,7 +417,7 @@
         android:layout_height="43dp"
         android:text="Treino"
         app:layout_anchor="@+id/appBarLayout2"
-        app:layout_anchorGravity="center" />
+        app:layout_anchorGravity="bottom|center" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_acessibilidade"
@@ -449,5 +436,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"/>
+
+    <ImageButton
+        android:id="@+id/button_perfil"
+        android:layout_width="70dp"
+        android:layout_height="64dp"
+        android:layout_marginEnd="16dp"
+        android:background="@null"
+        android:contentDescription="@string/perfil"
+        android:padding="12dp"
+        android:src="@drawable/ic_profile"
+        app:layout_anchor="@+id/appBarLayout2"
+        app:layout_anchorGravity="end|bottom" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
