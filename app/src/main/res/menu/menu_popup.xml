@@ -8,6 +8,10 @@
         android:id="@+id/menu_dados"
         android:title="Dados Pessoais" />
     <item
+        android:id="@+id/meus_agendamentos"
+        android:title="Agendamentos" />
+    <item
         android:id="@+id/menu_sair"
         android:title="Sair" />
+
 </menu>
