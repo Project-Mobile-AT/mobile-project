@@ -19,6 +19,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
+        <ImageView
+            android:id="@+id/infoIcon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_setae" />
+
         <TextView
             android:id="@+id/tvTitulo"
             android:layout_width="0dp"
@@ -33,7 +40,7 @@
         <ImageView
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:src="@drawable/ic_hand" />
+            android:src="@drawable/ic_help" />
     </LinearLayout>
 
     <!-- SCROLL -->

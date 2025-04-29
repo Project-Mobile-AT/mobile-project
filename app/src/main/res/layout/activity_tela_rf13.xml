@@ -12,6 +12,17 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <!-- Botão de retorno -->
+        <ImageButton
+            android:id="@+id/btn_voltar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_setae"
+            android:contentDescription="Voltar"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp" />
+
         <!-- Botão de adicionar alinhado à direita -->
         <Button
             android:id="@+id/btnAdicionarEquipamento"

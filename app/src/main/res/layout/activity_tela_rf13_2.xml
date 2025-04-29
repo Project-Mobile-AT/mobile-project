@@ -16,13 +16,12 @@
         android:layout_height="wrap_content"
         android:padding="16dp">
 
-        <!-- Botão Voltar -->
         <ImageButton
             android:id="@+id/btn_voltar"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_back"
+            android:src="@drawable/ic_setae"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
