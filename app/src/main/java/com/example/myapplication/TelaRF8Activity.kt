@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -18,6 +19,12 @@ class TelaRF8Activity : AppCompatActivity() {
         val btn_personal = findViewById<Button>(R.id.btn_personal)
         btn_personal.setOnClickListener {
             val intent = Intent(this, TelaRF5_1Activity::class.java)
+            startActivity(intent)
+        }
+
+        val historico = findViewById<ImageView>(R.id.icone_his)
+        historico.setOnClickListener {
+            val intent = Intent(this, TelaRF8_1Activity::class.java)
             startActivity(intent)
         }
     }
