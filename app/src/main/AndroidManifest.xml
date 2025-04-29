@@ -118,9 +118,6 @@
             android:name=".TelaRF8_4Activity"
             android:exported="false" />
         <activity
-            android:name=".TelaRF8_3Activity"
-            android:exported="false" />
-        <activity
             android:name=".TelaRF8_2Activity"
             android:exported="false" />
         <activity
