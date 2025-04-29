@@ -16,7 +16,7 @@ class TelaRF2_1Activity : AppCompatActivity() {
         val btn_entrar = findViewById<Button>(R.id.btn_entrar)
 
         btn_entrar.setOnClickListener {
-            val intent = Intent (this, TelaRF3Activity::class.java)
+            val intent = Intent (this, TelaRF1Activity::class.java)
             startActivity(intent)
         }
 

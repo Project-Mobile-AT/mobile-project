@@ -38,11 +38,6 @@ class TelaRF3Activity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        btn_checkin.setOnClickListener {
-            val intent = Intent(this, TelaRF5Activity::class.java)
-            startActivity(intent)
-        }
-
         fabChat.setOnClickListener {
             val chatbotPopup = ChatbotPopupFragment()
             chatbotPopup.show(supportFragmentManager, "ChatbotPopup")
@@ -82,9 +77,16 @@ class TelaRF3Activity : AppCompatActivity() {
                         startActivity(intent)
                         true
                     }
+                    R.id.reservar_consultas -> {
+                        Toast.makeText(this, "Ação de Reserva...", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this, TelaRF7Activity::class.java)
+                        startActivity(intent)
+                        true
+                    }
                     R.id.menu_sair -> {
                         Toast.makeText(this, "Saindo...", Toast.LENGTH_SHORT).show()
-                        finish()
+                        val intent = Intent(this, TelaRF1Activity::class.java)
+                        startActivity(intent)
                         true
                     }
                     else -> false
