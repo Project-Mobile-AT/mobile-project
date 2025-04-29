@@ -34,8 +34,10 @@
         android:layout_height="58dp"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        tools:layout_editor_absoluteX="73dp"
-        tools:layout_editor_absoluteY="355dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="355dp"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textOla"
