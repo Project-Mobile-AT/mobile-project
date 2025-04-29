@@ -8,19 +8,17 @@ import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
 import com.example.myapplication.R
 
-class ChatbotPopupFragment : DialogFragment() {
+class AcessibilidadePopup : DialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Aplicando um estilo customizado, se desejar
-        //setStyle(STYLE_NORMAL, R.style.ChatbotDialogTheme)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_chatbot_popup, container, false)
+        return inflater.inflate(R.layout.fragment_acessibilidade_popup, container, false)
     }
 
     override fun onStart() {

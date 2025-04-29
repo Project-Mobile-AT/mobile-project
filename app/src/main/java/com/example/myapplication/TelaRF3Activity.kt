@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.fragments.AcessibilidadePopup
 import com.example.myapplication.fragments.BottomNavFragment
 import com.example.myapplication.fragments.ChatbotPopupFragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -48,8 +49,8 @@ class TelaRF3Activity : AppCompatActivity() {
         }
 
         fabAcessibilidade.setOnClickListener {
-            val intent = Intent(this, TelaRF9Activity::class.java)
-            startActivity(intent)
+            val chatbotPopup =  AcessibilidadePopup()
+            chatbotPopup.show(supportFragmentManager, "AcessibilidadePopup")
         }
         imageView.setOnClickListener {
             val intent = Intent(this, TelaRF9Activity::class.java)
