@@ -20,6 +20,8 @@ class TelaRF8_4Activity : AppCompatActivity() {
 
         val btnVoltar = findViewById<ImageButton>(R.id.btnVoltar)
 
+        btnVoltar.setOnClickListener { val intent = Intent(this, TelaRF3Activity::class.java)
+            startActivity(intent)}
         }
     }
 
