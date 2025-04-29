@@ -1,6 +1,9 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
+import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -11,6 +14,53 @@ class TelaRF11Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_tela_rf11)
+
+        val cadastrarFuncionario = findViewById<LinearLayout>(R.id.cadastrar_funcionario)
+        val equipamentos = findViewById<LinearLayout>(R.id.equipamento)
+        val aulas = findViewById<LinearLayout>(R.id.aulas)
+        val cadastrarAluno = findViewById<LinearLayout>(R.id.cadastrar_aluno)
+        val atendNutricional = findViewById<LinearLayout>(R.id.at_nutricional)
+        val atendPersonal= findViewById<LinearLayout>(R.id.at_personal)
+        val alunos= findViewById<LinearLayout>(R.id.alunos)
+        val informativos= findViewById<LinearLayout>(R.id.informativos)
+        val nutricionistas= findViewById<LinearLayout>(R.id.nutricionistas)
+
+        cadastrarFuncionario.setOnClickListener {
+            val intent = Intent(this, TelaRF20Activity::class.java)
+            startActivity(intent)
+        }
+        equipamentos.setOnClickListener {
+            val intent = Intent(this, TelaRF13Activity::class.java)
+            startActivity(intent)
+        }
+        aulas.setOnClickListener {
+            val intent = Intent(this, TelaRF14Activity::class.java)
+            startActivity(intent)
+        }
+        cadastrarAluno.setOnClickListener {
+            val intent = Intent(this, TelaRf15Activity::class.java)
+            startActivity(intent)
+        }
+        atendNutricional.setOnClickListener {
+            val intent = Intent(this, TelaRF17Activity::class.java)
+            startActivity(intent)
+        }
+        atendPersonal.setOnClickListener {
+            val intent = Intent(this, TelaRF16Activity::class.java)
+            startActivity(intent)
+        }
+        alunos.setOnClickListener {
+            val intent = Intent(this, TelaRF18Activity::class.java)
+            startActivity(intent)
+        }
+        informativos.setOnClickListener {
+            val intent = Intent(this, TelaRF19Activity::class.java)
+            startActivity(intent)
+        }
+        nutricionistas.setOnClickListener {
+            val intent = Intent(this, TelaRF17Activity::class.java)
+            startActivity(intent)
+        }
 
     }
 }
