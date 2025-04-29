@@ -15,84 +15,81 @@
         android:layout_height="56dp"
         android:contentDescription="Logo"
         android:src="@drawable/ic_logo"
-        app:layout_constraintBottom_toTopOf="@+id/emailEditText"
+        app:layout_constraintBottom_toTopOf="@+id/textOla"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2" /> <!-- Ajustando para centralizar um pouco mais para baixo -->
 
     <!-- Texto: Olá -->
-
-    <!-- Texto: Recupere sua conta -->
-
-    <!-- Campo de email -->
-
-    <!-- Botão de envio -->
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/emailEditText"
-        android:layout_width="264dp"
-        android:layout_height="58dp"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        tools:layout_editor_absoluteX="73dp"
-        tools:layout_editor_absoluteY="355dp" />
-
     <TextView
         android:id="@+id/textOla"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="164dp"
-        android:layout_marginTop="48dp"
         android:text="Olá,"
         android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iconLogo" />
+        app:layout_constraintTop_toBottomOf="@id/iconLogo"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.1" /> <!-- Centraliza o texto mais abaixo -->
 
+    <!-- Texto: Recupere sua conta -->
     <TextView
         android:id="@+id/textRecupere"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:text="Recupere sua conta"
         android:textColor="#000000"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/emailEditText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textOla"
-        app:layout_constraintVertical_bias="0.122" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.1" /> <!-- Centraliza o texto com pequeno espaçamento do "Olá" -->
 
+    <!-- Campo de email -->
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/emailEditText"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintTop_toBottomOf="@id/textRecupere"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"
+        tools:layout_editor_absoluteY="355dp"
+        tools:ignore="MissingConstraints" />
+
+    <!-- Botão de envio -->
     <Button
         android:id="@+id/btnEnviarEmail"
-        android:layout_width="237dp"
+        android:layout_width="wrap_content"
         android:layout_height="44dp"
-        android:layout_marginTop="40dp"
+        android:text="Enviar email de acesso"
         android:backgroundTint="#C3C3C3"
         android:drawableLeft="@drawable/ic_send"
         android:drawablePadding="10dp"
-        android:text="Enviar email de acesso"
         android:textColor="@color/black"
         app:cornerRadius="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/emailEditText"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/emailInputLayout"
-        app:layout_constraintVertical_bias="0.089" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="24dp"
+        app:layout_constraintVertical_bias="0.1" /> <!-- Ajustando o botão para um bom espaçamento final -->
 
+    <!-- Layout do campo de email -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/emailInputLayout"
-        android:layout_width="54dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="36dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.058"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/textRecupere"
-        app:startIconDrawable="@drawable/ic_email">
-
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:startIconDrawable="@drawable/ic_email"
+        android:layout_marginTop="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

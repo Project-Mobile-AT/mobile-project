@@ -76,6 +76,12 @@ class TelaRF3Activity : AppCompatActivity() {
                         startActivity(intent)
                         true
                     }
+                    R.id.meus_agendamentos -> {
+                        Toast.makeText(this, "Abrindo Agendamentos...", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this, TelaRF8_5Activity::class.java)
+                        startActivity(intent)
+                        true
+                    }
                     R.id.menu_sair -> {
                         Toast.makeText(this, "Saindo...", Toast.LENGTH_SHORT).show()
                         finish()
