@@ -100,11 +100,12 @@
                     android:textColor="#000000" />
 
                 <ImageView
+                    android:id="@+id/editAlunos"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
-                    android:src="@drawable/ic_edit"
                     android:background="@drawable/bg_card_alert"
                     android:padding="6dp"
+                    android:src="@drawable/ic_edit"
                     app:tint="@color/black" />
             </LinearLayout>
 

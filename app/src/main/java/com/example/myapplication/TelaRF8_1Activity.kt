@@ -16,5 +16,12 @@ class TelaRF8_1Activity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_tela_rf8_1)
 
+        val avaliacaoFisica = findViewById<ImageView>(R.id.avaliacao_fisica)
+
+        avaliacaoFisica.setOnClickListener {
+            val intent = Intent(this, TelaRF8Activity::class.java)
+            startActivity(intent)
+        }
+
     }
 }
