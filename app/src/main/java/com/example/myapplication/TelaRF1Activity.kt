@@ -27,7 +27,8 @@ class TelaRF1Activity : AppCompatActivity() {
             if (emailInput.equals("admin", ignoreCase = true)) {
                 val intent = Intent(this, TelaRF11Activity::class.java)
                 startActivity(intent)
-            } else {
+            }
+            else {
                 val intent = Intent(this, TelaRF3Activity::class.java) // Tela padrão do usuário
                 startActivity(intent)
             }

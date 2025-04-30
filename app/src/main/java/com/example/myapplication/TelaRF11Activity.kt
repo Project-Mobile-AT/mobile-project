@@ -2,12 +2,9 @@ package com.example.myapplication
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class TelaRF11Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,10 +17,10 @@ class TelaRF11Activity : AppCompatActivity() {
         val aulas = findViewById<LinearLayout>(R.id.aulas)
         val cadastrarAluno = findViewById<LinearLayout>(R.id.cadastrar_aluno)
         val atendNutricional = findViewById<LinearLayout>(R.id.at_nutricional)
-        val atendPersonal= findViewById<LinearLayout>(R.id.at_personal)
-        val alunos= findViewById<LinearLayout>(R.id.alunos)
-        val informativos= findViewById<LinearLayout>(R.id.informativos)
-        val nutricionistas= findViewById<LinearLayout>(R.id.nutricionistas)
+        val atendPersonal = findViewById<LinearLayout>(R.id.at_personal)
+        val alunos = findViewById<LinearLayout>(R.id.alunos)
+        val informativos = findViewById<LinearLayout>(R.id.informativos)
+        val cadastrarTreino = findViewById<LinearLayout>(R.id.cadastrar_treino)
 
         cadastrarFuncionario.setOnClickListener {
             val intent = Intent(this, TelaRF20Activity::class.java)
@@ -57,10 +54,10 @@ class TelaRF11Activity : AppCompatActivity() {
             val intent = Intent(this, TelaRF19Activity::class.java)
             startActivity(intent)
         }
-        nutricionistas.setOnClickListener {
-            val intent = Intent(this, TelaRF17Activity::class.java)
+        cadastrarTreino.setOnClickListener {
+            // Supondo que você tenha uma atividade para cadastrar treino
+            val intent = Intent(this, TelaRF12Activity::class.java)
             startActivity(intent)
         }
-
     }
 }

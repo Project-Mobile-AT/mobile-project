@@ -70,7 +70,6 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Título principal -->
             <TextView
                 android:id="@+id/tvTituloPrincipal"
                 android:layout_width="wrap_content"
@@ -81,7 +80,6 @@
                 android:textStyle="bold"
                 android:layout_marginBottom="12dp"/>
 
-            <!-- Botão Todos os Agendamentos -->
             <Button
                 android:id="@+id/btnTodosAgendamentos"
                 android:layout_width="wrap_content"
@@ -93,8 +91,6 @@
                 android:padding="12dp"
                 android:background="@drawable/rounded_button_gray"/>
 
-            <!-- Cards de Agendamentos -->
-
             <!-- Card 1 -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -103,9 +99,10 @@
                 app:cardCornerRadius="16dp"
                 app:cardElevation="4dp">
 
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="vertical"
                     android:padding="16dp">
 
                     <TextView
@@ -117,32 +114,37 @@
                         android:textSize="16sp"
                         android:textStyle="bold"/>
 
-                    <TextView
-                        android:id="@+id/tvDetalhesAgendamento1"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="20/03/2025 • 14:30-17:00\nAcademia Unifor\nMarcos Pereira"
-                        android:textSize="14sp"
-                        android:textColor="#666666"
-                        android:layout_below="@id/tvTituloAgendamento1"
-                        android:layout_marginTop="8dp"/>
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_vertical">
 
-                    <TextView
-                        android:id="@+id/statusAgendamento1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Confirmado"
-                        android:textColor="#FFFFFF"
-                        android:backgroundTint="#5050FF"
-                        android:background="@drawable/rounded_label_blue"
-                        android:paddingLeft="12dp"
-                        android:paddingRight="12dp"
-                        android:paddingTop="4dp"
-                        android:paddingBottom="4dp"
-                        android:textSize="12sp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"/>
-                </RelativeLayout>
+                        <TextView
+                            android:id="@+id/tvDetalhesAgendamento1"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="20/03/2025 • 14:30-17:00\nAcademia Unifor\nMarcos Pereira"
+                            android:textSize="14sp"
+                            android:textColor="#666666" />
+
+                        <TextView
+                            android:id="@+id/statusAgendamento1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Confirmado"
+                            android:textColor="#FFFFFF"
+                            android:background="@drawable/rounded_label_blue"
+                            android:paddingLeft="12dp"
+                            android:paddingRight="12dp"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp"
+                            android:textSize="12sp"/>
+                    </LinearLayout>
+
+                </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <!-- Card 2 -->
@@ -153,9 +155,10 @@
                 app:cardCornerRadius="16dp"
                 app:cardElevation="4dp">
 
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="vertical"
                     android:padding="16dp">
 
                     <TextView
@@ -167,38 +170,42 @@
                         android:textSize="16sp"
                         android:textStyle="bold"/>
 
-                    <TextView
-                        android:id="@+id/tvDetalhesAgendamento2"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="25/03/2025 • 08:30-09:30\nAcademia Unifor\nAndreasa Lopes"
-                        android:textSize="14sp"
-                        android:textColor="#666666"
-                        android:layout_below="@id/tvTituloAgendamento2"
-                        android:layout_marginTop="8dp"/>
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_vertical">
 
-                    <TextView
-                        android:id="@+id/statusAgendamento2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Confirmado"
-                        android:textColor="#FFFFFF"
-                        android:backgroundTint="#5050FF"
-                        android:background="@drawable/rounded_label_blue"
-                        android:paddingLeft="12dp"
-                        android:paddingRight="12dp"
-                        android:paddingTop="4dp"
-                        android:paddingBottom="4dp"
-                        android:textSize="12sp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"/>
-                </RelativeLayout>
+                        <TextView
+                            android:id="@+id/tvDetalhesAgendamento2"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="25/03/2025 • 08:30-09:30\nAcademia Unifor\nAndreasa Lopes"
+                            android:textSize="14sp"
+                            android:textColor="#666666" />
+
+                        <TextView
+                            android:id="@+id/statusAgendamento2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Confirmado"
+                            android:textColor="#FFFFFF"
+                            android:backgroundTint="#5050FF"
+                            android:background="@drawable/rounded_label_blue"
+                            android:paddingLeft="12dp"
+                            android:paddingRight="12dp"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp"
+                            android:textSize="12sp"/>
+                    </LinearLayout>
+                </LinearLayout>
             </androidx.cardview.widget.CardView>
 
         </LinearLayout>
     </ScrollView>
 
-    <!-- BottomNavigationView -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
@@ -209,13 +216,13 @@
         app:menu="@menu/bottom_nav_menu"
         app:layout_constraintBottom_toBottomOf="parent" />
 
-    <!-- FloatingActionButton -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabChat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:src="@drawable/ic_chat"
+        android:contentDescription="Abrir chat de ajuda"
         app:backgroundTint="#5050FF"
         app:tint="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@id/bottomNavigation"

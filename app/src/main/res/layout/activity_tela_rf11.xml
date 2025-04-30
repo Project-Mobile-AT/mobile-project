@@ -4,416 +4,332 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/background_light">
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_height="match_parent"
+        android:background="@color/background_light">
 
-        <!-- Header do Perfil -->
         <LinearLayout
-            android:layout_width="380dp"
-            android:layout_height="186dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/rounded_light"
-            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="16dp">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <!-- Header do Perfil -->
+            <LinearLayout
+                android:layout_width="380dp"
+                android:layout_height="186dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/rounded_light"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="Perfil"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:contentDescription="Avatar"
+                    android:src="@drawable/ic_avatar"
+                    app:tint="@color/black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Caio Fernandes"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="33dp"
+                    android:text="Professor"
+                    android:textColor="@color/text_light_gray"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- Grid de Ações -->
+            <GridLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:text="Perfil"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:columnCount="2"
+                android:alignmentMode="alignMargins"
+                android:useDefaultMargins="true">
 
-            <ImageView
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:contentDescription="Avatar"
-                android:src="@drawable/ic_avatar"
-                app:tint="@color/black" />
+                <!-- Botão 1: Cadastrar Funcionário -->
+                <LinearLayout
+                    android:id="@+id/cadastrar_funcionario"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/rounded_blue_button"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Caio Fernandes"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:contentDescription="Cadastrar Funcionário"
+                        android:src="@drawable/ic_avatar"
+                        app:tint="@color/black" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="33dp"
-                android:text="Professor"
-                android:textColor="@color/text_light_gray"
-                android:textSize="12sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Cadastrar Funcionário"
+                        android:textAlignment="center"
+                        android:textColor="@color/text_gray"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <!-- Botão 2: Cadastrar Equipamento -->
+                <LinearLayout
+                    android:id="@+id/equipamento"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/rounded_blue_button"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:contentDescription="Cadastrar Equipamento"
+                        android:src="@drawable/ic_workout"
+                        app:tint="@color/black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Cadastrar Equipamento"
+                        android:textAlignment="center"
+                        android:textColor="@color/text_gray"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <!-- Botão 3: Cadastrar Horário de Aulas -->
+                <LinearLayout
+                    android:id="@+id/aulas"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/rounded_light"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:contentDescription="Cadastrar Horário de Aulas"
+                        android:src="@drawable/ic_clock"
+                        app:tint="@color/black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Cadastrar Horário de Aulas"
+                        android:textAlignment="center"
+                        android:textColor="@color/text_gray"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <!-- Botão 4: Cadastrar Aluno -->
+                <LinearLayout
+                    android:id="@+id/cadastrar_aluno"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/rounded_light"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:contentDescription="Cadastrar Aluno"
+                        android:src="@drawable/ic_avatar"
+                        app:tint="@color/black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Cadastrar Aluno"
+                        android:textAlignment="center"
+                        android:textColor="@color/text_gray"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <!-- Botão 5: Atendimento Nutricional -->
+                <LinearLayout
+                    android:id="@+id/at_nutricional"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/rounded_light"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:contentDescription="Atendimento Nutricional"
+                        android:src="@drawable/ic_health"
+                        app:tint="@color/black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Atendimento Nutricional"
+                        android:textAlignment="center"
+                        android:textColor="@color/text_gray"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <!-- Botão 6: Atendimento Personal -->
+                <LinearLayout
+                    android:id="@+id/at_personal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/rounded_light"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:contentDescription="Atendimento Personal"
+                        android:src="@drawable/ic_weight"
+                        app:tint="@color/black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Atendimento Personal"
+                        android:textAlignment="center"
+                        android:textColor="@color/text_gray"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <!-- Botão 7: Consultar Alunos -->
+                <LinearLayout
+                    android:id="@+id/alunos"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/rounded_light"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:contentDescription="Consultar Alunos"
+                        android:src="@drawable/ic_avatar"
+                        app:tint="@color/black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Consultar Alunos"
+                        android:textAlignment="center"
+                        android:textColor="@color/text_gray"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <!-- Botão 8: Informativos -->
+                <LinearLayout
+                    android:id="@+id/informativos"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/rounded_light"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:contentDescription="Informativos"
+                        android:src="@drawable/ic_info"
+                        app:tint="@color/black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Informativos"
+                        android:textAlignment="center"
+                        android:textColor="@color/text_gray"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <!-- Botão 9: Cadastrar Treino -->
+                <LinearLayout
+                    android:id="@+id/cadastrar_treino"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/rounded_light"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_fire"
+                        android:contentDescription="Cadastrar Treino"
+                        app:tint="@color/black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cadastrar Treino"
+                        android:textAlignment="center"
+                        android:textColor="@color/text_gray"
+                        android:textSize="14sp"
+                        android:layout_marginTop="8dp" />
+                </LinearLayout>
+
+            </GridLayout>
         </LinearLayout>
-
-        <!-- Grid de Ações -->
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:columnCount="2"
-            android:alignmentMode="alignMargins"
-            android:useDefaultMargins="true">
-
-            <!-- Botão 1: Cadastrar Funcionário -->
-            <LinearLayout
-                android:id="@+id/cadastrar_funcionario"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_margin="8dp"
-                android:background="@drawable/rounded_blue_button"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:contentDescription="Cadastrar Funcionário"
-                    android:src="@drawable/ic_avatar"
-                    app:tint="@color/black" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Cadastrar Funcionário"
-                    android:textAlignment="center"
-                    android:textColor="@color/text_gray"
-                    android:textSize="14sp" />
-            </LinearLayout>
-
-            <!-- Botão 2: Cadastrar Equipamento -->
-            <LinearLayout
-                android:id="@+id/equipamento"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_margin="8dp"
-                android:background="@drawable/rounded_blue_button"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="16dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?attr/selectableItemBackground">
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:contentDescription="Cadastrar Equipamento"
-                    android:src="@drawable/ic_workout"
-                    app:tint="@color/black" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Cadastrar Equipamento"
-                    android:textAlignment="center"
-                    android:textColor="@color/text_gray"
-                    android:textSize="14sp" />
-            </LinearLayout>
-
-            <!-- Botão 3: Cadastrar Horário de Aulas -->
-            <LinearLayout
-                android:id="@+id/aulas"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_margin="8dp"
-                android:background="@drawable/rounded_light"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:contentDescription="Cadastrar Horário de Aulas"
-                    android:src="@drawable/ic_clock"
-                    app:tint="@color/black" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Cadastrar Horário de Aulas"
-                    android:textAlignment="center"
-                    android:textColor="@color/text_gray"
-                    android:textSize="14sp" />
-            </LinearLayout>
-
-            <!-- Botão 4: Cadastrar Aluno -->
-            <LinearLayout
-                android:id="@+id/cadastrar_aluno"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_margin="8dp"
-                android:background="@drawable/rounded_light"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:contentDescription="Cadastrar Aluno"
-                    android:src="@drawable/ic_avatar"
-                    app:tint="@color/black" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Cadastrar Aluno"
-                    android:textAlignment="center"
-                    android:textColor="@color/text_gray"
-                    android:textSize="14sp" />
-            </LinearLayout>
-
-            <!-- Botão 5: Atendimento Nutricional -->
-            <LinearLayout
-                android:id="@+id/at_nutricional"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_margin="8dp"
-                android:background="@drawable/rounded_light"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:contentDescription="Atendimento Nutricional"
-                    android:src="@drawable/ic_health"
-                    app:tint="@color/black" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Atendimento Nutricional"
-                    android:textAlignment="center"
-                    android:textColor="@color/text_gray"
-                    android:textSize="14sp" />
-            </LinearLayout>
-
-            <!-- Botão 6: Atendimento Personal -->
-            <LinearLayout
-                android:id="@+id/at_personal"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_margin="8dp"
-                android:background="@drawable/rounded_light"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:contentDescription="Atendimento Personal"
-                    android:src="@drawable/ic_weight"
-                    app:tint="@color/black" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Atendimento Personal"
-                    android:textAlignment="center"
-                    android:textColor="@color/text_gray"
-                    android:textSize="14sp" />
-            </LinearLayout>
-
-            <!-- Botão 7: Consultar Alunos -->
-            <LinearLayout
-                android:id="@+id/alunos"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_margin="8dp"
-                android:background="@drawable/rounded_light"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:contentDescription="Consultar Alunos"
-                    android:src="@drawable/ic_avatar"
-                    app:tint="@color/black" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Consultar Alunos"
-                    android:textAlignment="center"
-                    android:textColor="@color/text_gray"
-                    android:textSize="14sp" />
-            </LinearLayout>
-
-            <!-- Botão 8: Informativos -->
-            <LinearLayout
-                android:id="@+id/informativos"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_margin="8dp"
-                android:background="@drawable/rounded_light"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:contentDescription="Informativos"
-                    android:src="@drawable/ic_info"
-                    app:tint="@color/black" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Informativos"
-                    android:textAlignment="center"
-                    android:textColor="@color/text_gray"
-                    android:textSize="14sp" />
-            </LinearLayout>
-
-            <!-- Botão 9: Consultar Instrutores -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:background="@drawable/rounded_light"
-                android:padding="16dp"
-                android:layout_margin="8dp">
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/ic_personal"
-                    android:contentDescription="Consultar Instrutores"
-                    app:tint="@color/black" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Consultar Instrutores"
-                    android:textAlignment="center"
-                    android:textColor="@color/text_gray"
-                    android:textSize="14sp"
-                    android:layout_marginTop="8dp" />
-            </LinearLayout>
-
-            <!-- Botão 10: Consultar Nutricionistas -->
-            <LinearLayout
-                android:id="@+id/nutricionistas"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_margin="8dp"
-                android:background="@drawable/rounded_light"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:contentDescription="Consultar Nutricionistas"
-                    android:src="@drawable/ic_nutri"
-                    app:tint="@color/black" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Consultar Nutricionistas"
-                    android:textAlignment="center"
-                    android:textColor="@color/text_gray"
-                    android:textSize="14sp" />
-            </LinearLayout>
-
-            <!-- Botão 11: Listar e Editar Funcionários -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:background="@drawable/rounded_light"
-                android:padding="16dp"
-                android:layout_margin="8dp">
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/ic_avatar"
-                    android:contentDescription="Listar e Editar Funcionários"
-                    app:tint="@color/black" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Listar e Editar Funcionários"
-                    android:textAlignment="center"
-                    android:textColor="@color/text_gray"
-                    android:textSize="14sp"
-                    android:layout_marginTop="8dp" />
-            </LinearLayout>
-
-            <!-- Botão 12: Cadastrar Treino -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:background="@drawable/rounded_light"
-                android:padding="16dp"
-                android:layout_margin="8dp">
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/ic_fire"
-                    android:contentDescription="Cadastrar Treino"
-                    app:tint="@color/black" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Cadastrar Treino"
-                    android:textAlignment="center"
-                    android:textColor="@color/text_gray"
-                    android:textSize="14sp"
-                    android:layout_marginTop="8dp" />
-            </LinearLayout>
-
-        </GridLayout>
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
