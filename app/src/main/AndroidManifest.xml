@@ -12,165 +12,65 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
-        <activity
-            android:name=".TelaRF3_1Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaEntradaActivity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF19_2Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF19_1Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF19Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF18_1Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF18Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF17_7Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF17_5Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF17_6Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF17_3Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF17_2Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF17_1Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF17Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF16_6Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF16_5Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF16_4Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF16_3Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF16_2Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF16_1Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF16Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF14_2Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRf15Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF14_1Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF14Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF13_2Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF13_1Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF13Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF12_1Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF12Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF11Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF10Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF9Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF8_5Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF8_4Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF8_2Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF8_1Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF8Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF7_1Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF7Activity"
-            android:exported="false"
-            android:theme="@style/Theme.MyApplication" />
-        <activity
-            android:name=".TelaRF6Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF5_1Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF5Activity"
-            android:exported="false" />
 
-        <activity
-            android:name=".TelaRF3Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF2_1Activity"
-            android:exported="false" />
-        <activity
-            android:name=".TelaRF2Activity"
-            android:exported="false" />
+        <activity android:name=".TelaRF3_1Activity" android:exported="false" />
+        <activity android:name=".TelaEntradaActivity" android:exported="false" />
+        <activity android:name=".TelaRF19_2Activity" android:exported="false" />
+        <activity android:name=".TelaRF19_1Activity" android:exported="false" />
+        <activity android:name=".TelaRF19Activity" android:exported="false" />
+        <activity android:name=".TelaRF18_1Activity" android:exported="false" />
+        <activity android:name=".TelaRF18Activity" android:exported="false" />
+        <activity android:name=".TelaRF17_7Activity" android:exported="false" />
+        <activity android:name=".TelaRF17_5Activity" android:exported="false" />
+        <activity android:name=".TelaRF17_6Activity" android:exported="false" />
+        <activity android:name=".TelaRF17_3Activity" android:exported="false" />
+        <activity android:name=".TelaRF17_2Activity" android:exported="false" />
+        <activity android:name=".TelaRF17_1Activity" android:exported="false" />
+        <activity android:name=".TelaRF17Activity" android:exported="false" />
+        <activity android:name=".TelaRF16_6Activity" android:exported="false" />
+        <activity android:name=".TelaRF16_5Activity" android:exported="false" />
+        <activity android:name=".TelaRF16_4Activity" android:exported="false" />
+        <activity android:name=".TelaRF16_3Activity" android:exported="false" />
+        <activity android:name=".TelaRF16_2Activity" android:exported="false" />
+        <activity android:name=".TelaRF16_1Activity" android:exported="false" />
+        <activity android:name=".TelaRF16Activity" android:exported="false" />
+        <activity android:name=".TelaRF14_2Activity" android:exported="false" />
+        <activity android:name=".TelaRf15Activity" android:exported="false" />
+        <activity android:name=".TelaRF14_1Activity" android:exported="false" />
+        <activity android:name=".TelaRF14Activity" android:exported="false" />
+        <activity android:name=".TelaRF13_2Activity" android:exported="false" />
+        <activity android:name=".TelaRF13_1Activity" android:exported="false" />
+        <activity android:name=".TelaRF13Activity" android:exported="false" />
+        <activity android:name=".TelaRF12_1Activity" android:exported="false" />
+        <activity android:name=".TelaRF12Activity" android:exported="false" />
 
-        <activity
-            android:name=".TelaRF1_1Activity"
-            android:exported="false" />
+        <!-- Activity principal com intent-filter -->
+        <activity android:name=".TelaRF11Activity" android:exported="false"/>
 
-        <activity
-            android:name=".TelaRF1Activity"
-            android:exported="true"> <!-- TRUE é quando a activity pode ser chamada por fora do app (Ex: Pelo ssistema) -->
-
+        <activity android:name=".TelaRF10Activity" android:exported="false" />
+        <activity android:name=".TelaRF9Activity" android:exported="false" />
+        <activity android:name=".TelaRF8_5Activity" android:exported="false" />
+        <activity android:name=".TelaRF8_4Activity" android:exported="false" />
+        <activity android:name=".TelaRF8_2Activity" android:exported="false" />
+        <activity android:name=".TelaRF8_1Activity" android:exported="false" />
+        <activity android:name=".TelaRF8Activity" android:exported="false" />
+        <activity android:name=".TelaRF7_1Activity" android:exported="false" />
+        <activity android:name=".TelaRF7Activity" android:exported="false" android:theme="@style/Theme.MyApplication" />
+        <activity android:name=".TelaRF6Activity" android:exported="false" />
+        <activity android:name=".TelaRF5_1Activity" android:exported="false" />
+        <activity android:name=".TelaRF5Activity" android:exported="false" />
+        <activity android:name=".TelaRF3Activity" android:exported="false" />
+        <activity android:name=".TelaRF2_1Activity" android:exported="false" />
+        <activity android:name=".TelaRF2Activity" android:exported="false" />
+        <activity android:name=".TelaRF1_1Activity" android:exported="false" />
+        <activity android:name=".TelaRF1Activity" android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".TelaRF20Activity"
-            android:exported="false" />
+        <activity android:name=".TelaRF20Activity" android:exported="false" tools:ignore="WrongManifestParent" />
 
     </application>
 
