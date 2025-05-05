@@ -12,7 +12,6 @@ class TelaRF11Activity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_tela_rf11)
 
-        val cadastrarFuncionario = findViewById<LinearLayout>(R.id.cadastrar_funcionario)
         val equipamentos = findViewById<LinearLayout>(R.id.equipamento)
         val aulas = findViewById<LinearLayout>(R.id.aulas)
         val cadastrarAluno = findViewById<LinearLayout>(R.id.cadastrar_aluno)
@@ -22,10 +21,6 @@ class TelaRF11Activity : AppCompatActivity() {
         val informativos = findViewById<LinearLayout>(R.id.informativos)
         val cadastrarTreino = findViewById<LinearLayout>(R.id.cadastrar_treino)
 
-        cadastrarFuncionario.setOnClickListener {
-            val intent = Intent(this, TelaRF20Activity::class.java)
-            startActivity(intent)
-        }
         equipamentos.setOnClickListener {
             val intent = Intent(this, TelaRF13Activity::class.java)
             startActivity(intent)

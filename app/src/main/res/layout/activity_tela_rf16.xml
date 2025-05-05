@@ -91,6 +91,20 @@
                 app:tint="#888888" />
         </RelativeLayout>
 
+        <!-- Botão Cadastrar Personal -->
+        <Button
+            android:id="@+id/btn_cadastrar_personal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="8dp"
+            android:background="@drawable/button_background_dark"
+            android:padding="12dp"
+            android:text="Cadastrar Personal"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
         <!-- Instructors List (Static) -->
         <ScrollView
             android:layout_width="match_parent"

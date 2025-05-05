@@ -64,35 +64,6 @@
                 android:alignmentMode="alignMargins"
                 android:useDefaultMargins="true">
 
-                <!-- Botão 1: Cadastrar Funcionário -->
-                <LinearLayout
-                    android:id="@+id/cadastrar_funcionario"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="8dp"
-                    android:background="@drawable/rounded_blue_button"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:contentDescription="Cadastrar Funcionário"
-                        android:src="@drawable/ic_avatar"
-                        app:tint="@color/black" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Cadastrar Funcionário"
-                        android:textAlignment="center"
-                        android:textColor="@color/text_gray"
-                        android:textSize="14sp" />
-                </LinearLayout>
-
                 <!-- Botão 2: Cadastrar Equipamento -->
                 <LinearLayout
                     android:id="@+id/equipamento"

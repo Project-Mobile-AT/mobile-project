@@ -91,13 +91,37 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
+    <!-- Botão Cadastrar Nutricionista -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cadastrarCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:layout_constraintTop_toBottomOf="@id/searchCard">
+
+        <Button
+            android:id="@+id/btnCadastrarNutricionista"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:backgroundTint="#9C27B0"
+            android:paddingVertical="12dp"
+            android:text="Cadastrar Nutricionista"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+    </androidx.cardview.widget.CardView>
+
     <!-- Lista de nutricionistas (usando ScrollView e LinearLayout em vez de RecyclerView para simplicidade) -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
-        app:layout_constraintTop_toBottomOf="@id/searchCard">
+        app:layout_constraintTop_toBottomOf="@id/cadastrarCard">
 
         <LinearLayout
             android:layout_width="match_parent"
