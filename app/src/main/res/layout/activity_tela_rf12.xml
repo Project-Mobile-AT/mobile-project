@@ -32,7 +32,7 @@
                 android:id="@+id/tvTitulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cadastro de Treino"
+                android:text="Cadastrar Exercício"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="#5E007E"
@@ -69,34 +69,19 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Campo de busca -->
-            <LinearLayout
+            <!-- Botão Adicionar Exercício -->
+            <Button
+                android:id="@+id/btnAdicionarExercicio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#F5E8FF"
-                android:orientation="horizontal"
-                android:padding="8dp"
+                android:background="@drawable/button_background_dark"
+                android:text="Adicionar Exercício"
+                android:textColor="#FFFFFF"
+                android:drawableStart="@drawable/ic_add"
+                android:drawablePadding="8dp"
+                android:paddingStart="16dp"
                 android:layout_marginBottom="16dp"
-                android:gravity="center_vertical">
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_search"
-                    android:tint="#9E9E9E"
-                    android:contentDescription="Pesquisar" />
-
-                <EditText
-                    android:id="@+id/edit_search"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:hint="Digite o nome do aluno..."
-                    android:background="@null"
-                    android:paddingStart="8dp"
-                    android:textColor="#000000"
-                    android:textColorHint="#9E9E9E" />
-            </LinearLayout>
+                android:textAllCaps="false" />
 
             <!-- Lista de Exercícios -->
 
@@ -139,6 +124,15 @@
                         android:contentDescription="Editar"
                         android:src="@drawable/ic_edit"
                         android:tint="#9E9E9E" />
+
+                    <ImageButton
+                        android:id="@+id/btnDelete1"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:background="@null"
+                        android:contentDescription="Deletar"
+                        android:src="@drawable/ic_delete"
+                        android:tint="#FF5252" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -181,6 +175,15 @@
                         android:contentDescription="Editar"
                         android:src="@drawable/ic_edit"
                         android:tint="#9E9E9E" />
+
+                    <ImageButton
+                        android:id="@+id/btnDelete2"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:background="@null"
+                        android:contentDescription="Deletar"
+                        android:src="@drawable/ic_delete"
+                        android:tint="#FF5252" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -223,6 +226,15 @@
                         android:contentDescription="Editar"
                         android:src="@drawable/ic_edit"
                         android:tint="#9E9E9E" />
+
+                    <ImageButton
+                        android:id="@+id/btnDelete3"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:background="@null"
+                        android:contentDescription="Deletar"
+                        android:src="@drawable/ic_delete"
+                        android:tint="#FF5252" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 

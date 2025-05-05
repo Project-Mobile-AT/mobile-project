@@ -99,30 +99,19 @@
                     android:background="#5E007E"
                     android:padding="4dp"/>
 
-                <LinearLayout
+                <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:hint="Nome do Exercício"
+                    android:background="@drawable/rounded_edittext"
+                    android:layout_marginTop="8dp"/>
+
+                <Spinner
+                    android:id="@+id/spinnerEquipamento1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:gravity="center_vertical">
-
-                    <EditText
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:hint="Quantidade de Séries"
-                        android:inputType="number"
-                        android:background="@drawable/rounded_edittext"/>
-
-                    <EditText
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:hint="Quantidade de Repetições"
-                        android:inputType="number"
-                        android:background="@drawable/rounded_edittext"
-                        android:layout_marginStart="8dp"/>
-                </LinearLayout>
+                    android:background="@drawable/rounded_edittext"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -138,84 +127,6 @@
                         android:text="Adicionar Exercício"
                         android:backgroundTint="#5E007E"
                         android:textColor="#FFFFFF"/>
-
-                    <Button
-                        android:id="@+id/btnDeletarExercicio1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Deletar"
-                        android:backgroundTint="#FF0000"
-                        android:textColor="#FFFFFF"
-                        android:layout_marginStart="8dp"/>
-                </LinearLayout>
-            </LinearLayout>
-
-            <!-- Bloco Exercício 2 -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="#EDEDED"
-                android:padding="12dp"
-                android:layout_marginBottom="16dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Exercício 2"
-                    android:textColor="#FFFFFF"
-                    android:textStyle="bold"
-                    android:background="#5E007E"
-                    android:padding="4dp"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center_vertical">
-
-                    <EditText
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:hint="Quantidade de Séries"
-                        android:inputType="number"
-                        android:background="@drawable/rounded_edittext"/>
-
-                    <EditText
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:hint="Quantidade de Repetições"
-                        android:inputType="number"
-                        android:background="@drawable/rounded_edittext"
-                        android:layout_marginStart="8dp"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    android:layout_marginTop="8dp">
-
-                    <Button
-                        android:id="@+id/btnAdicionarExercicio2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Adicionar Exercício"
-                        android:backgroundTint="#5E007E"
-                        android:textColor="#FFFFFF"/>
-
-                    <Button
-                        android:id="@+id/btnDeletarExercicio2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Deletar"
-                        android:backgroundTint="#FF0000"
-                        android:textColor="#FFFFFF"
-                        android:layout_marginStart="8dp"/>
                 </LinearLayout>
             </LinearLayout>
 

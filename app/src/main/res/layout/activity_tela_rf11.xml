@@ -286,13 +286,13 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:src="@drawable/ic_fire"
-                        android:contentDescription="Cadastrar Treino"
+                        android:contentDescription="Cadastrar Exercício"
                         app:tint="@color/black" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Cadastrar Treino"
+                        android:text="Cadastrar Exercício"
                         android:textAlignment="center"
                         android:textColor="@color/text_gray"
                         android:textSize="14sp"
