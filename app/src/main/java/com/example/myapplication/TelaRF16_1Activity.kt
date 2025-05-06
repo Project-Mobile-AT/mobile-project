@@ -32,7 +32,7 @@ class TelaRF16_1Activity : AppCompatActivity() {
         val addAluno = findViewById<Button>(R.id.btn_add_student)
 
         addAluno.setOnClickListener {
-            val intent = Intent(this, TelaRF16_5Activity::class.java)
+            val intent = Intent(this, TelaRF16_6Activity::class.java)
             startActivity(intent)
         }
     }
