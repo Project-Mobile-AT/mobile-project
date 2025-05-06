@@ -18,9 +18,15 @@ class TelaRF16Activity : AppCompatActivity() {
         setContentView(R.layout.activity_tela_rf16)
 
         val instrutor = findViewById<LinearLayout>(R.id.instrutor)
+        val btn_cadastrar_personal = findViewById<Button>(R.id.btn_cadastrar_personal)
 
         instrutor.setOnClickListener {
             val intent = Intent(this, TelaRF16_1Activity::class.java)
+            startActivity(intent)
+        }
+
+        btn_cadastrar_personal.setOnClickListener {
+            val intent = Intent(this, TelaRF16_7Activity::class.java)
             startActivity(intent)
         }
     }
