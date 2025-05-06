@@ -73,7 +73,7 @@
         </activity>
 
         <activity android:name=".TelaRF20Activity" android:exported="false" tools:ignore="WrongManifestParent" />
-
+        <activity android:name=".TelaRF18_2Activity" android:exported="false" />
     </application>
 
 </manifest>
