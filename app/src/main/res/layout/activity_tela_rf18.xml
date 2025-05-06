@@ -76,12 +76,13 @@
 
             <!-- Item da lista -->
             <LinearLayout
+                android:id="@+id/aluno"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:background="@drawable/edit_text_background"
                 android:layout_marginBottom="12dp"
+                android:background="@drawable/edit_text_background"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
                 android:padding="12dp">
 
                 <ImageView
@@ -91,13 +92,14 @@
                     app:tint="@color/black" />
 
                 <TextView
+                    android:id="@+id/nome_aluno"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
+                    android:layout_weight="1"
                     android:text="Carol Novais"
-                    android:textSize="16sp"
-                    android:textColor="#000000" />
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
 
                 <ImageView
                     android:id="@+id/editAlunos"

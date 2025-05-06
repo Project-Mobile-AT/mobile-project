@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -19,6 +21,13 @@ class TelaRF18Activity : AppCompatActivity() {
 
         editarAlunos.setOnClickListener {
             val intent = Intent(this, TelaRF18_1Activity::class.java)
+            startActivity(intent)
+        }
+
+        val nomeAluno = findViewById<LinearLayout>(R.id.aluno)
+
+        nomeAluno.setOnClickListener {
+            val intent = Intent(this, TelaRF18_2Activity::class.java)
             startActivity(intent)
         }
     }
