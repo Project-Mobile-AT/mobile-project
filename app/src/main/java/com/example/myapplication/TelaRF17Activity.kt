@@ -3,6 +3,7 @@ package com.example.myapplication
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
@@ -18,9 +19,14 @@ class TelaRF17Activity : AppCompatActivity() {
         enableEdgeToEdge()
 
         val nutriNome = findViewById<LinearLayout>(R.id.nutriNome)
-
         nutriNome.setOnClickListener {
             val intent = Intent(this, TelaRF17_1Activity::class.java)
+            startActivity(intent)
+        }
+
+        val btnCadastrarNutricionista = findViewById<Button>(R.id.btnCadastrarNutricionista)
+        btnCadastrarNutricionista.setOnClickListener {
+            val intent = Intent(this, TelaRF17_8Activity::class.java)
             startActivity(intent)
         }
     }

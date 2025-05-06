@@ -22,6 +22,13 @@ class TelaRF12Activity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val btnAdicionarExercicio = findViewById<Button>(R.id.btnAdicionarExercicio)
+
+        btnAdicionarExercicio.setOnClickListener {
+            val intent = Intent(this, TelaRF12_1Activity::class.java)
+            startActivity(intent)
+        }
+
         val btnEdit1 = findViewById<ImageButton>(R.id.btnEdit1)
 
         btnEdit1.setOnClickListener {
@@ -39,7 +46,7 @@ class TelaRF12Activity : AppCompatActivity() {
         val btnEdit3 = findViewById<ImageButton>(R.id.btnEdit3)
 
         btnEdit3.setOnClickListener {
-            val intent = Intent(this, TelaRF19_1Activity::class.java)
+            val intent = Intent(this, TelaRF12_1Activity::class.java)
             startActivity(intent)
         }
     }
