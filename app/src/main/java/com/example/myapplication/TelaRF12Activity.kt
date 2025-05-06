@@ -22,9 +22,9 @@ class TelaRF12Activity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val btnAdicionarExercicio = findViewById<Button>(R.id.btnAdicionarExercicio)
+        val AdicionarExercicio = findViewById<Button>(R.id.btnAdicionarExercicio)
 
-        btnAdicionarExercicio.setOnClickListener {
+        AdicionarExercicio.setOnClickListener {
             val intent = Intent(this, TelaRF12_1Activity::class.java)
             startActivity(intent)
         }
