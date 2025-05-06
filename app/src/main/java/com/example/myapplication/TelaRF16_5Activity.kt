@@ -17,7 +17,6 @@ class TelaRF16_5Activity : AppCompatActivity() {
         setContentView(R.layout.activity_tela_rf16_5)
 
         val addNovoAluno = findViewById<Button>(R.id.btnAdicionarAluno)
-        val cadastrarPersonal = findViewById<Button>(R.id.btn_cadastrar_personal)
         val visualizarTreino = findViewById<Button>(R.id.visualizar_ficha)
 
         addNovoAluno.setOnClickListener {
@@ -27,11 +26,6 @@ class TelaRF16_5Activity : AppCompatActivity() {
 
         visualizarTreino.setOnClickListener {
             val intent = Intent(this, TelaRF12_1Activity::class.java)
-            startActivity(intent)
-        }
-
-        cadastrarPersonal.setOnClickListener {
-            val intent = Intent(this, TelaRF16_7Activity::class.java)
             startActivity(intent)
         }
     }

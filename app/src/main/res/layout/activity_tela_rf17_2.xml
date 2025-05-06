@@ -120,7 +120,7 @@
             android:textColor="#666666" />
 
         <ImageButton
-            android:id="@+id/editButton"
+            android:id="@+id/editButton1"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_alignParentEnd="true"
@@ -186,6 +186,7 @@
             android:textColor="#666666" />
 
         <ImageButton
+            android:id="@+id/editButton2"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_alignParentEnd="true"
@@ -211,31 +212,5 @@
             android:background="@drawable/ic_chat"
             android:contentDescription="Chat" />
     </RelativeLayout>
-
-    <!-- Barra de navegação inferior -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:orientation="horizontal"
-        android:layout_gravity="bottom"
-        android:background="#FFFFFF"
-        android:elevation="8dp">
-
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:src="@drawable/ic_home"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Início" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:text="Início"
-            android:textSize="12sp"
-            android:layout_marginBottom="8dp" />
-    </LinearLayout>
 
 </LinearLayout>

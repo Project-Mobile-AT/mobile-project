@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
-import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 
@@ -16,10 +15,18 @@ class TelaRF17_2Activity : AppCompatActivity() {
         setContentView(R.layout.activity_tela_rf17_2)
         enableEdgeToEdge()
 
-        val editButton = findViewById<ImageButton>(R.id.editButton)
+        val editButton1 = findViewById<ImageButton>(R.id.editButton1)
+        val editButton2 = findViewById<ImageButton>(R.id.editButton2)
         val btnAdd = findViewById<Button>(R.id.btnAdd)
 
-        editButton.setOnClickListener {
+        // Set listener for the first edit button
+        editButton1.setOnClickListener {
+            val intent = Intent(this, TelaRF17_4Activity::class.java)
+            startActivity(intent)
+        }
+
+        // Set listener for the second edit button
+        editButton2.setOnClickListener {
             val intent = Intent(this, TelaRF17_4Activity::class.java)
             startActivity(intent)
         }

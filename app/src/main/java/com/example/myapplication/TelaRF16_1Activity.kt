@@ -15,6 +15,13 @@ class TelaRF16_1Activity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_tela_rf16_1)
 
+        val listarAluno = findViewById<Button>(R.id.btn_students)
+
+        listarAluno.setOnClickListener {
+            val intent = Intent(this, TelaRF16_5Activity::class.java)
+            startActivity(intent)
+        }
+
         val visualizarTreino = findViewById<Button>(R.id.btn_view_record_ana)
 
         visualizarTreino.setOnClickListener {
