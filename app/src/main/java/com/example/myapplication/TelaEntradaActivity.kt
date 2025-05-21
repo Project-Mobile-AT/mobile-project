@@ -19,7 +19,11 @@ class TelaEntradaActivity : AppCompatActivity() {
             "mensagem" to "Conexão com Firebase bem-sucedida!",
             "timestamp" to System.currentTimeMillis()
         )
-
+        db.collection("aluno").add(mapOf(
+            "nome" to "Narakao",
+            "idade" to 35,
+            "steamid" to "Narakao"
+        ))
         db.collection("testeFirebase")
             .add(dadosTeste)
             .addOnSuccessListener { documentReference ->

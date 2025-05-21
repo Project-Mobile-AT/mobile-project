@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -11,8 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
-        tools:targetApi="31">
-
+        tools:targetApi="31"
+>
         <activity android:name=".TelaRF3_1Activity" android:exported="false" />
         <activity android:name=".TelaEntradaActivity" android:exported="true" >
         <intent-filter>
