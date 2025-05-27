@@ -52,6 +52,8 @@ class TelaRF3Activity : AppCompatActivity() {
             startActivity(intent)
         }
 
+
+
         //Inserir menu hamburguer
         menuButton.setOnClickListener { view ->
             val popup = PopupMenu(this, view)
