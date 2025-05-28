@@ -28,14 +28,14 @@ class TelaRF1Activity : AppCompatActivity() {
         criarConta.paint.isUnderlineText = true
 
 
-        fb.collection("")
+       // fb.collection("")
         btnLogin.setOnClickListener {
-            fb.collection("usuario").get().addOnSuccessListener {
-                docs ->
-                for (doc in docs){
-                    Log.d("banco",doc.get("email").toString())
-                    Log.d("banco", doc.id)
-                }
+//            fb.collection("usuario").get().addOnSuccessListener {
+//                docs ->
+//                for (doc in docs){
+//                    Log.d("banco",doc.get("email").toString())
+//                    Log.d("banco", doc.id)
+//                }
 
 
             }
@@ -50,8 +50,6 @@ class TelaRF1Activity : AppCompatActivity() {
                 val intent = Intent(this, TelaRF3Activity::class.java) // Tela padrão do usuário
                 startActivity(intent)
             }
-        }
-
         recuperarSenha.setOnClickListener {
             val intent = Intent(this, TelaRF1_1Activity::class.java)
             startActivity(intent)
@@ -61,5 +59,7 @@ class TelaRF1Activity : AppCompatActivity() {
             val intent = Intent(this, TelaRF2Activity::class.java)
             startActivity(intent)
         }
+        }
+
+
     }
-}
