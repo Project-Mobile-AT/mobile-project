@@ -2,12 +2,14 @@ package com.example.myapplication
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
+import android.util.Log
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.example.myapplication.TelaRF1Activity
-import com.example.myapplication.TelaRF3Activity
-import com.example.myapplication.R
+import androidx.lifecycle.lifecycleScope
+import com.example.myapplication.data.SupabaseClient
+import com.example.myapplication.model.Usuario
+import kotlinx.coroutines.launch
+import java.util.*
 
 class TelaRF2Activity : AppCompatActivity() {
 
@@ -15,20 +17,63 @@ class TelaRF2Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tela_rf2)
 
-        // Inicializando os componentes de UI
+        val inputNome = findViewById<EditText>(R.id.et_nome)
+        val inputEmail = findViewById<EditText>(R.id.et_email)
+        val inputCpf = findViewById<EditText>(R.id.et_cpf)
+        val inputSenha = findViewById<EditText>(R.id.et_senha)
+
         val btnEntrar = findViewById<Button>(R.id.button)
         val linkLogin = findViewById<TextView>(R.id.link_login)
 
-        // Ação para o botão "Entrar"
+        // Quando clicar no botão "Entrar" → enviar dados para o Supabase
         btnEntrar.setOnClickListener {
-            // Navegar para a tela principal (ou qualquer outra tela desejada)
-            val intent = Intent(this, TelaRF2_1Activity::class.java)
-            startActivity(intent)
+            val nome = inputNome.text.toString()
+            val email = inputEmail.text.toString()
+            val cpf = inputCpf.text.toString()
+            val senha = inputSenha.text.toString()
+
+            //garante que os campos não estão vazios
+            if (nome.isNotBlank() && email.isNotBlank() && cpf.isNotBlank() && senha.isNotBlank()) {
+                //cria o objeto Usuario
+                val novoUsuario = Usuario(
+                    id = UUID.randomUUID().toString(),
+                    email = email,
+                    senha = senha,
+                    is_admin = false,
+                    nome = nome,
+                    cpf = cpf,
+                    data_nascimento = null,
+                    peso = null,
+                    altura = null,
+                    criado_em = null
+                )
+                //envia o POST com Retrofit - chamando a função criarUsuario()
+                lifecycleScope.launch {
+                    try {
+                        val usuariosCriados = SupabaseClient.service.criarUsuario(novoUsuario)
+                        val usuarioCriado = usuariosCriados.firstOrNull()
+
+                        if (usuarioCriado != null) {
+                            Log.d("SUPABASE", "Usuário criado: $usuarioCriado")
+                            Toast.makeText(this@TelaRF2Activity, "Bem-vindo, ${usuarioCriado.nome}!", Toast.LENGTH_SHORT).show()
+                            startActivity(Intent(this@TelaRF2Activity, TelaRF2_1Activity::class.java))
+                            finish()
+                        } else {
+                            Toast.makeText(this@TelaRF2Activity, "Erro: usuário não retornado", Toast.LENGTH_LONG).show()
+                        }
+
+                    } catch (e: Exception) {
+                        Log.e("SUPABASE", "Erro ao criar usuário: ${e.message}")
+                        Toast.makeText(this@TelaRF2Activity, "Erro: ${e.message}", Toast.LENGTH_LONG).show()
+                    }
+                }
+
+            } else {
+                Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show()
+            }
         }
 
-        // Ação para o link de login
         linkLogin.setOnClickListener {
-            // Navegar para a tela de login
             val intent = Intent(this, TelaRF1Activity::class.java)
             startActivity(intent)
         }
