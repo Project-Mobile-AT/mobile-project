@@ -52,6 +52,11 @@ class TelaRF3Activity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val teste = findViewById<ImageView>(R.id.teste)
+        teste.setOnClickListener{
+            val intent = Intent(this, HomeAlunoActivity::class.java)
+            startActivity(intent)
+        }
 
 
         //Inserir menu hamburguer

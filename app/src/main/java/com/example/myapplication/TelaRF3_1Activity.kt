@@ -16,6 +16,7 @@ class TelaRF3_1Activity : AppCompatActivity() {
 
         val menuButton = findViewById<ImageView>(R.id.id_menu)
 
+
         menuButton.setOnClickListener { view ->
             val popup = PopupMenu(this, view)
             popup.menuInflater.inflate(R.menu.menu_popup, popup.menu)
