@@ -12,58 +12,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp"
-        android:background="@android:color/white"
-        android:gravity="center">
+        android:padding="16dp">
 
-        <TextView
-            android:id="@+id/tv_chatbot_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Olá! Como posso te ajudar?"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="16dp" />
-
-        <!-- Mensagem recebida do chatbot -->
-        <TextView
-            android:id="@+id/tv_chatbot_message"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Oi! Eu sou o assistente virtual. Em que posso te ajudar hoje?"
-            android:textSize="16sp"
-            android:background="#F0F0F0"
-            android:padding="12dp"
-            android:layout_marginBottom="24dp"
-            android:layout_marginTop="8dp"
-            android:backgroundTint="@android:color/darker_gray"
-            android:backgroundTintMode="src_in"
-            android:elevation="2dp"
-            android:layout_gravity="start"
-            android:textColor="@android:color/black"/>
-
-        <!-- Campo para digitar mensagem -->
         <EditText
-            android:id="@+id/et_user_message"
+            android:id="@+id/editPergunta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Digite sua mensagem..."
-            android:padding="12dp"
-            android:background="@drawable/chatbot_input_background"
-            android:textColor="@android:color/black"
-            android:textColorHint="@android:color/darker_gray"
-            android:layout_marginBottom="12dp"/>
+            android:hint="Faça sua pergunta aqui" />
 
-        <!-- Botão de enviar -->
         <Button
-            android:id="@+id/btn_send_message"
+            android:id="@+id/btnPerguntar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Perguntar"
+            android:layout_gravity="end"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/textResposta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Enviar"
-            android:backgroundTint="@color/purple_500"
-            android:textColor="@android:color/white"
-            android:layout_marginBottom="8dp"/>
-
-
+            android:text="Resposta aparecerá aqui"
+            android:textSize="16sp"
+            android:paddingTop="16dp"/>
     </LinearLayout>
+
 </androidx.cardview.widget.CardView>
