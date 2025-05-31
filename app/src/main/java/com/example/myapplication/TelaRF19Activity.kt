@@ -50,10 +50,10 @@ class TelaRF19Activity : AppCompatActivity() {
 
         // Botão Adicionar Informativo
         addInform.setOnClickListener {
-            // Navega para a tela de adicionar informativo (TelaRF19_2Activity)
             val intent = Intent(this, TelaRF19_2Activity::class.java)
-            startActivity(intent)
+            startActivityForResult(intent, 1001)
         }
+
 
         // Botão Início (Rodapé)
         inicio.setOnClickListener {
@@ -188,5 +188,13 @@ class TelaRF19Activity : AppCompatActivity() {
         // Se desejar que os dados sejam atualizados toda vez que o usuário
         // voltar para esta tela, descomente a linha abaixo.
         // fetchInformativos()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == 1001 && resultCode == RESULT_OK) {
+            fetchInformativos() // Recarrega os informativos
+        }
     }
 }

@@ -47,34 +47,61 @@
     <!-- Botão Salvar -->
 
     <TextView
-        android:id="@+id/label"
+        android:id="@+id/labelTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="40dp"
-        android:text="Digite o Informativo:"
+        android:layout_marginTop="24dp"
+        android:text="Título:"
         android:textColor="#000000"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/topBar" />
 
     <EditText
+        android:id="@+id/etTitulo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/blue_light"
+        android:inputType="text"
+        android:padding="12dp"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/labelTitulo" />
+
+    <!-- Campo de Conteúdo -->
+    <TextView
+        android:id="@+id/label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="Conteúdo:"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etTitulo" />
+
+    <EditText
         android:id="@+id/etInformativo"
         android:layout_width="0dp"
         android:layout_height="250dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="28dp"
         android:layout_marginEnd="24dp"
+        android:layout_marginTop="8dp"
         android:background="@color/blue_light"
         android:gravity="top|start"
         android:inputType="textMultiLine"
         android:padding="16dp"
-        android:text="**Aluguel de Quadras**\nSupporting line text lorem ipsum dolor sit amet, consectetur.\nHorário: ..........\nValor: ..........\nInformações Extras: -------------------"
         android:textColor="#000000"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/label" />
 
     <Button

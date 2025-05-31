@@ -33,4 +33,13 @@ interface SupabaseService {
         @Query("order") order: String = "criado_em.desc" // Ordena pelos mais recentes (opcional, ajuste se necessário)
     ): List<Informativo> // Retorna uma lista de objetos Informativo
 
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY",
+        "Content-Type: application/json",
+        "Prefer: return=representation"
+    )
+    @POST("rest/v1/informativo")
+    suspend fun criarInformativo(@Body informativo: Informativo): List<Informativo>
+
 }
