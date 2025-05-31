@@ -20,7 +20,7 @@
         <activity android:name=".TelaEntradaActivity" android:exported="false" />
         <activity android:name=".TelaRF19_2Activity" android:exported="false" />
         <activity android:name=".TelaRF19_1Activity" android:exported="false" />
-        <activity android:name=".TelaRF19Activity" android:exported="false" />
+
         <activity android:name=".TelaRF18_1Activity" android:exported="false" />
         <activity android:name=".TelaRF18Activity" android:exported="false" />
         <activity android:name=".TelaRF17_8Activity" android:exported="false" />
@@ -67,7 +67,8 @@
         <activity android:name=".TelaRF5Activity" android:exported="false" />
         <activity android:name=".TelaRF3Activity" android:exported="false" />
         <activity android:name=".TelaRF2_1Activity" android:exported="false" />
-        <activity android:name=".TelaRF2Activity" android:exported="true" >
+        <activity android:name=".TelaRF2Activity" android:exported="false"/>
+        <activity android:name=".TelaRF19Activity" android:exported="true" >
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />

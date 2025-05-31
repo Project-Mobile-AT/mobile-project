@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F9F9F9">
+    android:background="#F9F9F9"
+    tools:context=".TelaRF19Activity">
 
     <!-- TOPO -->
     <LinearLayout
@@ -20,12 +21,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
+        <!-- Ícone de Voltar (Ajuste o src se necessário) -->
         <ImageView
             android:id="@+id/infoIcon"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_marginEnd="8dp"
-            android:src="@drawable/ic_setae" />
+            android:src="@drawable/ic_setae"
+            android:contentDescription="Voltar" />
 
         <TextView
             android:id="@+id/title"
@@ -36,6 +39,12 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:gravity="center" />
+
+        <!-- Placeholder para manter o título centralizado se precisar de outro ícone à direita -->
+        <View
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="8dp"/>
 
     </LinearLayout>
 
@@ -52,175 +61,57 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- SCROLL DOS CARDS -->
-    <ScrollView
+    <!-- FrameLayout para conter ScrollView, ProgressBar e TextView de Erro/Vazio -->
+    <FrameLayout
+        android:id="@+id/contentFrame"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="70dp"
         app:layout_constraintTop_toBottomOf="@id/btnAdicionarInformativo"
         app:layout_constraintBottom_toTopOf="@id/footer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <LinearLayout
+        <!-- SCROLL DOS CARDS -->
+        <ScrollView
+            android:id="@+id/scrollView"
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:id="@+id/ll_informativos_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Cards serão adicionados aqui programaticamente -->
+
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- Indicador de Carregamento -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:layout_gravity="center"
+            android:visibility="gone"
+            tools:visibility="visible"/>
 
-            <!-- CARD GENÉRICO (replicável no Kotlin depois) -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#FFF3FF"
-                android:orientation="horizontal"
-                android:padding="16dp"
-                android:layout_marginBottom="12dp"
-                android:elevation="4dp"
-                android:backgroundTint="@color/blue_light"
-                android:layout_gravity="center"
-                android:backgroundTintMode="src_in"
-                android:clipToPadding="false"
-                android:clipChildren="false">
+        <!-- TextView para Erros ou Lista Vazia -->
+        <TextView
+            android:id="@+id/tv_empty_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Nenhum informativo encontrado."
+            android:visibility="gone"
+            tools:visibility="gone"/>
 
-
-                <LinearLayout
-                    android:layout_width="20dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="235dp"
-                        android:layout_height="wrap_content"
-                        android:text="Aluguel de Quadras"
-                        android:textColor="#640764"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="299dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Supporting line text lorem ipsum dolor sit amet, consectetur."
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                        android:textColor="#333333"
-                        android:textSize="10sp" />
-
-                    <TextView
-                        android:layout_width="128dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
-                        android:text="Horário: ------"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                        android:textColor="#444444"
-                        android:textSize="10sp" />
-
-                    <TextView
-                        android:layout_width="224dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Valor:"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                        android:textColor="#444444"
-                        android:textSize="10sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Informações Extras: --------------"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                        android:textColor="#444444"
-                        android:textSize="10sp" />
-                </LinearLayout>
-
-                <ImageButton
-                    android:id="@+id/btnEditInform"
-                    android:layout_width="33dp"
-                    android:layout_height="50dp"
-                    android:background="@null"
-                    android:contentDescription="Editar"
-                    android:src="@drawable/ic_edit" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#FFF3FF"
-                android:orientation="horizontal"
-                android:padding="16dp"
-                android:layout_marginBottom="12dp"
-                android:elevation="4dp"
-                android:backgroundTint="@color/blue_light"
-                android:layout_gravity="center"
-                android:backgroundTintMode="src_in"
-                android:clipToPadding="false"
-                android:clipChildren="false">
-
-
-                <LinearLayout
-                    android:layout_width="20dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="235dp"
-                        android:layout_height="wrap_content"
-                        android:text="Aluguel de Quadras"
-                        android:textColor="#640764"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="299dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Supporting line text lorem ipsum dolor sit amet, consectetur."
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                        android:textColor="#333333"
-                        android:textSize="10sp" />
-
-                    <TextView
-                        android:layout_width="128dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
-                        android:text="Horário: ------"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                        android:textColor="#444444"
-                        android:textSize="10sp" />
-
-                    <TextView
-                        android:layout_width="224dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Valor:"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                        android:textColor="#444444"
-                        android:textSize="10sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Informações Extras: --------------"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                        android:textColor="#444444"
-                        android:textSize="10sp" />
-                </LinearLayout>
-
-                <ImageButton
-                    android:layout_width="33dp"
-                    android:layout_height="50dp"
-                    android:background="@null"
-                    android:contentDescription="Editar"
-                    android:src="@drawable/ic_edit" />
-            </LinearLayout>
-
-        </LinearLayout>
-    </ScrollView>
+    </FrameLayout>
 
     <!-- RODAPÉ -->
     <LinearLayout
@@ -236,7 +127,8 @@
             android:id="@+id/homeIcon"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/ic_home" />
+            android:src="@drawable/ic_home"
+            android:contentDescription="Início"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -245,33 +137,31 @@
             android:textSize="12sp" />
     </LinearLayout>
 
-
+    <!-- Floating Action Buttons -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_chat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:contentDescription="Abrir chat com suporte"
         android:src="@drawable/ic_chat"
         app:backgroundTint="#2196F3"
         app:tint="#FFFFFF"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="605dp" />
+        app:layout_constraintBottom_toTopOf="@id/footer"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_acessibilidade"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="start|bottom"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
         android:contentDescription="Ativar acessibilidade"
         android:src="@drawable/ic_help"
         app:backgroundTint="#4CAF50"
         app:tint="#FFFFFF"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="348dp"
-        tools:layout_editor_absoluteY="605dp" />
+        app:layout_constraintBottom_toTopOf="@id/footer"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
