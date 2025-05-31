@@ -12,9 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
-        tools:targetApi="31"
->
+        tools:targetApi="31">
 
+        <activity android:name=".DraggableWebView" android:exported="false" />
+        <activity android:name=".HomeAlunoActivity" android:exported="false" />
+        <activity android:name=".TelaRF3_1Activity" android:exported="false" />
         <activity android:name=".TelaEntradaActivity" android:exported="false" />
         <activity android:name=".TelaRF19_2Activity" android:exported="false" />
         <activity android:name=".TelaRF19_1Activity" android:exported="false" />
@@ -63,19 +65,21 @@
         <activity android:name=".TelaRF6Activity" android:exported="false" />
         <activity android:name=".TelaRF5_1Activity" android:exported="false" />
         <activity android:name=".TelaRF5Activity" android:exported="false" />
+        <activity android:name=".TelaRF3Activity" android:exported="false" />
         <activity android:name=".TelaRF2_1Activity" android:exported="false" />
-        <activity android:name=".TelaRF2Activity" android:exported="false" />
-        <activity android:name=".TelaRF20Activity" android:exported="false" tools:ignore="WrongManifestParent" />
-        <activity android:name=".TelaRF18_2Activity" android:exported="false" />
-        <activity android:name=".TelaRF1_1Activity" android:exported="false" />
-        <activity android:name=".TelaRF1Activity" android:exported="false" />
-        <activity android:name=".TelaRF3_1Activity" android:exported="false" />
-        <activity android:name=".TelaRF3Activity" android:exported="true" >
+        <activity android:name=".TelaRF2Activity" android:exported="true" >
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
         </activity>
+        <activity android:name=".TelaRF1_1Activity" android:exported="false" />
+        <activity android:name=".TelaRF1Activity" android:exported="true" >
+
+        </activity>
+
+        <activity android:name=".TelaRF20Activity" android:exported="false" tools:ignore="WrongManifestParent" />
+        <activity android:name=".TelaRF18_2Activity" android:exported="false" />
     </application>
 
 </manifest>

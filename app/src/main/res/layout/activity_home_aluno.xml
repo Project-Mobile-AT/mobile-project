@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_aluno_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
+
+    <ScrollView
+        android:id="@+id/scrollViewConteudo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/llNavegacaoInferior"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:id="@+id/llConteudo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Saudação -->
+            <TextView
+                android:id="@+id/tvOlaUsuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:layout_marginBottom="16dp"
+                android:contentDescription="Olá!"
+                android:text="Olá, Narak"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <!-- Título da seção: Agendamentos da semana -->
+
+            <!-- Card simulado para Agendamento 1 -->
+
+            <!-- Card simulado para Agendamento 2 -->
+
+            <!-- Botão para agendar nova aula -->
+
+            <!-- Seção Meus objetivos -->
+            <TextView
+                android:id="@+id/tvMeusObjetivos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Meus objetivos"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Card simulado para Objetivos -->
+
+            <!-- Seção Feedback Calórico -->
+            <TextView
+                android:id="@+id/tvFeedbackCalorico"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Feedback Calórico"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Card para Feedback Calórico -->
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/llNavegacaoInferior"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:background="#FFFFFF"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/navHome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Home"
+            android:gravity="center"
+            android:drawableTop="@drawable/ic_home"
+            android:drawablePadding="4dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp" />
+
+
+        <TextView
+            android:id="@+id/navFicha"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Ficha de Treino"
+            android:gravity="center"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp" />
+
+        <TextView
+            android:id="@+id/navPerfil"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Perfil"
+            android:gravity="center"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp" />
+
+
+    </LinearLayout>
+
+    <!-- VLibras WebView FLUTUANTE -->
+    <com.example.myapplication.DraggableWebView
+        android:id="@+id/webVLibras"
+        android:layout_width="320dp"
+        android:layout_height="340dp"
+        android:layout_margin="16dp"
+        android:background="@android:color/transparent"
+        android:overScrollMode="never"
+        android:visibility="visible"
+        tools:visibility="invisible" />
+
+</RelativeLayout>
