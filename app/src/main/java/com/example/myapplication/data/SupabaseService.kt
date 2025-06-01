@@ -25,6 +25,7 @@ interface SupabaseService {
     @POST("rest/v1/usuario")
     suspend fun criarUsuario(@Body usuario: Usuario): List<Usuario>
 
+
     // --- Métodos de Informativo --- //
     @Headers(
         "apikey: $SUPABASE_API_KEY",
@@ -65,5 +66,7 @@ interface SupabaseService {
     suspend fun deletarInformativo(
         @Query("id") id: String
     )
+
+
 
 }
