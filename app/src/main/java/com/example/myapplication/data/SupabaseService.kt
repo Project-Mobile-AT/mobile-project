@@ -1,11 +1,14 @@
 package com.example.myapplication.data
 
+import com.example.myapplication.model.AtualizacaoInformativo
 import com.example.myapplication.model.Informativo // Importar o modelo Informativo
 import com.example.myapplication.model.Usuario
 import com.example.myapplication.utils.SUPABASE_API_KEY
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Headers
+import retrofit2.http.PATCH
 import retrofit2.http.POST
 import retrofit2.http.Query // Importar Query
 
@@ -41,5 +44,26 @@ interface SupabaseService {
     )
     @POST("rest/v1/informativo")
     suspend fun criarInformativo(@Body informativo: Informativo): List<Informativo>
+
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY",
+        "Content-Type: application/json",
+        "Prefer: return=representation"
+    )
+    @PATCH("rest/v1/informativo")
+    suspend fun atualizarInformativo(
+        @Query("id") id: String,
+        @Body dadosAtualizados: AtualizacaoInformativo
+    )
+
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY"
+    )
+    @DELETE("rest/v1/informativo")
+    suspend fun deletarInformativo(
+        @Query("id") id: String
+    )
 
 }
