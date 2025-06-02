@@ -16,6 +16,7 @@ import retrofit2.http.Query // Importar Query
 interface SupabaseService {
 
     // --- Métodos de Usuário --- //
+
     @Headers(
         "apikey: $SUPABASE_API_KEY",
         "Authorization: Bearer $SUPABASE_API_KEY",
@@ -25,8 +26,19 @@ interface SupabaseService {
     @POST("rest/v1/usuario")
     suspend fun criarUsuario(@Body usuario: Usuario): List<Usuario>
 
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY"
+    )
+
+    @GET("rest/v1/usuario")
+    suspend fun getUsuarioByEmailAndPassword(
+        @Query("email") email: String,
+        @Query("senha") senha: String
+    ): List<Usuario>
 
     // --- Métodos de Informativo --- //
+
     @Headers(
         "apikey: $SUPABASE_API_KEY",
         "Authorization: Bearer $SUPABASE_API_KEY"
