@@ -44,40 +44,6 @@
             android:layout_marginEnd="8dp" />
     </LinearLayout>
 
-    <!-- Fotos -->
-    <LinearLayout
-        android:id="@+id/photoSection"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/topBar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_margin="8dp"
-            android:background="#E0E0E0"
-            android:contentDescription="Foto 1" />
-
-        <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_margin="8dp"
-            android:background="#E0E0E0"
-            android:contentDescription="Foto 2" />
-
-        <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_margin="8dp"
-            android:background="#E0E0E0"
-            android:contentDescription="Foto 3" />
-    </LinearLayout>
-
     <!-- Formulário -->
     <LinearLayout
         android:id="@+id/formContainer"
@@ -87,7 +53,7 @@
         android:padding="16dp"
         android:layout_marginTop="16dp"
         android:background="@android:color/white"
-        app:layout_constraintTop_toBottomOf="@id/photoSection"
+        app:layout_constraintTop_toBottomOf="@id/topBar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -96,19 +62,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nome" />
-
-        <EditText
-            android:id="@+id/etAnoFabricacao"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Ano de Fabricação"
-            android:inputType="number" />
-
-        <EditText
-            android:id="@+id/etFornecedor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Fornecedor" />
 
         <EditText
             android:id="@+id/etDescricao"

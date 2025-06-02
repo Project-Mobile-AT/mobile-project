@@ -1,10 +1,11 @@
 package com.example.myapplication.data
 
 import com.example.myapplication.model.AtualizacaoInformativo
+import com.example.myapplication.model.Equipamento
 import com.example.myapplication.model.Informativo
-import com.example.myapplication.model.Presenca // Adicionei o import para Presenca
-import com.example.myapplication.model.Streak // Adicionei o import para Streak
-import com.example.myapplication.model.Treino // Adicionei o import para Treino
+import com.example.myapplication.model.Presenca
+import com.example.myapplication.model.Streak
+import com.example.myapplication.model.Treino
 import com.example.myapplication.model.Usuario
 import com.example.myapplication.utils.SUPABASE_API_KEY
 import retrofit2.http.Body
@@ -38,15 +39,15 @@ interface SupabaseService {
         @Query("senha") senha: String
     ): List<Usuario>
 
-    // NOVO: Método para buscar usuário pelo ID
+    //Método para buscar usuário pelo ID
     @Headers(
         "apikey: $SUPABASE_API_KEY",
         "Authorization: Bearer $SUPABASE_API_KEY"
     )
     @GET("rest/v1/usuario")
     suspend fun getUsuarioById(
-        @Query("id") id: String // Busca por ID
-    ): List<Usuario> // Retorna uma lista, pois o Supabase sempre retorna lista, mesmo que com 1 elemento
+        @Query("id") id: String
+    ): List<Usuario>
 
     @Headers(
         "apikey: $SUPABASE_API_KEY",
@@ -199,4 +200,41 @@ interface SupabaseService {
     @POST("rest/v1/presenca")
     suspend fun createPresenca(@Body presenca: Presenca): List<Presenca>
 
+    // --- Métodos de Equipamento --- //
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY"
+    )
+    @GET("rest/v1/equipamento")
+    suspend fun getEquipamentos(): List<Equipamento>
+
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY",
+        "Content-Type: application/json",
+        "Prefer: return=representation"
+    )
+    @POST("rest/v1/equipamento")
+    suspend fun criarEquipamento(@Body equipamento: Equipamento): List<Equipamento>
+
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY",
+        "Content-Type: application/json",
+        "Prefer: return=representation"
+    )
+    @PATCH("rest/v1/equipamento")
+    suspend fun atualizarEquipamento(
+        @Query("id") id: String,
+        @Body equipamento: Equipamento
+    ): List<Equipamento>
+
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY"
+    )
+    @DELETE("rest/v1/equipamento")
+    suspend fun deletarEquipamento(
+        @Query("id") id: String
+    ): retrofit2.Response<Unit>
 }

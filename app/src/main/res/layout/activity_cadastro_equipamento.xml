@@ -32,7 +32,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="16dp"
         android:hint="Descrição">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -42,6 +42,21 @@
             android:inputType="textMultiLine"
             android:minLines="3"
             android:gravity="top"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:hint="Status">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etStatusEquipamento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLines="1"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -67,4 +82,4 @@
 
     </LinearLayout>
 
-</LinearLayout>
+</LinearLayout> 
