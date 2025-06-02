@@ -71,6 +71,7 @@
 
             <!-- Campos -->
             <EditText
+                android:id="@+id/etNome"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:hint="Nome completo"
@@ -81,6 +82,7 @@
                 android:layout_marginBottom="12dp" />
 
             <EditText
+                android:id="@+id/etCpf"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:hint="CPF"
@@ -91,6 +93,7 @@
                 android:layout_marginBottom="12dp" />
 
             <EditText
+                android:id="@+id/etTelefone"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:hint="Telefone"
@@ -101,6 +104,7 @@
                 android:layout_marginBottom="12dp" />
 
             <EditText
+                android:id="@+id/etEmail"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:hint="Email"
@@ -111,6 +115,7 @@
                 android:layout_marginBottom="12dp" />
 
             <EditText
+                android:id="@+id/etObservacoes"
                 android:layout_width="match_parent"
                 android:layout_height="96dp"
                 android:hint="Observações"

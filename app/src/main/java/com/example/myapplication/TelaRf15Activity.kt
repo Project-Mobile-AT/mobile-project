@@ -39,6 +39,18 @@ class TelaRf15Activity : AppCompatActivity() {
             finish()
         }
 
+        val modoEdicao = intent.getBooleanExtra("MODO_EDICAO", false)
+        if (modoEdicao) {
+            etNome.setText(intent.getStringExtra("NOME") ?: "")
+            etCpf.setText(intent.getStringExtra("CPF") ?: "")
+            etDataNascimento.setText(intent.getStringExtra("DATA_NASCIMENTO") ?: "")
+            etPeso.setText(intent.getDoubleExtra("PESO", 0.0).takeIf { it != 0.0 }?.toString() ?: "")
+            etAltura.setText(intent.getDoubleExtra("ALTURA", 0.0).takeIf { it != 0.0 }?.toString() ?: "")
+            etEmail.setText(intent.getStringExtra("EMAIL") ?: "")
+            etSenha.setText(intent.getStringExtra("SENHA") ?: "")
+            btnConfirmar.text = "Salvar alterações"
+        }
+
         btnConfirmar.setOnClickListener {
             val nome = etNome.text.toString()
             val cpf = etCpf.text.toString()
@@ -49,39 +61,64 @@ class TelaRf15Activity : AppCompatActivity() {
             val senha = etSenha.text.toString()
 
             if (nome.isNotBlank() && cpf.isNotBlank() && email.isNotBlank() && senha.isNotBlank()) {
-                val novoUsuario = Usuario(
-                    id = UUID.randomUUID().toString(),
-                    email = email,
-                    senha = senha,
-                    is_admin = false,
-                    nome = nome,
-                    cpf = cpf,
-                    data_nascimento = dataNascimento,
-                    peso = peso,
-                    altura = altura,
-                    criado_em = null
-                )
-
-                lifecycleScope.launch {
-                    try {
-                        val usuariosCriados = SupabaseClient.service.criarUsuario(novoUsuario)
-                        val usuarioCriado = usuariosCriados.firstOrNull()
-
-                        if (usuarioCriado != null) {
-                            Log.d("SUPABASE", "Usuário cadastrado: $usuarioCriado")
-                            Toast.makeText(this@TelaRf15Activity, "Aluno cadastrado com sucesso!", Toast.LENGTH_SHORT).show()
-
-                            // 👉 Redireciona para a TelaRF18Activity
-                            val intent = Intent(this@TelaRf15Activity, TelaRF18Activity::class.java)
-                            startActivity(intent)
-                            finish() // Fecha a tela atual para evitar retorno com back
-                        } else {
-                            Toast.makeText(this@TelaRf15Activity, "Erro ao cadastrar: resposta vazia", Toast.LENGTH_LONG).show()
+                if (modoEdicao) {
+                    val id = intent.getStringExtra("ID") ?: return@setOnClickListener
+                    val usuarioAtualizado = com.example.myapplication.model.Usuario(
+                        id = id,
+                        email = email,
+                        senha = senha,
+                        is_admin = false,
+                        nome = nome,
+                        cpf = cpf,
+                        data_nascimento = dataNascimento,
+                        peso = peso,
+                        altura = altura,
+                        criado_em = null
+                    )
+                    lifecycleScope.launch {
+                        try {
+                            // PATCH/PUT: você pode precisar ajustar o método no SupabaseService
+                            SupabaseClient.service.atualizarUsuario(id, usuarioAtualizado)
+                            Toast.makeText(this@TelaRf15Activity, "Aluno atualizado com sucesso!", Toast.LENGTH_SHORT).show()
+                            finish()
+                        } catch (e: Exception) {
+                            Log.e("SUPABASE", "Erro ao atualizar aluno: ${e.message}", e)
+                            Toast.makeText(this@TelaRf15Activity, "Erro ao atualizar: ${e.message}", Toast.LENGTH_LONG).show()
                         }
+                    }
+                } else {
+                    val novoUsuario = Usuario(
+                        id = UUID.randomUUID().toString(),
+                        email = email,
+                        senha = senha,
+                        is_admin = false,
+                        nome = nome,
+                        cpf = cpf,
+                        data_nascimento = dataNascimento,
+                        peso = peso,
+                        altura = altura,
+                        criado_em = null
+                    )
 
-                    } catch (e: Exception) {
-                        Log.e("SUPABASE", "Erro ao cadastrar aluno: ${e.message}", e)
-                        Toast.makeText(this@TelaRf15Activity, "Erro: ${e.message}", Toast.LENGTH_LONG).show()
+                    lifecycleScope.launch {
+                        try {
+                            val usuariosCriados = SupabaseClient.service.criarUsuario(novoUsuario)
+                            val usuarioCriado = usuariosCriados.firstOrNull()
+
+                            if (usuarioCriado != null) {
+                                Log.d("SUPABASE", "Usuário cadastrado: $usuarioCriado")
+                                Toast.makeText(this@TelaRf15Activity, "Aluno cadastrado com sucesso!", Toast.LENGTH_SHORT).show()
+                                val intent = Intent(this@TelaRf15Activity, TelaRF18Activity::class.java)
+                                startActivity(intent)
+                                finish()
+                            } else {
+                                Toast.makeText(this@TelaRf15Activity, "Erro ao cadastrar: resposta vazia", Toast.LENGTH_LONG).show()
+                            }
+
+                        } catch (e: Exception) {
+                            Log.e("SUPABASE", "Erro ao cadastrar aluno: ${e.message}", e)
+                            Toast.makeText(this@TelaRf15Activity, "Erro: ${e.message}", Toast.LENGTH_LONG).show()
+                        }
                     }
                 }
             } else {

@@ -22,6 +22,12 @@
         <activity android:name="TelaRF19_1Activity" android:exported="false"/>
         <activity android:name=".TelaRF18_1Activity" android:exported="false" />
         <activity android:name=".TelaRF18Activity" android:exported="false" />
+        <activity android:name=".TelaRF11Activity" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".TelaRF17_8Activity" android:exported="false" />
         <activity android:name=".TelaRF17_7Activity" android:exported="false" />
         <activity android:name=".TelaRF17_6Activity" android:exported="false" />
@@ -50,8 +56,6 @@
         <activity android:name=".TelaRF12Activity" android:exported="false" />
 
         <!-- Activity principal com intent-filter -->
-        <activity android:name=".TelaRF11Activity" android:exported="false"/>
-
         <activity android:name=".TelaRF10Activity" android:exported="false" />
         <activity android:name=".TelaRF9Activity" android:exported="false" />
         <activity android:name=".TelaRF8_5Activity" android:exported="false" />
@@ -68,12 +72,7 @@
         <activity android:name=".TelaRF2_1Activity" android:exported="false" />
         <activity android:name=".TelaRF2Activity" android:exported="false"/>
         <activity android:name=".TelaRF19Activity" android:exported="true"/>
-        <activity android:name=".TelaRf15Activity" android:exported="true" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-        </activity>
+        <activity android:name=".TelaRf15Activity" android:exported="true" />
         <activity android:name=".TelaRF1_1Activity" android:exported="false" />
         <activity android:name=".TelaRF1Activity" android:exported="true" >
 

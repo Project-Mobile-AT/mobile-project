@@ -82,16 +82,15 @@
                     android:orientation="vertical"
                     android:padding="16dp">
 
-                    <!-- Class Name Field -->
+                    <!-- Nome da Aula -->
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Nome da Aula"
                         android:textColor="#000000"
                         android:textSize="16sp" />
-
-                    <EditText
-                        android:id="@+id/et_class_name"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_titulo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
@@ -102,7 +101,7 @@
                         android:textColor="#000000"
                         android:textSize="16sp" />
 
-                    <!-- Schedule Field -->
+                    <!-- Horário -->
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -110,20 +109,14 @@
                         android:text="Horário"
                         android:textColor="#000000"
                         android:textSize="16sp" />
-
-                    <EditText
-                        android:id="@+id/et_schedule"
+                    <Spinner
+                        android:id="@+id/spinner_horario"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:background="@drawable/edit_text_background"
-                        android:hint="10:15-10:45"
-                        android:inputType="text"
-                        android:padding="12dp"
-                        android:textColor="#000000"
-                        android:textSize="16sp" />
+                        android:background="@drawable/edit_text_background" />
 
-                    <!-- Instructor Field -->
+                    <!-- Instrutor -->
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -131,9 +124,8 @@
                         android:text="Instrutor"
                         android:textColor="#000000"
                         android:textSize="16sp" />
-
-                    <EditText
-                        android:id="@+id/et_instructor"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_instrutor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
@@ -144,7 +136,7 @@
                         android:textColor="#000000"
                         android:textSize="16sp" />
 
-                    <!-- Description Field -->
+                    <!-- Descrição -->
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -152,9 +144,8 @@
                         android:text="Descrição"
                         android:textColor="#000000"
                         android:textSize="16sp" />
-
-                    <EditText
-                        android:id="@+id/et_description"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_descricao"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
@@ -167,34 +158,30 @@
                         android:textColor="#000000"
                         android:textSize="16sp" />
 
-                    <!-- Action Buttons -->
-                    <androidx.appcompat.widget.AppCompatButton
+                    <!-- Botão Atualizar -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_atualizar_aula"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Atualizar"
-                        android:background="@drawable/button_background_dark"
-                        android:backgroundTint="@null"
+                        android:backgroundTint="#222222"
+                        android:textColor="#FFFFFF"
+                        android:textAllCaps="false"
+                        android:padding="12dp"
+                        android:textSize="16sp" />
+
+                    <!-- Botão Deletar -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_deletar_aula"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Deletar"
+                        android:backgroundTint="#FF3333"
                         android:textColor="#FFFFFF"
                         android:textAllCaps="false"
                         android:padding="12dp"
                         android:textSize="16sp"
-                        android:theme="@style/ThemeOverlay.AppCompat.Light" />
-
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btn_delete"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:background="@drawable/button_background_red"
-                        android:backgroundTint="@null"
-                        android:padding="12dp"
-                        android:theme="@style/ThemeOverlay.AppCompat.Light"
-                        android:text="Deletar"
-                        android:textAllCaps="false"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp" />
-
+                        android:layout_marginTop="8dp" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
