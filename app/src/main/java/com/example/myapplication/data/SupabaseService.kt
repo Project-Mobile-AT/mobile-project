@@ -1,7 +1,10 @@
 package com.example.myapplication.data
 
 import com.example.myapplication.model.AtualizacaoInformativo
-import com.example.myapplication.model.Informativo // Importar o modelo Informativo
+import com.example.myapplication.model.Informativo
+import com.example.myapplication.model.Presenca // Adicionei o import para Presenca
+import com.example.myapplication.model.Streak // Adicionei o import para Streak
+import com.example.myapplication.model.Treino // Adicionei o import para Treino
 import com.example.myapplication.model.Usuario
 import com.example.myapplication.utils.SUPABASE_API_KEY
 import retrofit2.http.Body
@@ -10,8 +13,7 @@ import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.PATCH
 import retrofit2.http.POST
-import retrofit2.http.Query // Importar Query
-
+import retrofit2.http.Query
 
 interface SupabaseService {
 
@@ -30,12 +32,21 @@ interface SupabaseService {
         "apikey: $SUPABASE_API_KEY",
         "Authorization: Bearer $SUPABASE_API_KEY"
     )
-
     @GET("rest/v1/usuario")
     suspend fun getUsuarioByEmailAndPassword(
         @Query("email") email: String,
         @Query("senha") senha: String
     ): List<Usuario>
+
+    // NOVO: Método para buscar usuário pelo ID
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY"
+    )
+    @GET("rest/v1/usuario")
+    suspend fun getUsuarioById(
+        @Query("id") id: String // Busca por ID
+    ): List<Usuario> // Retorna uma lista, pois o Supabase sempre retorna lista, mesmo que com 1 elemento
 
     @Headers(
         "apikey: $SUPABASE_API_KEY",
@@ -73,11 +84,11 @@ interface SupabaseService {
         "apikey: $SUPABASE_API_KEY",
         "Authorization: Bearer $SUPABASE_API_KEY"
     )
-    @GET("rest/v1/informativo") // Endpoint para buscar informativos
+    @GET("rest/v1/informativo")
     suspend fun getInformativos(
-        @Query("select") select: String = "*", // Seleciona todas as colunas por padrão
-        @Query("order") order: String = "criado_em.desc" // Ordena pelos mais recentes (opcional, ajuste se necessário)
-    ): List<Informativo> // Retorna uma lista de objetos Informativo
+        @Query("select") select: String = "*",
+        @Query("order") order: String = "criado_em.desc"
+    ): List<Informativo>
 
     @Headers(
         "apikey: $SUPABASE_API_KEY",
@@ -153,5 +164,39 @@ interface SupabaseService {
     )
     @GET("rest/v1/horario_atendimento")
     suspend fun getHorariosAtendimento(): List<com.example.myapplication.model.HorarioAtendimento>
+
+    // --- NOVOS Métodos para Streak, Treino e Presenca --- //
+
+    // NOVO: Metodo para buscar a streak de um usuário
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY"
+    )
+    @GET("rest/v1/streak")
+    suspend fun getStreakByUserId(
+        @Query("usuario_id") userId: String // Busca por usuario_id
+    ): List<Streak> // Retorna uma lista, deve ter no máximo 1 streak por usuário
+
+//     NOVO: Metodo para buscar o treino de um usuário (considerando que há 1 treino "ativo" ou o mais recente)
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY"
+    )
+    @GET("rest/v1/treino")
+    suspend fun getTreinoByUserId(
+        @Query("usuario_id") userId: String,
+        @Query("order") order: String = "criado_em.desc", // Pega o mais recente
+        @Query("limit") limit: Int = 1 // Pega apenas um
+    ): List<Treino>
+
+    // NOVO: Metodo para registrar uma presença (check-in)
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY",
+        "Content-Type: application/json",
+        "Prefer: return=representation"
+    )
+    @POST("rest/v1/presenca")
+    suspend fun createPresenca(@Body presenca: Presenca): List<Presenca>
 
 }
