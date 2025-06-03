@@ -118,6 +118,9 @@
         <!-- Activities RF20 -->
         <activity android:name=".TelaRF20Activity" android:exported="false" />
 
+        <!-- Activities RF21 -->
+        <activity android:name=".TelaEditarExercicioActivity" />
+
     </application>
 
 </manifest>

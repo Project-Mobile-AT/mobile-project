@@ -1,6 +1,5 @@
 package com.example.myapplication
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
@@ -10,21 +9,21 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.myapplication.data.SupabaseClient
-import com.example.myapplication.model.Exercicio
 import com.example.myapplication.model.Equipamento
+import com.example.myapplication.model.Exercicio
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class TelaRF12_1Activity : AppCompatActivity() {
+class TelaEditarExercicioActivity : AppCompatActivity() {
     private var listaEquipamentos: List<Equipamento> = emptyList()
+    private var exercicioId: String? = null
+    private var exercicioOriginal: Exercicio? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_tela_rf12_1)
+        setContentView(R.layout.activity_editar_exercicio)
         enableEdgeToEdge()
 
         val btnVoltar = findViewById<ImageButton>(R.id.btnVoltar)
@@ -33,12 +32,18 @@ class TelaRF12_1Activity : AppCompatActivity() {
         val editDescricaoExercicio = findViewById<EditText>(R.id.editDescricaoExercicio)
         val spinnerEquipamento = findViewById<Spinner>(R.id.spinnerEquipamento1)
 
-        btnVoltar.setOnClickListener {
-            val intent = Intent(this, TelaRF11Activity::class.java)
-            startActivity(intent)
+        btnVoltar.setOnClickListener { finish() }
+
+        exercicioId = intent.getStringExtra("exercicio_id")
+        if (exercicioId.isNullOrEmpty()) {
+            Toast.makeText(this, "Exercício inválido", Toast.LENGTH_SHORT).show()
+            finish()
+            return
         }
 
-        carregarEquipamentos(spinnerEquipamento)
+        carregarEquipamentos(spinnerEquipamento) {
+            carregarExercicio(editNomeExercicio, editDescricaoExercicio, spinnerEquipamento)
+        }
 
         btnSalvar.setOnClickListener {
             val nome = editNomeExercicio.text.toString().trim()
@@ -57,42 +62,70 @@ class TelaRF12_1Activity : AppCompatActivity() {
 
             CoroutineScope(Dispatchers.IO).launch {
                 try {
-                    val novoExercicio = Exercicio(
-                        id = null,
+                    val exercicioEditado = Exercicio(
+                        id = exercicioId,
                         nome = nome,
                         descricao = descricao,
                         equipamento_id = equipamentoId
                     )
-                    SupabaseClient.service.criarExercicio(novoExercicio)
+                    SupabaseClient.service.atualizarExercicio("eq.$exercicioId", exercicioEditado)
                     runOnUiThread {
-                        Toast.makeText(this@TelaRF12_1Activity, "Exercício cadastrado com sucesso!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@TelaEditarExercicioActivity, "Exercício atualizado com sucesso!", Toast.LENGTH_SHORT).show()
                         finish()
                     }
                 } catch (e: Exception) {
                     runOnUiThread {
-                        Toast.makeText(this@TelaRF12_1Activity, "Erro ao cadastrar: ${e.message}", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@TelaEditarExercicioActivity, "Erro ao atualizar: ${e.message}", Toast.LENGTH_LONG).show()
                     }
                 }
             }
         }
     }
 
-    private fun carregarEquipamentos(spinner: Spinner) {
+    private fun carregarEquipamentos(spinner: Spinner, onFinish: () -> Unit) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val equipamentos = SupabaseClient.service.getEquipamentos()
                 listaEquipamentos = equipamentos
                 val nomes = equipamentos.map { it.nome }
                 runOnUiThread {
-                    val adapter = ArrayAdapter(this@TelaRF12_1Activity, android.R.layout.simple_spinner_item, nomes)
+                    val adapter = ArrayAdapter(this@TelaEditarExercicioActivity, android.R.layout.simple_spinner_item, nomes)
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                     spinner.adapter = adapter
+                    onFinish()
                 }
             } catch (e: Exception) {
                 runOnUiThread {
-                    Toast.makeText(this@TelaRF12_1Activity, "Erro ao carregar equipamentos", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@TelaEditarExercicioActivity, "Erro ao carregar equipamentos", Toast.LENGTH_LONG).show()
+                    finish()
                 }
             }
         }
     }
-}
+
+    private fun carregarExercicio(editNome: EditText, editDescricao: EditText, spinner: Spinner) {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val lista = SupabaseClient.service.getExercicios("*")
+                val exercicio = lista.find { it.id == exercicioId }
+                exercicioOriginal = exercicio
+                runOnUiThread {
+                    if (exercicio != null) {
+                        editNome.setText(exercicio.nome)
+                        editDescricao.setText(exercicio.descricao ?: "")
+                        val pos = listaEquipamentos.indexOfFirst { it.id == exercicio.equipamento_id }
+                        if (pos >= 0) spinner.setSelection(pos)
+                    } else {
+                        Toast.makeText(this@TelaEditarExercicioActivity, "Exercício não encontrado", Toast.LENGTH_SHORT).show()
+                        finish()
+                    }
+                }
+            } catch (e: Exception) {
+                runOnUiThread {
+                    Toast.makeText(this@TelaEditarExercicioActivity, "Erro ao carregar exercício", Toast.LENGTH_LONG).show()
+                    finish()
+                }
+            }
+        }
+    }
+} 

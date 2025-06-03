@@ -237,4 +237,44 @@ interface SupabaseService {
     suspend fun deletarEquipamento(
         @Query("id") id: String
     ): retrofit2.Response<Unit>
+
+    // --- Métodos de Exercício --- //
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY"
+    )
+    @GET("rest/v1/exercicio")
+    suspend fun getExercicios(
+        @Query("select") select: String = "*"
+    ): List<com.example.myapplication.model.Exercicio>
+
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY",
+        "Content-Type: application/json",
+        "Prefer: return=representation"
+    )
+    @POST("rest/v1/exercicio")
+    suspend fun criarExercicio(@Body exercicio: com.example.myapplication.model.Exercicio): List<com.example.myapplication.model.Exercicio>
+
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY",
+        "Content-Type: application/json",
+        "Prefer: return=representation"
+    )
+    @PATCH("rest/v1/exercicio")
+    suspend fun atualizarExercicio(
+        @Query("id") id: String,
+        @Body exercicio: com.example.myapplication.model.Exercicio
+    ): List<com.example.myapplication.model.Exercicio>
+
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY"
+    )
+    @DELETE("rest/v1/exercicio")
+    suspend fun deletarExercicio(
+        @Query("id") id: String
+    ): retrofit2.Response<Unit>
 }

@@ -56,190 +56,70 @@
     </androidx.appcompat.widget.Toolbar>
 
     <!-- Conteúdo Principal -->
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:fillViewport="true"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintBottom_toTopOf="@id/bottomNavigation">
 
+        <!-- Empty State -->
         <LinearLayout
-            android:layout_width="match_parent"
+            android:id="@+id/emptyStateLayout"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:gravity="center"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
-            <!-- Botão Adicionar Exercício -->
-            <Button
-                android:id="@+id/btnAdicionarExercicio"
-                android:layout_width="match_parent"
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/ic_avatar"
+                android:tint="#BA68C8"
+                android:contentDescription="Nenhum exercício" />
+
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/button_background_dark"
-                android:text="Adicionar Exercício"
-                android:textColor="#FFFFFF"
-                android:drawableStart="@drawable/ic_add"
-                android:drawablePadding="8dp"
-                android:paddingStart="16dp"
-                android:layout_marginBottom="16dp"
-                android:textAllCaps="false" />
-
-            <!-- Lista de Exercícios -->
-
-            <!-- Exercício 1 -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="2dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="12dp"
-                    android:gravity="center_vertical">
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/ic_avatar"
-                        android:tint="#BA68C8"
-                        android:contentDescription="Pessoa" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginStart="8dp"
-                        android:text="Pulldown"
-                        android:textColor="#424242"
-                        android:textSize="18sp" />
-
-                    <ImageButton
-                        android:id="@+id/btnEdit1"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:background="@null"
-                        android:contentDescription="Editar"
-                        android:src="@drawable/ic_edit"
-                        android:tint="#9E9E9E" />
-
-                    <ImageButton
-                        android:id="@+id/btnDelete1"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:background="@null"
-                        android:contentDescription="Deletar"
-                        android:src="@drawable/ic_delete"
-                        android:tint="#FF5252" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Exercício 2 -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="2dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="12dp"
-                    android:gravity="center_vertical">
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/ic_avatar"
-                        android:tint="#BA68C8"
-                        android:contentDescription="Pessoa" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginStart="8dp"
-                        android:text="Remada Máquina"
-                        android:textColor="#424242"
-                        android:textSize="18sp" />
-
-                    <ImageButton
-                        android:id="@+id/btnEdit2"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:background="@null"
-                        android:contentDescription="Editar"
-                        android:src="@drawable/ic_edit"
-                        android:tint="#9E9E9E" />
-
-                    <ImageButton
-                        android:id="@+id/btnDelete2"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:background="@null"
-                        android:contentDescription="Deletar"
-                        android:src="@drawable/ic_delete"
-                        android:tint="#FF5252" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Exercício 3 -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="2dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="12dp"
-                    android:gravity="center_vertical">
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/ic_avatar"
-                        android:tint="#BA68C8"
-                        android:contentDescription="Pessoa" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginStart="8dp"
-                        android:text="Supino Inclinado"
-                        android:textColor="#424242"
-                        android:textSize="18sp" />
-
-                    <ImageButton
-                        android:id="@+id/btnEdit3"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:background="@null"
-                        android:contentDescription="Editar"
-                        android:src="@drawable/ic_edit"
-                        android:tint="#9E9E9E" />
-
-                    <ImageButton
-                        android:id="@+id/btnDelete3"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:background="@null"
-                        android:contentDescription="Deletar"
-                        android:src="@drawable/ic_delete"
-                        android:tint="#FF5252" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                android:layout_marginTop="16dp"
+                android:text="Nenhum exercício cadastrado"
+                android:textSize="18sp"
+                android:textColor="#757575" />
 
         </LinearLayout>
-    </ScrollView>
+
+        <!-- RecyclerView para lista de exercícios -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewExercicios"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            android:clipToPadding="false"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/btnAdicionarExercicio"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Botão Adicionar Exercício -->
+        <Button
+            android:id="@+id/btnAdicionarExercicio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@drawable/button_background_dark"
+            android:text="Adicionar Exercício"
+            android:textColor="#FFFFFF"
+            android:drawableStart="@drawable/ic_add"
+            android:drawablePadding="8dp"
+            android:paddingStart="16dp"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- Barra de Navegação Inferior -->
     <LinearLayout

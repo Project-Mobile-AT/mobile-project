@@ -31,7 +31,7 @@
             android:id="@+id/tvTitulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cadastro de Treino"
+            android:text="Editar Exercício"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="#5E007E"
@@ -73,7 +73,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lista de Exercícios"
+                android:text="Editar Exercício"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:drawableLeft="@drawable/ic_avatar"
@@ -81,7 +81,7 @@
                 android:textColor="#5E007E"
                 android:layout_marginBottom="16dp"/>
 
-            <!-- Bloco Exercício 1 -->
+            <!-- Bloco Exercício -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -93,7 +93,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Exercício 1"
+                    android:text="Exercício"
                     android:textColor="#FFFFFF"
                     android:textStyle="bold"
                     android:background="#5E007E"
@@ -121,15 +121,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:background="@drawable/rounded_edittext"/>
-
             </LinearLayout>
 
-            <!-- Botão Salvar -->
+            <!-- Botão Salvar Alterações -->
             <Button
                 android:id="@+id/btnSalvar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Salvar"
+                android:text="Salvar Alterações"
                 android:backgroundTint="#5E007E"
                 android:textColor="#FFFFFF"/>
         </LinearLayout>
@@ -169,4 +168,4 @@
         </LinearLayout>
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout> 
