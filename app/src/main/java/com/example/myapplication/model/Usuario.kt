@@ -10,5 +10,6 @@ data class Usuario(
     val data_nascimento: String?,
     val peso: Double?,
     val altura: Double?,
-    val criado_em: String?
+    val criado_em: String?,
+    val img_perfil: String?
 )

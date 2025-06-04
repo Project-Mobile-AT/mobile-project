@@ -1,4 +1,6 @@
-    plugins {
+// build.gradle (Module: app)
+
+plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("com.google.gms.google-services")
@@ -58,6 +60,4 @@ dependencies {
     implementation ("com.squareup.okhttp3:okhttp:4.10.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
     implementation("com.google.ai.client.generativeai:generativeai:0.9.0")
-
-
 }
