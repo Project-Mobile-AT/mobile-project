@@ -277,4 +277,154 @@ interface SupabaseService {
     suspend fun deletarExercicio(
         @Query("id") id: String
     ): retrofit2.Response<Unit>
+
+    // --- Métodos de Plano Alimentar --- //
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY"
+    )
+    @GET("rest/v1/plano_alimentar")
+    suspend fun getPlanoAlimentarByUsuarioId(
+        @Query("usuario_id") usuarioId: String
+    ): List<com.example.myapplication.model.PlanoAlimentar>
+
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY",
+        "Content-Type: application/json",
+        "Prefer: return=representation"
+    )
+    @POST("rest/v1/plano_alimentar")
+    suspend fun criarPlanoAlimentar(@Body plano: com.example.myapplication.model.PlanoAlimentar): List<com.example.myapplication.model.PlanoAlimentar>
+
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY",
+        "Content-Type: application/json",
+        "Prefer: return=representation"
+    )
+    @PATCH("rest/v1/plano_alimentar")
+    suspend fun atualizarPlanoAlimentar(
+        @Query("id") id: String,
+        @Body plano: com.example.myapplication.model.PlanoAlimentar
+    ): List<com.example.myapplication.model.PlanoAlimentar>
+
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY"
+    )
+    @DELETE("rest/v1/plano_alimentar")
+    suspend fun deletarPlanoAlimentar(
+        @Query("id") id: String
+    ): retrofit2.Response<Unit>
+
+    // --- Métodos de Medidas do Aluno --- //
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY"
+    )
+    @GET("rest/v1/medidas_aluno")
+    suspend fun getMedidasByUsuarioId(
+        @Query("usuario_id") usuarioId: String,
+        @Query("order") order: String = "data_registro.desc",
+        @Query("limit") limit: Int = 1
+    ): List<com.example.myapplication.model.MedidasAluno>
+
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY",
+        "Content-Type: application/json",
+        "Prefer: return=representation"
+    )
+    @POST("rest/v1/medidas_aluno")
+    suspend fun criarMedidasAluno(@Body medidas: com.example.myapplication.model.MedidasAluno): List<com.example.myapplication.model.MedidasAluno>
+
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY",
+        "Content-Type: application/json",
+        "Prefer: return=representation"
+    )
+    @PATCH("rest/v1/medidas_aluno")
+    suspend fun atualizarMedidasAluno(
+        @Query("id") id: String,
+        @Body medidas: com.example.myapplication.model.MedidasAluno
+    ): List<com.example.myapplication.model.MedidasAluno>
+
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY"
+    )
+    @DELETE("rest/v1/medidas_aluno")
+    suspend fun deletarMedidasAluno(
+        @Query("id") id: String
+    ): retrofit2.Response<Unit>
+
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY",
+        "Content-Type: application/json",
+        "Prefer: return=representation"
+    )
+    @POST("rest/v1/horario_atendimento")
+    suspend fun criarHorarioAtendimento(@Body horario: com.example.myapplication.model.HorarioAtendimento): List<com.example.myapplication.model.HorarioAtendimento>
+
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY",
+        "Content-Type: application/json",
+        "Prefer: return=representation"
+    )
+    @PATCH("rest/v1/horario_atendimento")
+    suspend fun atualizarHorarioAtendimento(
+        @Query("id") id: String,
+        @Body horario: com.example.myapplication.model.HorarioAtendimento
+    ): List<com.example.myapplication.model.HorarioAtendimento>
+
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY"
+    )
+    @DELETE("rest/v1/horario_atendimento")
+    suspend fun deletarHorarioAtendimento(
+        @Query("id") id: String
+    ): retrofit2.Response<Unit>
+
+    // --- Métodos de Horário Nutricionista --- //
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY"
+    )
+    @GET("rest/v1/horario_nutricionista")
+    suspend fun getHorariosNutricionista(): List<com.example.myapplication.model.HorarioNutricionista>
+
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY",
+        "Content-Type: application/json",
+        "Prefer: return=representation"
+    )
+    @POST("rest/v1/horario_nutricionista")
+    suspend fun criarHorarioNutricionista(@Body horario: com.example.myapplication.model.HorarioNutricionista): List<com.example.myapplication.model.HorarioNutricionista>
+
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY",
+        "Content-Type: application/json",
+        "Prefer: return=representation"
+    )
+    @PATCH("rest/v1/horario_nutricionista")
+    suspend fun atualizarHorarioNutricionista(
+        @Query("id") id: String,
+        @Body horario: com.example.myapplication.model.HorarioNutricionista
+    ): List<com.example.myapplication.model.HorarioNutricionista>
+
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY"
+    )
+    @DELETE("rest/v1/horario_nutricionista")
+    suspend fun deletarHorarioNutricionista(
+        @Query("id") id: String
+    ): retrofit2.Response<Unit>
 }

@@ -1,35 +1,39 @@
 package com.example.myapplication
 
-import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.ImageView
-import android.widget.Toast
+import android.widget.ImageButton
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 
 class TelaRF17_8Activity : AppCompatActivity() {
-    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tela_rf17_8)
         enableEdgeToEdge()
 
-        val btnVoltar = findViewById<ImageView>(R.id.btn_back)
+        val backButton = findViewById<ImageButton>(R.id.backButton)
+        val btnCancelar = findViewById<Button>(R.id.btnCancelar)
+        val btnReagendar = findViewById<Button>(R.id.btnReagendar)
+        val tvDate = findViewById<TextView>(R.id.tvDate)
+        val tvTime = findViewById<TextView>(R.id.tvTime)
+        val tvReason = findViewById<TextView>(R.id.tvReason)
+        val tvNotes = findViewById<TextView>(R.id.tvNotes)
 
-        btnVoltar.setOnClickListener {
-            val intent = Intent(this, TelaRF17Activity::class.java)
-            startActivity(intent)
+        // TODO: Receber dados do agendamento via intent e preencher os campos
+
+        backButton.setOnClickListener {
             finish()
         }
 
-        val btnConfirmar = findViewById<Button>(R.id.btn_confirmar)
+        btnCancelar.setOnClickListener {
+            // TODO: Implementar lógica de cancelamento
+            finish()
+        }
 
-        btnConfirmar.setOnClickListener {
-            Toast.makeText(this, "Nutricionista cadastrado com sucesso!", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, TelaRF17Activity::class.java)
-            startActivity(intent)
+        btnReagendar.setOnClickListener {
+            // TODO: Implementar lógica de reagendamento
             finish()
         }
     }

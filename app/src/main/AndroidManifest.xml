@@ -121,6 +121,16 @@
         <!-- Activities RF21 -->
         <activity android:name=".TelaEditarExercicioActivity" />
 
+        <!-- Activities RF22 -->
+        <activity android:name=".ListaAlunosActivity" />
+
+        <!-- Activities RF23 -->
+        <activity android:name=".FichaNutricionalActivity" />
+
+        <!-- Activities RF24 -->
+        <activity android:name=".HorariosNutricionistaActivity" android:exported="false" />
+        <activity android:name=".AddEditHorarioActivity" android:exported="false" />
+
     </application>
 
 </manifest>

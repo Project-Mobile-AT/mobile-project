@@ -10,6 +10,8 @@ import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class TelaRF17_7Activity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
@@ -19,9 +21,15 @@ class TelaRF17_7Activity : AppCompatActivity() {
         enableEdgeToEdge()
 
         val backButton = findViewById<ImageButton>(R.id.backButton)
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
 
-        backButton.setOnClickListener { val intent = Intent(this, TelaRF17_5Activity::class.java)
-            startActivity(intent)}
+        // Configurar RecyclerView
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        // TODO: Implementar adapter para o histórico de agendamentos
+
+        backButton.setOnClickListener {
+            finish()
+        }
     }
 }
 

@@ -53,7 +53,8 @@ class TelaRF18_1Activity : AppCompatActivity() {
                     data_nascimento = null,
                     peso = null,
                     altura = null,
-                    criado_em = null
+                    criado_em = null,
+                    img_perfil = null // Adicionando o parâmetro que estava faltando
                 )
                 lifecycleScope.launch {
                     try {

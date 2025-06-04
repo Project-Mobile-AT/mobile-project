@@ -73,7 +73,8 @@ class TelaRf15Activity : AppCompatActivity() {
                         data_nascimento = dataNascimento,
                         peso = peso,
                         altura = altura,
-                        criado_em = null
+                        criado_em = null,
+                        img_perfil = null
                     )
                     lifecycleScope.launch {
                         try {
@@ -97,7 +98,8 @@ class TelaRf15Activity : AppCompatActivity() {
                         data_nascimento = dataNascimento,
                         peso = peso,
                         altura = altura,
-                        criado_em = null
+                        criado_em = null,
+                        img_perfil = null
                     )
 
                     lifecycleScope.launch {

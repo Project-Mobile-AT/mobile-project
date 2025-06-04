@@ -45,7 +45,8 @@ class TelaRF2Activity : AppCompatActivity() {
                     data_nascimento = null,
                     peso = null,
                     altura = null,
-                    criado_em = null
+                    criado_em = null,
+                    img_perfil = null
                 )
                 //envia o POST com Retrofit - chamando a função criarUsuario()
                 lifecycleScope.launch {
