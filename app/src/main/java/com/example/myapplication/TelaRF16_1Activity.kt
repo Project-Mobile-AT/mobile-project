@@ -66,12 +66,6 @@ class TelaRF16_1Activity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val visualizarTreino = findViewById<Button>(R.id.btn_view_record_ana)
-
-        visualizarTreino.setOnClickListener {
-            val intent = Intent(this, TelaRF12_1Activity::class.java)
-            startActivity(intent)
-        }
 
         val visualizarHorarios = findViewById<Button>(R.id.btn_schedule)
 
