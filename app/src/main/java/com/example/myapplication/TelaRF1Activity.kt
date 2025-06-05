@@ -9,7 +9,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.myapplication.data.SupabaseClient // Importa o SupabaseClient
+import com.example.myapplication.data.SupabaseClient
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -21,9 +21,8 @@ class TelaRF1Activity : AppCompatActivity() {
     private lateinit var etSenha: EditText
     private lateinit var btnLogin: Button
     private lateinit var recuperarSenha: TextView
-    private lateinit var criarConta: TextView
+    private lateinit var criarConta: TextView // Alterado o nome da variável para refletir o ID tv_registre_se
 
-    // Usa a instância do serviço do SupabaseClient
     private val supabaseService = SupabaseClient.service
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +34,7 @@ class TelaRF1Activity : AppCompatActivity() {
         etSenha = findViewById(R.id.et_senha)
         btnLogin = findViewById(R.id.btn_login)
         recuperarSenha = findViewById(R.id.tv_esqueceu_senha)
-        criarConta = findViewById(R.id.tv_registre_se)
+        criarConta = findViewById(R.id.tv_registre_se) // Usando o ID tv_registre_se do XML
 
         // Adiciona sublinhado aos textos
         recuperarSenha.paint.isUnderlineText = true
@@ -71,7 +70,6 @@ class TelaRF1Activity : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 // Busca um usuário onde o email e a senha correspondam.
-                // Lembre-se: Para produção, use autenticação do Supabase ou hashing de senhas.
                 val usuarios = supabaseService.getUsuarioByEmailAndPassword(
                     email = "eq.$email",
                     senha = "eq.$senha"
@@ -112,16 +110,8 @@ class TelaRF1Activity : AppCompatActivity() {
         }
     }
 
-    // Função para recuperar o ID do usuário (exemplo de como usar em outras activities)
-
     fun getUserId(): String? {
         val sharedPref = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
         return sharedPref.getString("logged_in_user_id", null)
     }
-
-//    --- FUNÇÃO PARA RECUPERAR O ID DO USUÁRIO ---
-//    fun getUserId(): String? {
-//        val sharedPref = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
-//        return sharedPref.getString("logged_in_user_id", null)
-//    }
 }

@@ -6,7 +6,6 @@
     android:background="#FBFAFA"
     android:padding="16dp">
 
-
     <TextView
         android:id="@+id/tv_ola"
         android:layout_width="wrap_content"
@@ -33,7 +32,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_ola" />
 
-
     <EditText
         android:id="@+id/et_email"
         android:layout_width="0dp"
@@ -49,7 +47,8 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_acesso" />
+        app:layout_constraintTop_toBottomOf="@id/tv_acesso"
+        android:autofillHints="emailAddress" />
 
     <EditText
         android:id="@+id/et_senha"
@@ -67,7 +66,8 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_email" />
+        app:layout_constraintTop_toBottomOf="@id/et_email"
+        android:autofillHints="password" />
 
     <TextView
         android:id="@+id/tv_esqueceu_senha"
@@ -77,13 +77,12 @@
         android:text="Esqueceu a senha?"
         android:textColor="#A0A0A0"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="@id/et_senha"
-        app:layout_constraintTop_toBottomOf="@id/et_senha"
         android:textStyle="bold"
         android:clickable="true"
         android:focusable="true"
-        android:textAppearance="?android:attr/textAppearanceMedium"/>
-
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        app:layout_constraintEnd_toEndOf="@id/et_senha"
+        app:layout_constraintTop_toBottomOf="@id/et_senha" />
 
     <Button
         android:id="@+id/btn_login"
@@ -105,21 +104,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_esqueceu_senha" />
 
-
     <TextView
         android:id="@+id/tv_ou"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Or"
+        android:text="Ou"
         android:textColor="#A0A0A0"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_login" />
 
-
     <LinearLayout
+        android:id="@+id/ll_registro_link"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -129,7 +127,7 @@
         app:layout_constraintTop_toBottomOf="@id/tv_ou">
 
         <TextView
-            android:id="@+id/tv_registro"
+            android:id="@+id/tv_registro_intro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Não possui uma conta? "
@@ -146,7 +144,7 @@
             android:textStyle="bold"
             android:clickable="true"
             android:focusable="true"
-            android:textAppearance="?android:attr/textAppearanceMedium"/>
+            android:textAppearance="?android:attr/textAppearanceMedium" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
