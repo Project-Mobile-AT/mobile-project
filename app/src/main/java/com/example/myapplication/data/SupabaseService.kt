@@ -4,6 +4,7 @@ import com.example.myapplication.model.AtualizacaoInformativo
 import com.example.myapplication.model.Equipamento
 import com.example.myapplication.model.Informativo
 import com.example.myapplication.model.Presenca
+import com.example.myapplication.model.RelacaoAdminAluno
 import com.example.myapplication.model.Streak
 import com.example.myapplication.model.Treino
 import com.example.myapplication.model.Usuario
@@ -453,4 +454,13 @@ interface SupabaseService {
     @GET("rest/v1/horario_atendimento") // <-- VERIFIQUE ESTE NOME DE TABELA/ENDPOINT!
     suspend fun getHorarios(): List<com.example.myapplication.model.HorarioAtendimento> // <-- VERIFIQUE ESTE NOME DE MODELO!
 
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY"
+    )
+    @GET("rest/v1/relacao_admin_aluno")
+    suspend fun getAlunosByAdminId(
+        @Query("admin_id") adminId: String,
+        @Query("select") select: String = "aluno:aluno_id(nome,id)"
+    ): List<RelacaoAdminAluno>
 }
