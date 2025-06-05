@@ -476,4 +476,29 @@ interface SupabaseService {
     suspend fun createRelacaoAdminAluno(
         @Body relacao: RelacaoAdminAluno
     ): List<RelacaoAdminAluno>
+
+    // 1. Buscar Horário por ID
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY"
+    )
+    @GET("rest/v1/horario_atendimento")
+    suspend fun getHorarioById(
+        @Query("id") id: String, // Filtra por ID
+        @Query("select") select: String = "*", // Garante que todos os campos sejam retornados
+        @Query("limit") limit: Int = 1 // Espera apenas um resultado
+    ): List<com.example.myapplication.model.HorarioAtendimento> // Retorna lista, mas deve conter 0 ou 1 item
+
+    // Método para Atualizar Horário (PATCH)
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY",
+        "Content-Type: application/json",
+        "Prefer: return=representation"
+    )
+    @PATCH("rest/v1/horario_atendimento")
+    suspend fun atualizarHorarioAtendimentoo(
+        @Query("id") id: String, // Filtro pelo ID (ex: "eq.uuid-do-horario")
+        @Body horarioUpdate: com.example.myapplication.model.HorarioAtendimento // <-- Verifique esta linha!
+    ): List<com.example.myapplication.model.HorarioAtendimento>
 }
