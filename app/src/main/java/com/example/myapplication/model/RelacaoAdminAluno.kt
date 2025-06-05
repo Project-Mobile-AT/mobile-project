@@ -5,5 +5,5 @@ data class RelacaoAdminAluno(
     val admin_id: String,
     val aluno_id: String,
     val tipo: String, // "personal" ou "nutricionista"
-    val aluno: Usuario?
+    val aluno: Usuario? = null
 )

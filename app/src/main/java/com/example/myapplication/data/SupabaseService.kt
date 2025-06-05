@@ -454,13 +454,26 @@ interface SupabaseService {
     @GET("rest/v1/horario_atendimento") // <-- VERIFIQUE ESTE NOME DE TABELA/ENDPOINT!
     suspend fun getHorarios(): List<com.example.myapplication.model.HorarioAtendimento> // <-- VERIFIQUE ESTE NOME DE MODELO!
 
+    // --- Métodos de RelacaoAdminAluno --- //
     @Headers(
         "apikey: $SUPABASE_API_KEY",
-        "Authorization: Bearer $SUPABASE_API_KEY"
+        "Authorization: Bearer $SUPABASE_API_KEY",
+        "Content-Type: application/json"
     )
     @GET("rest/v1/relacao_admin_aluno")
     suspend fun getAlunosByAdminId(
         @Query("admin_id") adminId: String,
         @Query("select") select: String = "aluno:aluno_id(nome,id)"
+    ): List<RelacaoAdminAluno>
+
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY",
+        "Content-Type: application/json",
+        ("Prefer: return=representation")
+    )
+    @POST("rest/v1/relacao_admin_aluno")
+    suspend fun createRelacaoAdminAluno(
+        @Body relacao: RelacaoAdminAluno
     ): List<RelacaoAdminAluno>
 }
