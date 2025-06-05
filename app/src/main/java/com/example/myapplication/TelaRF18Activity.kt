@@ -40,6 +40,11 @@ class TelaRF18Activity : AppCompatActivity() {
 
         listaAlunosContainer = findViewById(R.id.listaAlunosContainer)
 
+       // buscarAlunos()
+    }
+
+    override fun onStart() {
+        super.onStart()
         buscarAlunos()
     }
 
