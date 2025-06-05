@@ -427,4 +427,30 @@ interface SupabaseService {
     suspend fun deletarHorarioNutricionista(
         @Query("id") id: String
     ): retrofit2.Response<Unit>
+
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY",
+        "Content-Type: application/json",
+        "Prefer: return=representation"
+    )
+    @POST("rest/v1/agendamento")
+    suspend fun criarAgendamento(@Body agendamento: com.example.myapplication.model.Agendamento): List<com.example.myapplication.model.Agendamento>
+
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY"
+    )
+    @GET("rest/v1/usuario") // Busca na tabela usuario
+    suspend fun getAdmins(
+        @Query("is_admin") isAdmin: String = "eq.true" // Filtra por is_admin = true
+    ): List<Usuario>
+
+    @Headers(
+        "apikey: $SUPABASE_API_KEY",
+        "Authorization: Bearer $SUPABASE_API_KEY"
+    )
+    @GET("rest/v1/horario_atendimento") // <-- VERIFIQUE ESTE NOME DE TABELA/ENDPOINT!
+    suspend fun getHorarios(): List<com.example.myapplication.model.HorarioAtendimento> // <-- VERIFIQUE ESTE NOME DE MODELO!
+
 }
