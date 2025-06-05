@@ -453,4 +453,6 @@ interface SupabaseService {
     @GET("rest/v1/horario_atendimento") // <-- VERIFIQUE ESTE NOME DE TABELA/ENDPOINT!
     suspend fun getHorarios(): List<com.example.myapplication.model.HorarioAtendimento> // <-- VERIFIQUE ESTE NOME DE MODELO!
 
+
+
 }

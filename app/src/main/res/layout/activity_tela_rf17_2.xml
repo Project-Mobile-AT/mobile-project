@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="#FFFFFF"
+    tools:context=".TelaRF17_2Activity"> <!-- Atualize o context se o nome da Activity mudar -->
 
     <!-- Toolbar -->
     <androidx.appcompat.widget.Toolbar
@@ -18,24 +19,22 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
             android:gravity="center_vertical"
-            tools:ignore="ExtraText">
+            android:orientation="horizontal">
 
             <ImageButton
                 android:id="@+id/backButton"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:src="@drawable/ic_setae"
-                android:contentDescription="Voltar" />
+                android:contentDescription="Voltar"
+                android:src="@drawable/ic_setae" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="Adicionar Agendamento" /> <!-- Título Atualizado -->
-
+                android:text="Criar Horário de Atendimento"/>
 
             <View
                 android:layout_width="0dp"
@@ -46,8 +45,8 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_marginEnd="16dp"
-                android:src="@drawable/ic_help"
-                android:contentDescription="Help" />
+                android:contentDescription="Help"
+                android:src="@drawable/ic_help" />
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
 
@@ -56,136 +55,146 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:fillViewport="true"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintBottom_toTopOf="@+id/fabChat"> <!-- Ajustado para não sobrepor o FAB -->
+        app:layout_constraintBottom_toTopOf="@+id/fabChat"
+        tools:ignore="UnknownIdInLayout" /> <!-- Ajustado para não sobrepor o FAB -->
 
-        <LinearLayout
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:ignore="MissingConstraints">
+
+        <!-- Admin ID (Seleção) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/adminLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:layout_marginTop="16dp"
+            android:hint="Admin Responsável">
 
-            <!-- Tipo -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tipoLayout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            <AutoCompleteTextView
+                android:id="@+id/adminInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Tipo de Agendamento">
+                android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-                <AutoCompleteTextView
-                    android:id="@+id/tipoInput"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="none" />
-            </com.google.android.material.textfield.TextInputLayout>
+        <!-- Tipo (Seleção) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tipoLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Tipo de Atendimento">
 
-            <!-- Aluno ID -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/alunoLayout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            <AutoCompleteTextView
+                android:id="@+id/tipoInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:hint="Aluno">
+                android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-                <AutoCompleteTextView
-                    android:id="@+id/alunoInput"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="none" />
-            </com.google.android.material.textfield.TextInputLayout>
+        <!-- Data (DatePicker) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/dateLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Data">
 
-            <!-- Admin ID (Opcional) -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/adminLayout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/dateInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:hint="Admin (Opcional)">
+                android:focusable="false"
+                android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-                <AutoCompleteTextView
-                    android:id="@+id/adminInput"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="none" />
-            </com.google.android.material.textfield.TextInputLayout>
+        <!-- Hora (TimePicker para data_hora) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/timeLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Hora">
 
-            <!-- Horário ID (Opcional) -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/horarioLayout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/timeInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:hint="Horário (Opcional)">
+                android:focusable="false"
+                android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-                <AutoCompleteTextView
-                    android:id="@+id/horarioInput"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="none" />
-            </com.google.android.material.textfield.TextInputLayout>
+        <!-- Horário Início (TimePicker - Opcional) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/startTimeLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Horário de Início (Opcional)">
 
-            <!-- Aula ID (Opcional) -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/aulaLayout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/startTimeInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:hint="Aula (Opcional)">
+                android:focusable="false"
+                android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-                <AutoCompleteTextView
-                    android:id="@+id/aulaInput"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="none" />
-            </com.google.android.material.textfield.TextInputLayout>
+        <!-- Horário Fim (TimePicker - Opcional) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/endTimeLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Horário de Término (Opcional)">
 
-            <!-- Confirmado -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/confirmadoLayout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/endTimeInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:hint="Confirmado">
+                android:focusable="false"
+                android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-                <AutoCompleteTextView
-                    android:id="@+id/confirmadoInput"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="none" />
-            </com.google.android.material.textfield.TextInputLayout>
+        <!-- Dia da Semana (Texto - Opcional) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/dayOfWeekLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Dia da Semana (Opcional)">
 
-
-            <!-- Botão Salvar -->
-            <Button
-                android:id="@+id/btnSalvar"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/dayOfWeekInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:backgroundTint="#9C27B0"
-                android:paddingVertical="12dp"
-                android:text="Salvar Agendamento"
-                android:textAllCaps="false"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp" />
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Botão Salvar -->
+        <Button
+            android:id="@+id/btnSalvar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="#9C27B0"
+            android:paddingVertical="12dp"
+            android:text="Salvar Horário"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
         </LinearLayout>
-    </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- Botão de Chat flutuante -->
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabChat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:contentDescription="Chat"
-        android:src="@drawable/ic_chat"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>

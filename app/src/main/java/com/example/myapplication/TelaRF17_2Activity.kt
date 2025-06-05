@@ -1,6 +1,8 @@
 
 package com.example.myapplication
 
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
@@ -10,80 +12,68 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.example.myapplication.data.SupabaseClient
-
+import com.example.myapplication.data.SupabaseClient // Importar o SupabaseClient
 import com.example.myapplication.data.SupabaseService
-import com.example.myapplication.model.Agendamento
-import com.example.myapplication.model.Aula
-import com.example.myapplication.model.HorarioAtendimento // Certifique-se que este modelo existe
+import com.example.myapplication.model.HorarioAtendimento
 import com.example.myapplication.model.Usuario
+import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
+import java.util.TimeZone
 import java.util.UUID
 
 class TelaRF17_2Activity : AppCompatActivity() {
 
-    // Views do XML antigo (removidos ou comentados se não forem mais usados)
-    // private lateinit var dateInput: TextInputEditText
-    // private lateinit var startTimeInput: TextInputEditText
-    // private lateinit var endTimeInput: TextInputEditText
-    // private lateinit var slotsInput: TextInputEditText
-    // private val calendar = Calendar.getInstance()
-
-    // Views do XML novo
-    private lateinit var tipoInput: AutoCompleteTextView
-    private lateinit var alunoInput: AutoCompleteTextView
+    // Views do XML novo (para criar HorarioAtendimento)
     private lateinit var adminInput: AutoCompleteTextView
-    private lateinit var horarioInput: AutoCompleteTextView
-    private lateinit var aulaInput: AutoCompleteTextView
-    private lateinit var confirmadoInput: AutoCompleteTextView
+    private lateinit var tipoInput: AutoCompleteTextView
+    private lateinit var dateInput: TextInputEditText
+    private lateinit var timeInput: TextInputEditText // Para a hora principal (data_hora)
+    private lateinit var startTimeInput: TextInputEditText // Opcional
+    private lateinit var endTimeInput: TextInputEditText // Opcional
+    private lateinit var dayOfWeekInput: TextInputEditText // Opcional
     private lateinit var btnSalvar: Button
     private lateinit var backButton: ImageButton
 
     // Adapters e listas de dados
-    private lateinit var alunoAdapter: ArrayAdapter<String>
     private lateinit var adminAdapter: ArrayAdapter<String>
-    private lateinit var horarioAdapter: ArrayAdapter<String>
-    private lateinit var aulaAdapter: ArrayAdapter<String>
-
-    private var alunosList: List<Usuario> = emptyList()
     private var adminsList: List<Usuario> = emptyList()
-    private var horariosList: List<HorarioAtendimento> = emptyList() // Use o tipo correto
-    private var aulasList: List<Aula> = emptyList()
 
-    // IDs selecionados
-    private var selectedAlunoId: String? = null
+    // Variáveis para guardar seleções
     private var selectedAdminId: String? = null
-    private var selectedHorarioId: String? = null
-    private var selectedAulaId: String? = null
     private var selectedTipo: String? = null
-    private var selectedConfirmado: Boolean? = null
+    private val calendar = Calendar.getInstance() // Para Date/Time Pickers
+    private val selectedDateTime = Calendar.getInstance() // Guarda data e hora combinadas
+    private val selectedStartTime = Calendar.getInstance() // Guarda hora de início opcional
+    private val selectedEndTime = Calendar.getInstance() // Guarda hora de fim opcional
 
     // Serviço da API
-    private val supabaseService: SupabaseService = SupabaseClient.service // Usando o SupabaseClient fornecido
+    private val supabaseService: SupabaseService = SupabaseClient.service // Usando o SupabaseClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tela_rf17_2)
         enableEdgeToEdge()
 
-        // Inicializar views do novo XML
-        tipoInput = findViewById(R.id.tipoInput)
-        alunoInput = findViewById(R.id.alunoInput)
+        // Inicializar views
         adminInput = findViewById(R.id.adminInput)
-        horarioInput = findViewById(R.id.horarioInput)
-        aulaInput = findViewById(R.id.aulaInput)
-        confirmadoInput = findViewById(R.id.confirmadoInput)
+        tipoInput = findViewById(R.id.tipoInput)
+        dateInput = findViewById(R.id.dateInput)
+        timeInput = findViewById(R.id.timeInput)
+        startTimeInput = findViewById(R.id.startTimeInput)
+        endTimeInput = findViewById(R.id.endTimeInput)
+        dayOfWeekInput = findViewById(R.id.dayOfWeekInput)
         btnSalvar = findViewById(R.id.btnSalvar)
         backButton = findViewById(R.id.backButton)
 
-        // Configurar dropdowns estáticos
-        setupStaticDropdowns()
+        // Configurar dropdowns estáticos e dinâmicos
+        setupTipoDropdown()
+        setupAdminDropdown()
 
-        // Configurar dropdowns dinâmicos (buscar dados)
-        setupDynamicDropdowns()
-
-        // Configurar listeners de seleção
-        setupSelectionListeners()
+        // Configurar Date/Time Pickers
+        setupPickers()
 
         // Botão voltar
         backButton.setOnClickListener {
@@ -92,149 +82,172 @@ class TelaRF17_2Activity : AppCompatActivity() {
 
         // Botão salvar
         btnSalvar.setOnClickListener {
-            salvarAgendamento()
+            salvarHorarioAtendimento()
         }
     }
 
-    private fun setupStaticDropdowns() {
-        // Tipo de Agendamento
-        val tipos = listOf("personal", "nutricionista", "aula")
+    private fun setupTipoDropdown() {
+        val tipos = listOf("personal", "nutricionista") // Tipos permitidos
         val tipoAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, tipos)
         tipoInput.setAdapter(tipoAdapter)
-        tipoInput.setOnItemClickListener { parent, _, position, _ ->
-            selectedTipo = parent.adapter.getItem(position) as String
-        }
-
-        // Confirmado
-        val confirmadoOptions = listOf("Sim", "Não")
-        val confirmadoAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, confirmadoOptions)
-        confirmadoInput.setAdapter(confirmadoAdapter)
-        confirmadoInput.setOnItemClickListener { parent, _, position, _ ->
-            selectedConfirmado = (parent.adapter.getItem(position) as String == "Sim")
+        tipoInput.setOnItemClickListener { _, _, position, _ ->
+            selectedTipo = tipoAdapter.getItem(position)
         }
     }
 
-    private fun setupDynamicDropdowns() {
-        // Inicializar adapters vazios
-        alunoAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, mutableListOf<String>())
+    private fun setupAdminDropdown() {
         adminAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, mutableListOf<String>())
-        horarioAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, mutableListOf<String>())
-        aulaAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, mutableListOf<String>())
-
-        alunoInput.setAdapter(alunoAdapter)
         adminInput.setAdapter(adminAdapter)
-        horarioInput.setAdapter(horarioAdapter)
-        aulaInput.setAdapter(aulaAdapter)
 
-        // Buscar dados na coroutine
+        adminInput.setOnItemClickListener { _, _, position, _ ->
+            selectedAdminId = adminsList.getOrNull(position)?.id
+        }
+
+        // Buscar Admins
         lifecycleScope.launch {
             try {
-                // Buscar Alunos
-                alunosList = supabaseService.getAlunos()
-                val alunoNames = alunosList.map { it.nome ?: "Aluno sem nome" } // Use um campo apropriado como nome
-                alunoAdapter.clear()
-                alunoAdapter.addAll(alunoNames)
-                alunoAdapter.notifyDataSetChanged()
-
-                // Buscar Admins
-                adminsList = supabaseService.getAdmins()
-                val adminNames = adminsList.map { it.nome ?: "Admin sem nome" } // Use um campo apropriado como nome
+                adminsList = supabaseService.getAdmins() // Usa o método getAdmins
+                val adminNames = adminsList.map { it.nome ?: "Admin sem nome" }
                 adminAdapter.clear()
                 adminAdapter.addAll(adminNames)
                 adminAdapter.notifyDataSetChanged()
-
-                // Buscar Horários
-                horariosList = supabaseService.getHorarios() // Certifique-se que o método e modelo existem
-                // Mapeie para uma representação de string significativa (ex: data e hora)
-                val horarioStrings = horariosList.map { "${it.tipo}: ${it.data_hora}" } // Usa os campos reais do modelo HorarioAtendimento
-                horarioAdapter.clear()
-                horarioAdapter.addAll(horarioStrings)
-                horarioAdapter.notifyDataSetChanged()
-
-                // Buscar Aulas
-                aulasList = supabaseService.getAulas()
-                val aulaNames = aulasList.map { it.titulo ?: "Aula sem nome" }
-                aulaAdapter.clear()
-                aulaAdapter.addAll(aulaNames)
-                aulaAdapter.notifyDataSetChanged()
-
             } catch (e: Exception) {
-                // Tratar erro de busca
-                Toast.makeText(this@TelaRF17_2Activity, "Erro ao buscar dados: ${e.message}", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@TelaRF17_2Activity, "Erro ao buscar admins: ${e.message}", Toast.LENGTH_LONG).show()
                 e.printStackTrace()
             }
         }
     }
 
-    private fun setupSelectionListeners() {
-        alunoInput.setOnItemClickListener { _, _, position, _ ->
-            selectedAlunoId = alunosList.getOrNull(position)?.id
+    private fun setupPickers() {
+        dateInput.setOnClickListener {
+            showDatePicker()
         }
-        adminInput.setOnItemClickListener { _, _, position, _ ->
-            selectedAdminId = adminsList.getOrNull(position)?.id
+        timeInput.setOnClickListener {
+            showTimePicker(timeInput, selectedDateTime) // Picker para a hora principal
         }
-        horarioInput.setOnItemClickListener { _, _, position, _ ->
-            selectedHorarioId = horariosList.getOrNull(position)?.id
+        startTimeInput.setOnClickListener {
+            showTimePicker(startTimeInput, selectedStartTime, true) // Picker para hora início (opcional)
         }
-        aulaInput.setOnItemClickListener { _, _, position, _ ->
-            selectedAulaId = aulasList.getOrNull(position)?.id
+        endTimeInput.setOnClickListener {
+            showTimePicker(endTimeInput, selectedEndTime, true) // Picker para hora fim (opcional)
         }
     }
 
-    private fun salvarAgendamento() {
+    private fun showDatePicker() {
+        val dateSetListener = DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
+            selectedDateTime.set(Calendar.YEAR, year)
+            selectedDateTime.set(Calendar.MONTH, month)
+            selectedDateTime.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+            updateDateInput()
+        }
+        DatePickerDialog(
+            this,
+            dateSetListener,
+            calendar.get(Calendar.YEAR),
+            calendar.get(Calendar.MONTH),
+            calendar.get(Calendar.DAY_OF_MONTH)
+        ).show()
+    }
+
+    private fun showTimePicker(targetInput: TextInputEditText, targetCalendar: Calendar, isOptional: Boolean = false) {
+        val timeSetListener = TimePickerDialog.OnTimeSetListener { _, hourOfDay, minute ->
+            targetCalendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
+            targetCalendar.set(Calendar.MINUTE, minute)
+            targetCalendar.set(Calendar.SECOND, 0) // Zerar segundos
+            updateTimeInput(targetInput, targetCalendar)
+        }
+        TimePickerDialog(
+            this,
+            timeSetListener,
+            targetCalendar.get(Calendar.HOUR_OF_DAY),
+            targetCalendar.get(Calendar.MINUTE),
+            true // Formato 24 horas
+        ).show()
+    }
+
+    private fun updateDateInput() {
+        val format = "dd/MM/yyyy"
+        val sdf = SimpleDateFormat(format, Locale("pt", "BR"))
+        dateInput.setText(sdf.format(selectedDateTime.time))
+    }
+
+    private fun updateTimeInput(input: TextInputEditText, calendar: Calendar) {
+        val format = "HH:mm"
+        val sdf = SimpleDateFormat(format, Locale("pt", "BR"))
+        input.setText(sdf.format(calendar.time))
+    }
+
+    // Função para formatar data/hora para o padrão ISO 8601 que Supabase espera
+    private fun formatDateTimeISO(calendar: Calendar): String {
+        val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX", Locale.getDefault())
+        //sdf.timeZone = TimeZone.getTimeZone("UTC") // Opcional: Forçar UTC se necessário
+        return sdf.format(calendar.time)
+    }
+
+    // Função para formatar apenas hora (HH:mm:ss) - para horario_inicio/fim
+    private fun formatTime(calendar: Calendar): String {
+        val sdf = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
+        return sdf.format(calendar.time)
+    }
+
+    private fun salvarHorarioAtendimento() {
         // Validar campos obrigatórios
+        if (selectedAdminId == null) {
+            adminInput.error = "Selecione o admin responsável"
+            return
+        }
         if (selectedTipo == null) {
-            tipoInput.error = "Selecione o tipo"
+            tipoInput.error = "Selecione o tipo de atendimento"
             return
         }
-        if (selectedAlunoId == null) {
-            alunoInput.error = "Selecione o aluno"
-            return
-        }
-        if (selectedConfirmado == null) {
-            confirmadoInput.error = "Selecione se está confirmado"
+        if (dateInput.text.isNullOrEmpty() || timeInput.text.isNullOrEmpty()) {
+            Toast.makeText(this, "Selecione a data e a hora", Toast.LENGTH_SHORT).show()
+            if (dateInput.text.isNullOrEmpty()) dateInput.error = "Obrigatório"
+            if (timeInput.text.isNullOrEmpty()) timeInput.error = "Obrigatório"
             return
         }
 
         // Limpar erros
+        adminInput.error = null
         tipoInput.error = null
-        alunoInput.error = null
-        confirmadoInput.error = null
+        dateInput.error = null
+        timeInput.error = null
 
-        // Criar objeto Agendamento
-        val novoAgendamento = Agendamento(
-            id = UUID.randomUUID().toString(), // Gerar ID localmente ou deixar o Supabase gerar
-            aluno_id = selectedAlunoId!!,
-            admin_id = selectedAdminId, // Pode ser null
-            horario_id = selectedHorarioId, // Pode ser null
-            aula_id = selectedAulaId, // Pode ser null
+        // Coletar dados opcionais
+        val horarioInicioStr = if (startTimeInput.text.isNullOrEmpty()) null else formatTime(selectedStartTime)
+        val horarioFimStr = if (endTimeInput.text.isNullOrEmpty()) null else formatTime(selectedEndTime)
+        val diaSemanaStr = dayOfWeekInput.text.toString().trim().ifEmpty { null }
+
+        // Criar objeto HorarioAtendimento
+        val novoHorario = HorarioAtendimento(
+            id = UUID.randomUUID().toString(), // Supabase pode gerar, mas enviar um é mais seguro
+            admin_id = selectedAdminId!!,
+            data_hora = formatDateTimeISO(selectedDateTime), // Formato ISO 8601
             tipo = selectedTipo!!,
-            confirmado = selectedConfirmado!!
+            disponivel = true, // Valor padrão
+            aluno_id = null, // Não definido na criação do horário
+            aluno_nome = null, // Não definido na criação do horário
+            horario_inicio = horarioInicioStr,
+            horario_fim = horarioFimStr,
+            dia_da_semana = diaSemanaStr
         )
 
         // Chamar API para salvar
         lifecycleScope.launch {
             try {
-                val response = supabaseService.criarAgendamento(novoAgendamento)
+                // Certifique-se que o método criarHorarioAtendimento existe no SupabaseService
+                val response = supabaseService.criarHorarioAtendimento(novoHorario)
                 if (response.isNotEmpty()) {
-                    Toast.makeText(this@TelaRF17_2Activity, "Agendamento salvo com sucesso!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@TelaRF17_2Activity, "Horário de atendimento salvo com sucesso!", Toast.LENGTH_SHORT).show()
                     finish() // Fechar a activity após salvar
                 } else {
-                    Toast.makeText(this@TelaRF17_2Activity, "Erro ao salvar agendamento.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@TelaRF17_2Activity, "Erro ao salvar horário.", Toast.LENGTH_SHORT).show()
                 }
             } catch (e: Exception) {
-                Toast.makeText(this@TelaRF17_2Activity, "Erro: ${e.message}", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@TelaRF17_2Activity, "Erro ao salvar: ${e.message}", Toast.LENGTH_LONG).show()
                 e.printStackTrace()
             }
         }
     }
-
-    // Funções antigas de Date/Time Picker (removidas ou comentadas)
-    /*
-    private fun showDatePicker() { ... }
-    private fun showTimePicker(input: TextInputEditText) { ... }
-    private fun updateDateInput() { ... }
-    private fun updateTimeInput(input: TextInputEditText) { ... }
-    */
 }
 
