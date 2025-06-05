@@ -4,7 +4,7 @@ data class Usuario(
     val id: String,
     val email: String,
     val senha: String?,
-    val is_admin: Boolean,
+    val is_admin: Boolean?,
     val nome: String,
     val cpf: String,
     val data_nascimento: String?,

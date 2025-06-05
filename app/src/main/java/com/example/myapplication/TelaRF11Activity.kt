@@ -38,7 +38,7 @@ class TelaRF11Activity : AppCompatActivity() {
             startActivity(intent)
         }
         atendPersonal.setOnClickListener {
-            val intent = Intent(this, TelaRF16Activity::class.java)
+            val intent = Intent(this, TelaRF16_1Activity::class.java)
             startActivity(intent)
         }
         alunos.setOnClickListener {

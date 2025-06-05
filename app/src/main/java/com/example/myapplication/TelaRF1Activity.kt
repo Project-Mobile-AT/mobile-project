@@ -69,7 +69,6 @@ class TelaRF1Activity : AppCompatActivity() {
 
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                // Busca um usuário onde o email e a senha correspondam.
                 val usuarios = supabaseService.getUsuarioByEmailAndPassword(
                     email = "eq.$email",
                     senha = "eq.$senha"
@@ -80,16 +79,20 @@ class TelaRF1Activity : AppCompatActivity() {
                         val usuarioLogado = usuarios.first()
                         Toast.makeText(this@TelaRF1Activity, "Login realizado com sucesso!", Toast.LENGTH_SHORT).show()
 
-                        // Salva o ID do usuário no SharedPreferences
                         saveUserId(usuarioLogado.id)
                         Log.d("Login", "ID do usuário logado: ${usuarioLogado.id}")
 
-                        // Redireciona sempre para TelaRF3Activity se o login for bem-sucedido
-                        val intent = Intent(this@TelaRF1Activity, TelaRF3Activity::class.java)
-                        startActivity(intent)
+                        // Redireciona com base em isAdmin
+                        if (usuarioLogado.is_admin == true) {
+                            val intent = Intent(this@TelaRF1Activity, TelaRF11Activity::class.java)
+                            startActivity(intent)
+                        } else {
+                            val intent = Intent(this@TelaRF1Activity, TelaRF3Activity::class.java)
+                            startActivity(intent)
+                        }
+
                         finish() // Fecha a tela de login
                     } else {
-                        // Credenciais inválidas
                         Toast.makeText(this@TelaRF1Activity, "Email ou senha inválidos. Tente novamente.", Toast.LENGTH_LONG).show()
                     }
                 }
