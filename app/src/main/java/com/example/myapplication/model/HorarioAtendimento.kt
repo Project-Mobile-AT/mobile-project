@@ -7,5 +7,8 @@ data class HorarioAtendimento(
     val tipo: String, // "personal" ou "nutricionista"
     val disponivel: Boolean,
     val aluno_id: String? = null,
-    val aluno_nome: String? = null
+    val aluno_nome: String? = null,
+    val horario_inicio: String? = null,
+    val horario_fim: String? = null,
+    val dia_da_semana: String? = null
 )
