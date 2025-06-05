@@ -11,7 +11,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.PopupMenu
-import android.widget.TextView // Importar TextView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.data.SupabaseClient
@@ -33,7 +33,6 @@ class TelaRF3_1Activity : AppCompatActivity() {
     private lateinit var buttonLoadImage: Button
     private lateinit var progressBar: View
 
-    // Adicionado: TextViews para os dados do usuário
     private lateinit var textViewUserName: TextView
     private lateinit var textViewEmail: TextView
     private lateinit var textViewCpf: TextView
@@ -51,18 +50,19 @@ class TelaRF3_1Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tela_rf3_1)
 
+        // Inicializa as views
         imageViewProfile = findViewById(R.id.imageViewProfile)
         buttonSelectImage = findViewById(R.id.buttonSelectImage)
         buttonUploadImage = findViewById(R.id.buttonUploadImage)
         buttonLoadImage = findViewById(R.id.buttonLoadImage)
         progressBar = findViewById(R.id.progressBar)
 
-        // Inicializa os TextViews
         textViewUserName = findViewById(R.id.textViewUserName)
         textViewEmail = findViewById(R.id.textViewEmail)
         textViewCpf = findViewById(R.id.textViewCpf)
         textViewDataNascimento = findViewById(R.id.textViewDataNascimento)
 
+        // Obtém o userId do SharedPreferences
         userId = getLoggedInUserId()
         if (userId == null) {
             Log.w("TelaRF3_1Activity", "Nenhum ID de usuário encontrado no SharedPreferences.")
@@ -70,6 +70,7 @@ class TelaRF3_1Activity : AppCompatActivity() {
             Log.d("TelaRF3_1Activity", "ID do usuário obtido do SharedPreferences: $userId")
         }
 
+        // Configuração do Menu Popup
         val menuButton = findViewById<ImageView>(R.id.id_menu)
         menuButton.setOnClickListener { view ->
             val popup = PopupMenu(this, view)
@@ -92,10 +93,12 @@ class TelaRF3_1Activity : AppCompatActivity() {
             popup.show()
         }
 
+        // Listener para o botão de selecionar imagem
         buttonSelectImage.setOnClickListener {
             openImageChooser()
         }
 
+        // Listener para o botão de salvar/upload da imagem
         buttonUploadImage.setOnClickListener {
             if (userId != null) {
                 if (selectedImageUri != null) {
@@ -108,20 +111,31 @@ class TelaRF3_1Activity : AppCompatActivity() {
             }
         }
 
+        // Listener para o botão de carregar a imagem
         buttonLoadImage.setOnClickListener {
             if (userId != null) {
-                loadProfileImage()
+                // CORRIGIDO AQUI: Chamando loadProfileDataAndImage dentro de uma coroutine
+                CoroutineScope(Dispatchers.IO).launch {
+                    Log.d("LoadButton", "Botão Carregar Foto clicado. UserID: $userId")
+                    loadProfileDataAndImage(userId!!)
+                }
             } else {
                 Toast.makeText(this, "ID de usuário não encontrado. Faça login para carregar a imagem.", Toast.LENGTH_LONG).show()
             }
         }
 
+        // Carrega o fragmento de navegação inferior
         supportFragmentManager.beginTransaction()
             .replace(R.id.container_bottom_nav, BottomNavFragment())
             .commit()
 
+        // Carrega os dados e a imagem de perfil ao iniciar a Activity, se o userId estiver disponível
         if (userId != null) {
-            loadProfileImage()
+            Log.d("TelaRF3_1Activity", "Carregando dados e imagem ao iniciar. UserID: $userId")
+            // CORRIGIDO AQUI: Chamando loadProfileDataAndImage dentro de uma coroutine
+            CoroutineScope(Dispatchers.IO).launch {
+                loadProfileDataAndImage(userId!!)
+            }
         }
     }
 
@@ -164,7 +178,9 @@ class TelaRF3_1Activity : AppCompatActivity() {
             resizedBitmap.compress(Bitmap.CompressFormat.JPEG, 80, outputStream)
 
             val bytes = outputStream.toByteArray()
-            Base64.encode(bytes)
+            val base64String = Base64.encode(bytes)
+            Log.d("ImageConverter", "Imagem convertida para Base64. Tamanho da string: ${base64String.length}")
+            base64String
         } catch (e: Exception) {
             Log.e("ImageConverter", "Erro ao converter imagem para Base64: ${e.message}", e)
             Toast.makeText(this, "Falha na conversão da imagem.", Toast.LENGTH_SHORT).show()
@@ -189,8 +205,13 @@ class TelaRF3_1Activity : AppCompatActivity() {
     @OptIn(ExperimentalEncodingApi::class)
     private fun decodeBase64ToBitmap(base64String: String): Bitmap? {
         return try {
+            Log.d("ImageConverter", "Tentando decodificar Base64 para Bitmap. Tamanho da string: ${base64String.length}")
             val decodedBytes = Base64.decode(base64String)
-            BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.size)
+            val bitmap = BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.size)
+            if (bitmap == null) {
+                Log.e("ImageConverter", "Bitmap retornado pela decodificação é NULO.")
+            }
+            bitmap
         } catch (e: Exception) {
             Log.e("ImageConverter", "Erro ao decodificar Base64 para Bitmap: ${e.message}", e)
             Toast.makeText(this, "Falha ao exibir imagem. Formato inválido.", Toast.LENGTH_SHORT).show()
@@ -220,7 +241,7 @@ class TelaRF3_1Activity : AppCompatActivity() {
                         )
                         Log.d("Upload", "Imagem de perfil salva com sucesso para ID: $currentLoggedInUserId")
 
-                        // Após o upload, recarrega todos os dados, incluindo a imagem
+                        Log.d("Upload", "Recarregando dados do perfil após upload.")
                         loadProfileDataAndImage(currentLoggedInUserId)
 
                     } else {
@@ -245,44 +266,50 @@ class TelaRF3_1Activity : AppCompatActivity() {
     // Função modificada para carregar TODOS os dados do perfil
     private fun loadProfileImage() {
         progressBar.visibility = View.VISIBLE
-        CoroutineScope(Dispatchers.IO).launch {
+        // Removemos o CoroutineScope.launch daqui, pois a função já é chamada por outra coroutine
+        // ou já chamaremos loadProfileDataAndImage diretamente dentro de uma coroutine.
+        // A lógica de CoroutineScope().launch já está no buttonLoadImage.setOnClickListener
+        // e no if (userId != null) do onCreate.
+        // Se esta função loadProfileImage() fosse chamada de outros locais síncronos,
+        // ela precisaria de um CoroutineScope.launch {} ao redor da chamada a loadProfileDataAndImage.
+        // Mas como ela é um "wrapper" para loadProfileDataAndImage, mantemos a simplicidade.
+        CoroutineScope(Dispatchers.IO).launch { // Reintroduzido para garantir contexto para outras chamadas.
             val currentLoggedInUserId = userId!!
+            Log.d("LoadImage", "Iniciando carregamento de imagem. UserID: $currentLoggedInUserId")
             loadProfileDataAndImage(currentLoggedInUserId)
         }
     }
 
-    // NOVA FUNÇÃO para carregar todos os dados (nome, email, cpf, data_nascimento e imagem)
     private suspend fun loadProfileDataAndImage(id: String) {
-        withContext(Dispatchers.IO) { // Garante que a chamada de rede está em um thread de I/O
+        withContext(Dispatchers.IO) {
             try {
+                Log.d("ImageLoad", "Buscando dados do usuário com ID: $id")
                 val users = supabaseService.getUsuarioById(id = "eq.$id")
 
-                withContext(Dispatchers.Main) { // Volta para o thread principal para atualizar a UI
+                withContext(Dispatchers.Main) {
                     if (users.isNotEmpty()) {
                         val userProfile = users.first()
+                        Log.d("ImageLoad", "Usuário encontrado. Nome: ${userProfile.nome}. Campo img_perfil está nulo? ${userProfile.img_perfil == null}")
 
-                        // Atualiza os TextViews com os dados do usuário
                         textViewUserName.text = userProfile.nome ?: "Nome não disponível"
                         textViewEmail.text = userProfile.email ?: "Email não disponível"
                         textViewCpf.text = userProfile.cpf ?: "CPF não disponível"
                         textViewDataNascimento.text = userProfile.data_nascimento ?: "Data de Nasc. não disponível"
 
-                        // Carrega a imagem de perfil
                         userProfile.img_perfil?.let { base64 ->
+                            Log.d("ImageLoad", "Campo img_perfil NÃO é nulo. Tentando decodificar imagem. Tamanho Base64: ${base64.length}")
                             val bitmap = decodeBase64ToBitmap(base64)
                             bitmap?.let {
                                 imageViewProfile.setImageBitmap(it)
+                                Log.d("ImageLoad", "Imagem definida na ImageView com sucesso.")
                             } ?: run {
-                                Log.e("ImageLoad", "Não foi possível decodificar a imagem para o usuário: $id. Exibindo padrão.")
-                                // Mantenha a imagem padrão do XML, não mude nada
+                                Log.e("ImageLoad", "Não foi possível decodificar o Bitmap da imagem para o usuário: $id. Exibindo padrão.")
                             }
                         } ?: run {
-                            Log.d("ImageLoad", "Nenhuma imagem de perfil encontrada no DB para o usuário: $id. Exibindo padrão.")
-                            // Mantenha a imagem padrão do XML, não mude nada
+                            Log.d("ImageLoad", "Campo img_perfil é NULO no DB para o usuário: $id. Exibindo padrão.")
                         }
                     } else {
-                        Log.d("ImageLoad", "Usuário não encontrado no DB: $id. Exibindo imagem padrão e dados vazios.")
-                        // Limpa/Reseta os TextViews se o usuário não for encontrado
+                        Log.d("ImageLoad", "Usuário com ID: $id não encontrado no DB. Exibindo imagem padrão e dados vazios.")
                         textViewUserName.text = "Usuário Desconhecido"
                         textViewEmail.text = "N/A"
                         textViewCpf.text = "N/A"

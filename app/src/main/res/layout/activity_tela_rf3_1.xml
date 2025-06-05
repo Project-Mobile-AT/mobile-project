@@ -30,14 +30,14 @@
                     android:src="@drawable/ic_menu"
                     android:contentDescription="Menu" />
                 <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Dados Pessoais"
-                android:textColor="@color/text_gray"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Dados Pessoais"
+                    android:textColor="@color/text_gray"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <ImageView
                     android:layout_width="30dp"
@@ -65,7 +65,7 @@
                     android:layout_height="100dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/ic_avatar"
-                    android:background="@drawable/rounded_image_background" app:tint="@color/primary_purple"
+                    android:background="@drawable/rounded_image_background"
                     android:contentDescription="Imagem de Perfil" />
 
                 <Button
@@ -74,7 +74,8 @@
                     android:layout_height="wrap_content"
                     android:text="Alterar Foto"
                     android:layout_marginTop="12dp"
-                    style="@style/Widget.Material3.Button.TextButton" android:textColor="@color/primary_purple" />
+                    style="@style/Widget.Material3.Button.TextButton"
+                    android:textColor="@color/primary_purple" />
 
                 <ProgressBar
                     android:id="@+id/progressBar"
@@ -82,15 +83,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:visibility="gone" /> <TextView
-                android:id="@+id/textViewUserName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Alex Johnson"
-                android:textStyle="bold"
-                android:layout_marginTop="12dp"
-                android:textColor="@color/text_gray"
-                android:textSize="16sp" />
+                    android:visibility="gone" />
+                <TextView
+                    android:id="@+id/textViewUserName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Alex Johnson"
+                    android:textStyle="bold"
+                    android:layout_marginTop="12dp"
+                    android:textColor="@color/text_gray"
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <LinearLayout
