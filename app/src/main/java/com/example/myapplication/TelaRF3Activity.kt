@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Context // Adicionar este import!
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
@@ -14,7 +15,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.example.myapplication.data.SupabaseClient // <--
+import com.example.myapplication.data.SupabaseClient
 import com.example.myapplication.data.SupabaseService
 import com.example.myapplication.fragments.AcessibilidadePopup
 import com.example.myapplication.fragments.BottomNavFragment
@@ -49,12 +50,13 @@ class TelaRF3Activity : AppCompatActivity() {
         supabaseService = SupabaseClient.service
 
         // --- OBTER ID DO USUÁRIO LOGADO ---
-        currentUserId = intent.getStringExtra("USER_ID")
-        // Exemplo se você salvou em SharedPreferences após o login:
-        // currentUserId = getSharedPreferences("app_prefs", MODE_PRIVATE).getString("current_user_id", null)
+        // Pegue o ID do SharedPreferences, usando a mesma chave que você usou para salvar.
+        currentUserId = getSharedPreferences("app_prefs", MODE_PRIVATE).getString("logged_in_user_id", null)
 
         if (currentUserId == null) {
             Toast.makeText(this, "Erro: ID do usuário não encontrado. Por favor, faça login novamente.", Toast.LENGTH_LONG).show()
+            // Limpe o ID antigo se houver para evitar loops
+            getSharedPreferences("app_prefs", MODE_PRIVATE).edit().remove("logged_in_user_id").apply()
             val intent = Intent(this, TelaRF1Activity::class.java)
             startActivity(intent)
             finish()
@@ -128,8 +130,8 @@ class TelaRF3Activity : AppCompatActivity() {
                     }
                     R.id.menu_sair -> {
                         Toast.makeText(this, "Saindo...", Toast.LENGTH_SHORT).show()
-                        // Com Retrofit, você precisaria limpar manualmente o ID do usuário salvo
-                        // Por exemplo: getSharedPreferences("app_prefs", MODE_PRIVATE).edit().remove("current_user_id").apply()
+                        // Limpa o ID do usuário salvo no SharedPreferences
+                        getSharedPreferences("app_prefs", MODE_PRIVATE).edit().remove("logged_in_user_id").apply()
                         val intent = Intent(this, TelaRF1Activity::class.java)
                         startActivity(intent)
                         finish()
@@ -168,7 +170,8 @@ class TelaRF3Activity : AppCompatActivity() {
         currentUserId?.let { userId ->
             lifecycleScope.launch(Dispatchers.IO) {
                 try {
-                    val users = supabaseService.getUsuarioById(userId)
+                    // Adicionar "eq." ao ID para o filtro, como você faz em getUsuarioById
+                    val users = supabaseService.getUsuarioById(id = "eq.$userId")
                     withContext(Dispatchers.Main) {
                         if (users.isNotEmpty()) {
                             val user = users.first()
@@ -193,12 +196,12 @@ class TelaRF3Activity : AppCompatActivity() {
         currentUserId?.let { userId ->
             lifecycleScope.launch(Dispatchers.IO) {
                 try {
-                    val streaks = supabaseService.getStreakByUserId(userId)
+                    // Adicionar "eq." ao ID para o filtro
+                    val streaks = supabaseService.getStreakByUserId(userId = "eq.$userId")
                     withContext(Dispatchers.Main) {
                         if (streaks.isNotEmpty()) {
                             val streak = streaks.first()
-                            // Ajuste aqui conforme o campo real no seu modelo Streak que representa a contagem ou estado
-                            streakValueTextView.text = "${streak.completado} dias" // Ajuste conforme seu modelo Streak
+                            streakValueTextView.text = "${streak.completado} dias"
                         } else {
                             streakValueTextView.text = "0 dias"
                         }
@@ -218,14 +221,12 @@ class TelaRF3Activity : AppCompatActivity() {
         currentUserId?.let { userId ->
             lifecycleScope.launch(Dispatchers.IO) {
                 try {
-                    val treinos = supabaseService.getTreinoByUserId(userId, "criado_em.desc", 1)
+                    // Adicionar "eq." ao ID para o filtro
+                    val treinos = supabaseService.getTreinoByUserId(userId = "eq.$userId", "criado_em.desc", 1)
                     withContext(Dispatchers.Main) {
                         if (treinos.isNotEmpty()) {
                             val treino = treinos.first()
-                            // Seu modelo 'Treino' não tem um campo 'nome'.
-                            // Se você tiver um nome na tabela 'treino', use 'treino.nome'.
-                            // Caso contrário, pode ser "Treino: ${treino.id}" ou outro campo descritivo.
-                            treinoNameTextView.text = "Treino: ${treino.id}" // Ou adicione 'nome' ao seu Treino model
+                            treinoNameTextView.text = "Treino: ${treino.id}"
                         } else {
                             treinoNameTextView.text = "Nenhum treino disponível hoje."
                         }
